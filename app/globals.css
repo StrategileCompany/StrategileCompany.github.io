@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --grid-baseline: 8px;
+    color-scheme: dark;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    background-color: #0A0A0A;
+  }
+
+  html,
+  body {
+    @apply bg-ink-950 text-bone-100;
+    font-feature-settings: 'ss01', 'cv01', 'cv11', 'kern';
+  }
+
+  body {
+    @apply font-sans text-body antialiased selection:bg-gold-300/30 selection:text-bone-50;
+  }
+
+  /* Tipografia display com optical sizing variavel do Fraunces */
+  .font-display {
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  }
+
+  /* Foco visivel acessivel */
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold-300/60 ring-offset-2 ring-offset-ink-950 rounded-sm;
+  }
+
+  /* Reducao de movimento */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .editorial-rule {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-bone-100/15 to-transparent;
+  }
+
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+  }
+
+  .container-editorial {
+    @apply mx-auto w-full px-6 sm:px-8 lg:px-12 max-w-wide;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .perspective-1600 {
+    perspective: 1600px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+/* Scrollbar minimalista */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A28;
+  border-radius: 4px;
+  border: 2px solid #0A0A0A;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3A3A37;
+}
