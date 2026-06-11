@@ -1,17 +1,15 @@
-import { Hero } from '@/components/Hero';
-import { Manifesto } from '@/components/Manifesto';
-import { Capabilities } from '@/components/Capabilities';
-import { PortfolioShowcase } from '@/components/PortfolioShowcase';
-import { CtaBlock } from '@/components/CtaBlock';
+import { HomeScene } from '@/components/home/HomeScene';
+import { Manifesto } from '@/components/home/Manifesto';
+import { Capabilities } from '@/components/home/Capabilities';
+import { CtaSection } from '@/components/home/CtaSection';
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <HomeScene />
       <Manifesto />
       <Capabilities />
-      <PortfolioShowcase />
-      <CtaBlock />
+      <CtaSection />
     </>
   );
 }

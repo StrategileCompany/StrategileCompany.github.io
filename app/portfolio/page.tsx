@@ -1,15 +1,11 @@
-'use client';
+import type { Metadata } from 'next';
+import { PortfolioIndex } from '@/components/PortfolioIndex';
 
-import { PageHeader } from '@/components/PageHeader';
-import { PortfolioGrid } from '@/components/PortfolioGrid';
-import { useLanguage } from '@/lib/i18n/LanguageProvider';
+export const metadata: Metadata = {
+  title: 'Portfólio',
+  description: 'Oito produtos, oito operações diferentes — a tela inicial da Strategile Company.',
+};
 
 export default function PortfolioPage() {
-  const { t } = useLanguage();
-  return (
-    <>
-      <PageHeader title={t.portfolio.title} sub={t.portfolio.sub} eyebrow={t.nav.portfolio} />
-      <PortfolioGrid />
-    </>
-  );
+  return <PortfolioIndex />;
 }

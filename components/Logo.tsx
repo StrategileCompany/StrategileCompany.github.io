@@ -5,7 +5,7 @@ export function Logo({ className }: { className?: string }) {
   return (
     <Link
       href="/"
-      aria-label="Strategile Company — pagina inicial"
+      aria-label="Strategile Company — página inicial"
       className={cn(
         'group inline-flex items-baseline gap-1 font-display text-h3 leading-none tracking-tight text-bone-50',
         className,

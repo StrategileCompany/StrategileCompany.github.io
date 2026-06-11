@@ -1,105 +1,56 @@
 'use client';
 
-import Link from 'next/link';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { products } from '@/lib/products';
+import Link from 'next/link';
 
 export function Footer() {
   const { t } = useLanguage();
-  const year = new Date().getFullYear();
-
-  const social = [
-    { name: 'LinkedIn', href: '#' },
-    { name: 'GitHub', href: '#' },
-    { name: 'Instagram', href: '#' },
-  ];
 
   return (
-    <footer className="relative z-10 border-t border-bone-100/[0.08] bg-ink-950 mt-32">
-      <div className="container-editorial py-16 lg:py-24">
-        <div className="grid gap-12 lg:gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-6">
-            <Link
-              href="/"
-              className="font-display text-display leading-none tracking-tight text-bone-50 inline-flex items-baseline"
-            >
+    <footer className="relative border-t border-bone-100/8 bg-ink-950 px-6 py-16 sm:px-10">
+      <div className="container-editorial">
+        <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
+          <div>
+            <div className="font-display text-h3 text-bone-50">
               Strategile<span className="text-gold-300">.</span>
-            </Link>
-            <p className="mt-6 max-w-md text-body text-bone-200/70 leading-relaxed">
-              {t.meta.description}
-            </p>
+            </div>
+            <p className="mt-3 max-w-[32ch] text-caption text-bone-200/50">{t.footer.tagline}</p>
+            <a
+              href={`mailto:${t.cta.email}`}
+              className="mt-4 inline-block font-mono text-caption text-bone-200/60 transition-colors hover:text-gold-200"
+            >
+              {t.cta.email}
+            </a>
           </div>
 
-          <div className="lg:col-span-2">
-            <h3 className="text-eyebrow uppercase text-bone-200/50 mb-4">
-              {t.footer.address.label}
-            </h3>
-            <address className="not-italic text-caption text-bone-200/80 space-y-1">
-              {t.footer.address.lines.map((line) => (
-                <div key={line}>{line}</div>
-              ))}
-            </address>
-          </div>
-
-          <div className="lg:col-span-2">
-            <h3 className="text-eyebrow uppercase text-bone-200/50 mb-4">{t.nav.portfolio}</h3>
-            <ul className="space-y-2 text-caption">
-              <li>
-                <Link
-                  href="/portfolio"
-                  className="text-bone-200/80 hover:text-gold-300 transition-colors duration-200"
-                >
-                  {t.nav.portfolio}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/sobre"
-                  className="text-bone-200/80 hover:text-gold-300 transition-colors duration-200"
-                >
-                  {t.nav.about}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contato"
-                  className="text-bone-200/80 hover:text-gold-300 transition-colors duration-200"
-                >
-                  {t.nav.contact}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="lg:col-span-2">
-            <h3 className="text-eyebrow uppercase text-bone-200/50 mb-4">{t.footer.social.label}</h3>
-            <ul className="space-y-2 text-caption">
-              {social.map((s) => (
-                <li key={s.name}>
-                  <a
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-1 text-bone-200/80 hover:text-gold-300 transition-colors duration-200"
-                  >
-                    {s.name}
-                    <span
-                      aria-hidden
-                      className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
-                    >
-                      ↗
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <nav aria-label={t.nav.portfolio} className="grid grid-cols-2 gap-x-12 gap-y-2.5">
+            {products.map((p) => (
+              <Link
+                key={p.slug}
+                href={`/portfolio/${p.slug}/`}
+                className="text-caption text-bone-200/55 transition-colors duration-200 hover:text-bone-50"
+              >
+                {p.name}
+              </Link>
+            ))}
+          </nav>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-bone-100/[0.08] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-caption text-bone-200/50">
-          <span>
-            © {year} {t.footer.copyright}
+        <div className="mt-14 flex items-center justify-between border-t border-bone-100/8 pt-6">
+          <span className="font-mono text-micro uppercase tracking-[0.2em] text-bone-200/35">
+            © {new Date().getFullYear()} Strategile Company
           </span>
-          <span>{t.footer.builtWith}</span>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="font-mono text-micro uppercase tracking-[0.2em] text-bone-200/45 transition-colors hover:text-gold-200"
+          >
+            {t.footer.backToTop} ↑
+          </a>
         </div>
       </div>
     </footer>

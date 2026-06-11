@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import { LanguageProvider } from '@/lib/i18n/LanguageProvider';
+import { SmoothScroll } from '@/components/SmoothScroll';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import './globals.css';
@@ -23,21 +24,21 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://strategilecompany.com.br'),
   title: {
-    default: 'Strategile Company — Software de impacto operacional',
+    default: 'Strategile Company — Software de abrir todo dia',
     template: '%s · Strategile Company',
   },
   description:
-    'Estudio de engenharia que constroi plataformas para varejo, vendas e gestao financeira. Oito produtos em producao, milhares de usuarios ativos.',
+    'Estúdio de software que constrói produtos para operações reais — varejo, serviços, fé, finanças e infraestrutura de IA.',
   applicationName: 'Strategile Company',
   authors: [{ name: 'Strategile Company' }],
   keywords: [
     'Strategile',
+    'estúdio de software',
     'software para varejo',
-    'gestao financeira',
-    'SaaS B2B',
+    'SaaS multi-tenant',
+    'aplicativos mobile',
+    'IA empresarial',
     'engenharia de software',
-    'PDV mobile',
-    'gestao eclesiastica',
   ],
   openGraph: {
     type: 'website',
@@ -45,14 +46,14 @@ export const metadata: Metadata = {
     alternateLocale: 'en_US',
     url: 'https://strategilecompany.com.br',
     siteName: 'Strategile Company',
-    title: 'Strategile Company — Software de impacto operacional',
+    title: 'Strategile Company — Software de abrir todo dia',
     description:
-      'Estudio de engenharia que constroi plataformas para varejo, vendas e gestao financeira.',
+      'Estúdio de software que constrói produtos para operações reais — varejo, serviços, fé, finanças e infraestrutura de IA.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Strategile Company',
-    description: 'Software de impacto operacional.',
+    description: 'Software de abrir todo dia.',
   },
   robots: { index: true, follow: true },
 };
@@ -69,17 +70,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR" className={`${fraunces.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-ink-950 text-bone-100 grain">
         <LanguageProvider>
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-bone-50 focus:text-ink-950 focus:px-4 focus:py-2 focus:rounded"
-          >
-            Skip to content
-          </a>
-          <Header />
-          <main id="main" className="relative z-10">
-            {children}
-          </main>
-          <Footer />
+          <SmoothScroll>
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-bone-50 focus:text-ink-950 focus:px-4 focus:py-2 focus:rounded"
+            >
+              Pular para o conteúdo
+            </a>
+            <Header />
+            <main id="main" className="relative z-10">
+              {children}
+            </main>
+            <Footer />
+          </SmoothScroll>
         </LanguageProvider>
       </body>
     </html>

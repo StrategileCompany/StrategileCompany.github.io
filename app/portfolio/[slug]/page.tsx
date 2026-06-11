@@ -1,26 +1,25 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ProductDetail } from '@/components/ProductDetail';
 import { getProductBySlug, getProductSlugs } from '@/lib/products';
+import { ProductLanding } from '@/components/ProductLanding';
+
+type Props = { params: { slug: string } };
 
 export function generateStaticParams() {
   return getProductSlugs().map((slug) => ({ slug }));
 }
 
-export const dynamicParams = false;
-
-type Props = { params: { slug: string } };
-
-export function generateMetadata({ params }: Props) {
+export function generateMetadata({ params }: Props): Metadata {
   const product = getProductBySlug(params.slug);
   if (!product) return {};
   return {
-    title: `${product.name} — ${product.copy.pt.tagline}`,
-    description: product.copy.pt.shortDescription,
+    title: `${product.name} — ${product.category.pt}`,
+    description: product.copy.pt.essence,
   };
 }
 
 export default function ProductPage({ params }: Props) {
   const product = getProductBySlug(params.slug);
   if (!product) notFound();
-  return <ProductDetail product={product} />;
+  return <ProductLanding product={product} />;
 }

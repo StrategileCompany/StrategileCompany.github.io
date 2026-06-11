@@ -78,6 +78,21 @@
   }
 }
 
+/* Flutuação ambiente dos ícones na cena — amplitude controlada por --amp,
+   que a coreografia de scroll reduz a zero quando a grade se forma. */
+.icon-float {
+  animation: iconFloat 7s ease-in-out infinite;
+}
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(calc(var(--amp, 0px) * -1));
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(var(--amp, 0px));
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

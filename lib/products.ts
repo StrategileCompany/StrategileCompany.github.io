@@ -1,272 +1,371 @@
 import type { Locale } from './i18n/dictionary';
 
 export type ProductStatus = 'production' | 'development' | 'concept';
-
-export type ProductColor = {
-  /** Cor base do mockup gradient */
-  from: string;
-  to: string;
-  /** Texto sobre o mockup (light/dark) */
-  ink: 'light' | 'dark';
-  /** Acento em pequenos detalhes do mockup */
-  accent: string;
-};
+export type ProductPlatform = 'mobile' | 'web' | 'hybrid';
 
 export type ProductCopy = {
+  /** Uma linha com alma — aparece junto ao ícone e no hero da landing */
   tagline: string;
-  shortDescription: string;
-  longDescription: string[];
-  metric?: string;
-  clients?: string;
+  /** O que é, em 1–2 frases concretas */
+  essence: string;
+  /** Parágrafos da landing (2, curtos) */
+  description: string[];
+  /** 3 capacidades concretas do produto */
+  capabilities: string[];
+  /** Um fato de engenharia que transmite profundidade */
+  fact: string;
 };
 
 export type Product = {
   slug: string;
   name: string;
-  category: { pt: string; en: string };
-  stack: string[];
+  category: Record<Locale, string>;
+  platform: ProductPlatform;
   status: ProductStatus;
-  color: ProductColor;
+  /** Cor de acento do produto — auras, detalhes, links na landing */
+  accent: string;
+  /** Gradiente do squircle do ícone */
+  iconGradient: [string, string];
   copy: Record<Locale, ProductCopy>;
-  url?: string;
+  stack: string[];
 };
 
 export const products: Product[] = [
   {
     slug: 'strategile',
     name: 'Strategile',
-    category: { pt: 'Gestao SaaS B2B · Varejo Multi-loja', en: 'B2B SaaS · Multi-store Retail' },
-    stack: ['Blazor WebAssembly (.NET 8)', 'Azure Functions', 'Dapper', 'SQL Server', 'Flutter Mobile', 'Syncfusion Charts'],
+    category: { pt: 'Inteligência de varejo multi-loja', en: 'Multi-store retail intelligence' },
+    platform: 'hybrid',
     status: 'production',
-    color: { from: '#1F2937', to: '#0B1220', ink: 'light', accent: '#C9A96B' },
+    accent: '#22D3EE',
+    iconGradient: ['#1E293B', '#0F172A'],
     copy: {
       pt: {
         tagline: 'Estoque otimizado. Metas batidas.',
-        shortDescription:
-          'Plataforma de inteligencia operacional para redes varejistas com 3+ lojas. Integra ao ERP via pull nao-invasivo e adiciona algoritmos proprietarios.',
-        longDescription: [
-          'A Strategile nao substitui o ERP — ela conversa com ele. Pull diario (ou em tempo real) traz movimentos de venda, compra e transferencia. A partir dai entram os algoritmos: sugestao de pedido por lead-time real, balanceamento de estoque entre lojas, identificacao de obsoleto, leitura de margem por SKU.',
-          'CRM integrado para orcamentos abertos, dashboards de metas em tempo real para gerentes, app mobile para vendedor e separacao. Calibrada em pet shops, materiais de construcao, autopeças e distribuidores — segmentos onde estoque parado vira prejuizo medido.',
+        essence:
+          'Plataforma de inteligência operacional para redes varejistas. Conversa com o ERP via pull não-invasivo e adiciona os algoritmos que o ERP não tem.',
+        description: [
+          'A Strategile não substitui o ERP — ela conversa com ele. Um pull diário traz movimentos de venda, compra e transferência. A partir daí entram os algoritmos: sugestão de pedido por lead-time real, balanceamento de estoque entre lojas, identificação de obsoleto, leitura de margem por SKU.',
+          'No bolso da equipe, o app leva metas em tempo real, ranking de vendedores e um chat de BI que responde perguntas em linguagem natural — inclusive por voz — gerando SQL validado direto no banco. Calibrada em segmentos onde estoque parado vira prejuízo medido: pet shops, materiais de construção, autopeças, distribuidores.',
         ],
-        metric: 'Reducao media de 18% no estoque obsoleto',
-        clients: 'Pet shops, materiais de construcao, autopeças, distribuidores',
+        capabilities: [
+          'Sugestão de pedido por giro real e balanceamento de estoque entre lojas',
+          'Chat de BI que transforma pergunta em SQL validado — inclusive por voz',
+          'Agente on-premise que conecta o ERP sem abrir portas no firewall',
+        ],
+        fact: 'Quatro stacks em produção — web Blazor com mais de 30 telas, app Flutter, servidor TypeScript e agente Go via WebSocket somente de saída, com sandbox SELECT-only em duas camadas.',
       },
       en: {
         tagline: 'Optimized inventory. Targets met.',
-        shortDescription:
-          'Operational intelligence platform for retail chains with 3+ stores. Integrates with the ERP via non-invasive pull and adds proprietary algorithms.',
-        longDescription: [
-          "Strategile doesn't replace the ERP — it talks to it. A daily (or real-time) pull brings in sales, purchases, and transfers. From there, the algorithms kick in: order suggestion by real lead time, multi-store inventory balancing, obsolete-stock detection, SKU-level margin reading.",
-          "Integrated CRM for open quotes, real-time goal dashboards for managers, a mobile app for sales reps and pickers. Calibrated across pet shops, building supplies, auto parts, and distributors — segments where idle inventory becomes measurable loss.",
+        essence:
+          "Operational intelligence platform for retail chains. Talks to the ERP via non-invasive pull and adds the algorithms the ERP doesn't have.",
+        description: [
+          "Strategile doesn't replace the ERP — it talks to it. A daily pull brings in sales, purchases and transfers. From there, the algorithms kick in: order suggestion by real lead time, multi-store inventory balancing, obsolete-stock detection, SKU-level margin reading.",
+          'In the team\'s pocket, the app carries real-time targets, a sales ranking and a BI chat that answers natural-language questions — voice included — generating validated SQL straight against the database. Calibrated in segments where idle inventory becomes measurable loss: pet shops, building supplies, auto parts, distributors.',
         ],
-        metric: 'Average 18% reduction in obsolete stock',
-        clients: 'Pet shops, building supplies, auto parts, distributors',
+        capabilities: [
+          'Order suggestion by real turnover and multi-store inventory balancing',
+          'A BI chat that turns questions into validated SQL — voice included',
+          'An on-premise agent that connects the ERP without opening firewall ports',
+        ],
+        fact: 'Four stacks in production — a 30+ screen Blazor web app, a Flutter app, a TypeScript server and a Go agent over outbound-only WebSocket, with a two-layer SELECT-only sandbox.',
       },
     },
-  },
-  {
-    slug: 'app-igreja',
-    name: 'AppIgreja',
-    category: { pt: 'SaaS Multi-igreja · Gestao Eclesiastica', en: 'Multi-church SaaS · Church Management' },
-    stack: ['React 18 + TypeScript', 'Material-UI v5', 'Redux Toolkit', 'Node.js + Express', 'PostgreSQL', 'JWT + BCrypt'],
-    status: 'production',
-    color: { from: '#1A1F2E', to: '#0B0F18', ink: 'light', accent: '#DCC58D' },
-    copy: {
-      pt: {
-        tagline: 'Unidade e comunhao para sua familia de fe.',
-        shortDescription:
-          'SaaS multi-tenant para gestao administrativa, financeira e eclesiastica de igrejas e convenções.',
-        longDescription: [
-          'Plataforma multi-tenant que conecta diretoria, pastores, lideres e membros em uma unica ferramenta. Transparencia financeira sem planilha, agenda unificada, cadastro de membros com historico de participacao, conteudo devocional centralizado.',
-          'Substitui o emaranhado de planilhas e WhatsApps que toda tesouraria conhece. Construido com tom respeitoso ao contexto eclesiastico — interface, vocabulario e fluxo pensados para o dia a dia da igreja.',
-        ],
-        clients: 'Convenções, igrejas locais, ministerios',
-      },
-      en: {
-        tagline: 'Unity and fellowship for your church family.',
-        shortDescription:
-          'Multi-tenant SaaS for the administrative, financial, and ecclesiastical management of churches and conventions.',
-        longDescription: [
-          'A multi-tenant platform connecting board, pastors, leaders, and members in a single tool. Financial transparency without spreadsheets, unified calendar, member registry with participation history, centralized devotional content.',
-          'Replaces the tangle of spreadsheets and WhatsApp chats every treasury knows. Built with a tone respectful to the ecclesiastical context — interface, vocabulary, and flow designed for the church’s daily life.',
-        ],
-        clients: 'Conventions, local churches, ministries',
-      },
-    },
-  },
-  {
-    slug: 'smart-scan',
-    name: 'SmartScan',
-    category: { pt: 'PDV Mobile · Varejo Fisico', en: 'Mobile POS · Physical Retail' },
-    stack: ['Flutter', 'API .NET', 'SQL Server', 'Camera scan', 'Bluetooth printer'],
-    status: 'production',
-    color: { from: '#162B22', to: '#08130F', ink: 'light', accent: '#C9A96B' },
-    copy: {
-      pt: {
-        tagline: 'Liberta o vendedor do balcao.',
-        shortDescription:
-          'Conjunto de ferramentas mobile para varejo fisico — conferencia de mercadoria, consulta de preço e orcamento direto no corredor.',
-        longDescription: [
-          'Tres modulos em um app: conferencia de mercadoria recebida (cruza NF-e com fisico via scan de codigo de barras), consulta de preço e estoque na palma da mao, montagem de orçamento direto no corredor com o cliente.',
-          'Substitui prancheta + planilha + computador fixo do caixa. O vendedor passa do balcao para o lado do cliente, fecha venda onde a duvida acontece, e a equipe de recebimento conferi com agilidade que planilha nao da.',
-        ],
-        clients: 'Materiais de construcao, autopeças, varejo fisico em geral',
-      },
-      en: {
-        tagline: 'Free your salespeople from the counter.',
-        shortDescription:
-          'A set of mobile tools for physical retail — goods receiving, price lookup, and quote building right in the aisle.',
-        longDescription: [
-          'Three modules in one app: receiving check (cross-references invoices with physical goods via barcode scan), in-hand price and stock lookup, and quote building beside the customer in the aisle.',
-          "Replaces the clipboard, the spreadsheet, and the cashier's fixed computer. Salespeople move from behind the counter to beside the customer and close deals where doubt arises, while the receiving team works at a speed no spreadsheet can match.",
-        ],
-        clients: 'Building supplies, auto parts, physical retail',
-      },
-    },
-  },
-  {
-    slug: 'tantagrana',
-    name: 'TantaGrana',
-    category: { pt: 'Financas Pessoais', en: 'Personal Finance' },
-    stack: ['.NET 10', 'Azure Functions', 'Blazor WebAssembly', 'MudBlazor', 'SQL Server', 'Clean Architecture'],
-    status: 'development',
-    color: { from: '#2A1F12', to: '#120A05', ink: 'light', accent: '#DCC58D' },
-    copy: {
-      pt: {
-        tagline: 'Gestao estrategica das suas finanças.',
-        shortDescription:
-          'App de controle e gestao estrategica de finanças pessoais. Categorizacao inteligente, projecao de fluxo, metas com acompanhamento visual.',
-        longDescription: [
-          'Categorizacao automatica que aprende com o usuario, projecao de fluxo de caixa pessoal incluindo cartoes parcelados, e metas financeiras com visualizacao do progresso real versus planejado.',
-          'Foco em decisao, nao em registro. Quanto menos a pessoa precisa digitar, mais ela usa. Quanto mais usa, mais clareza tem do proprio dinheiro.',
-        ],
-      },
-      en: {
-        tagline: 'Strategic management of your finances.',
-        shortDescription:
-          'Personal finance app for control and strategic management. Smart categorization, cash flow projection, visual goal tracking.',
-        longDescription: [
-          'Automatic categorization that learns from the user, personal cash-flow projection including credit-card installments, and financial goals with visual tracking of real versus planned progress.',
-          'Focused on decision, not registration. The less the user types, the more they use it. The more they use it, the more clarity they get about their own money.',
-        ],
-      },
-    },
+    stack: ['Blazor WebAssembly', '.NET 8', 'Azure Functions', 'SQL Server', 'Flutter'],
   },
   {
     slug: 'tamarkado',
     name: 'TaMarkado',
-    category: { pt: 'Agendamento · CRM', en: 'Scheduling · CRM' },
-    stack: ['.NET 10', 'Azure Functions', 'Blazor WebAssembly', 'MudBlazor', 'SQL Server'],
+    category: { pt: 'Agendamento e gestão de clientes', en: 'Scheduling & client management' },
+    platform: 'web',
     status: 'development',
-    color: { from: '#1A1A2E', to: '#0A0A14', ink: 'light', accent: '#C9A96B' },
+    accent: '#3B82F6',
+    iconGradient: ['#3B82F6', '#8B5CF6'],
     copy: {
       pt: {
-        tagline: 'Sua agenda, seus clientes, sua estrategia.',
-        shortDescription:
-          'Sistema completo de agendamento e gestao estrategica de clientes para negocios de servico.',
-        longDescription: [
-          'Agenda multi-profissional, lembretes automaticos via WhatsApp e email, historico do cliente com servicos prestados, indicadores comerciais que dizem para onde a operacao esta indo.',
-          'Pensado para barbearias, clinicas, estudios, consultorios — onde o relacionamento com o cliente e a relacao economica e onde planilha simplesmente nao escala.',
+        tagline: 'Tá marcado. Tá confirmado.',
+        essence:
+          'Agenda e gestão de clientes para salões, clínicas e profissionais autônomos — com confirmação de horário e comunicação direto pelo WhatsApp.',
+        description: [
+          'Agenda por dia, semana e mês com status de confirmação em cada horário. Cadastro de clientes com importação direta dos contatos do Google e histórico de serviços prestados.',
+          'A comunicação fecha o ciclo: mensagens personalizadas de WhatsApp com templates e filtros prontos — aniversariantes, inativos, inadimplentes. Multi-tenant: cada empresa opera isolada na mesma plataforma.',
         ],
-        clients: 'Barbearias, clinicas, estudios, consultorios',
+        capabilities: [
+          'Agenda multi-profissional com status de confirmação por horário',
+          'Mensagens de WhatsApp com templates e filtros de público',
+          'Importação de clientes direto dos contatos do Google',
+        ],
+        fact: 'Backend serverless multi-tenant: 20 controllers em Azure Functions, ~54 endpoints REST e pipeline próprio de 5 middlewares.',
       },
       en: {
-        tagline: 'Your schedule, your clients, your strategy.',
-        shortDescription:
-          'A complete scheduling and strategic client management system for service businesses.',
-        longDescription: [
-          "Multi-professional calendar, automated WhatsApp and email reminders, client history with delivered services, business indicators that show where the operation is heading.",
-          "Designed for barbershops, clinics, studios, and offices — where the client relationship is the economic relationship and where spreadsheets simply don't scale.",
+        tagline: 'Booked. Confirmed.',
+        essence:
+          'Scheduling and client management for salons, clinics and independent professionals — with appointment confirmation and WhatsApp communication built in.',
+        description: [
+          'Day, week and month calendar with confirmation status on every slot. Client registry with direct Google Contacts import and full service history.',
+          'Communication closes the loop: personalized WhatsApp messages with templates and ready-made audience filters — birthdays, inactive, overdue. Multi-tenant: each business operates in isolation on the same platform.',
         ],
-        clients: 'Barbershops, clinics, studios, offices',
+        capabilities: [
+          'Multi-professional calendar with per-slot confirmation status',
+          'WhatsApp messages with templates and audience filters',
+          'Client import straight from Google Contacts',
+        ],
+        fact: 'Serverless multi-tenant backend: 20 Azure Functions controllers, ~54 REST endpoints, a custom 5-middleware pipeline.',
       },
     },
+    stack: ['.NET 10', 'Azure Functions', 'Blazor WebAssembly', 'SQL Server', 'Google People API'],
   },
   {
     slug: 'spid-app',
-    name: 'SpidApp / Xpid',
-    category: { pt: 'Vendas Autonomas · Mobile', en: 'Autonomous Sales · Mobile' },
-    stack: ['React Native', 'Node.js', 'PostgreSQL', 'WhatsApp integration'],
+    name: 'Xpid',
+    category: { pt: 'Vendas offline-first para autônomos', en: 'Offline-first sales for independents' },
+    platform: 'mobile',
     status: 'development',
-    color: { from: '#2D1A1A', to: '#180A0A', ink: 'light', accent: '#DCC58D' },
+    accent: '#2563EB',
+    iconGradient: ['#3B82F6', '#1D4ED8'],
     copy: {
       pt: {
-        tagline: 'Do estoque ao financeiro, na palma da mao.',
-        shortDescription:
-          'Sistema de vendas para vendedor autonomo que opera porta a porta e via WhatsApp.',
-        longDescription: [
-          'Controle de estoque por movimentos (FIFO/custo medio), vendas com crediario parcelado, financeiro consolidado com fechamento mensal automatico, conciliacao de recebimentos.',
-          'O vendedor autonomo carrega no bolso o que antes precisava de tres ferramentas: estoque, agenda e financeiro. Saida, entrada, dividas — tudo em um aparelho.',
+        tagline: 'O caderninho de fiado virou app.',
+        essence:
+          'Vendas, estoque e financeiro para o vendedor porta a porta. Roda 100% offline no celular e sincroniza quando a internet voltar.',
+        description: [
+          'Tudo que o vendedor autônomo precisa cabe no bolso: venda com crediário parcelado, estoque com conversão de unidades — ovo, bandeja, cartela, caixa —, lucro real com custeio FIFO e cupom impresso em térmica Bluetooth, na rua.',
+          'O motor é offline-first de verdade: cada operação persiste localmente e entra numa fila idempotente que sincroniza com a nuvem depois. Sem sinal, sem problema — a venda nunca espera.',
         ],
+        capabilities: [
+          'Funciona 100% offline, com sincronização idempotente depois',
+          'Crediário e fiado com parcelas, recebimentos e fechamento mensal',
+          'Cupom não fiscal em impressora térmica Bluetooth',
+        ],
+        fact: 'Estoque event-sourced com custeio FIFO por lotes e fila de sincronização com UUID idempotente — 27 telas mobile mais painel web.',
       },
       en: {
-        tagline: 'From stock to finance, in the palm of your hand.',
-        shortDescription:
-          'Sales system for autonomous sellers operating door-to-door and through WhatsApp.',
-        longDescription: [
-          'Inventory control by movements (FIFO/average cost), installment sales, consolidated finances with automatic monthly closing, receivables reconciliation.',
-          'The autonomous seller carries in their pocket what used to require three tools: stock, schedule, and finance. Sales, intake, debts — all on one device.',
+        tagline: 'The street ledger became an app.',
+        essence:
+          'Sales, inventory and finances for door-to-door sellers. Runs 100% offline on the phone and syncs when the internet comes back.',
+        description: [
+          'Everything the independent seller needs fits in a pocket: installment sales, inventory with unit conversion — egg, tray, carton, box —, real profit with FIFO costing and receipts printed on a Bluetooth thermal printer, on the street.',
+          "The engine is truly offline-first: every operation persists locally and joins an idempotent queue that syncs to the cloud later. No signal, no problem — the sale never waits.",
         ],
+        capabilities: [
+          'Works 100% offline, with idempotent sync afterwards',
+          'Installment sales with receivables and automatic monthly closing',
+          'Non-fiscal receipts on Bluetooth thermal printers',
+        ],
+        fact: 'Event-sourced inventory with batch FIFO costing and an idempotent sync queue — 27 mobile screens plus a web panel.',
       },
     },
-  },
-  {
-    slug: 'layer-one',
-    name: 'Layer One / CAMADA',
-    category: { pt: 'Infraestrutura · IA Empresarial', en: 'Infrastructure · Enterprise AI' },
-    stack: ['Hono 4 (TypeScript)', 'Next.js 16', 'PostgreSQL + Drizzle', 'Go Agent', 'Better Auth', 'Claude via OpenRouter'],
-    status: 'concept',
-    color: { from: '#0F1F2A', to: '#050C12', ink: 'light', accent: '#C9A96B' },
-    copy: {
-      pt: {
-        tagline: 'A camada que faz a IA falar o dialeto do seu ERP.',
-        shortDescription:
-          'Camada semantica entre bancos de dados/ERPs e IA empresarial. Multi-ERP, agnostico de fornecedor.',
-        longDescription: [
-          'Combina tres elementos: agente seguro em Go (sem abrir portas, conexao saindo do cliente), dicionario de traducao em tres niveis (ERP base, segmento, cliente) e interface conversacional que transforma SQL tecnico em respostas auditaveis na linguagem de negocio.',
-          'Resolve o problema real de IA empresarial: nao adianta o modelo saber SQL se ele nao sabe que "produto" no seu sistema chama-se "MERC_COD" e que "venda perdida" e calculada de cinco formas diferentes dependendo do segmento.',
-        ],
-      },
-      en: {
-        tagline: "The layer that makes AI speak your ERP's dialect.",
-        shortDescription:
-          'Semantic layer between databases/ERPs and enterprise AI. Multi-ERP, vendor-agnostic.',
-        longDescription: [
-          "Combines three elements: a secure Go agent (no open ports, outbound connection only), a three-level translation dictionary (base ERP, vertical, client), and a conversational interface that turns technical SQL into auditable answers in business language.",
-          'Solves the real enterprise-AI problem: it’s no use the model knowing SQL if it doesn’t know that "product" in your system is called "MERC_COD" and that "lost sale" is calculated five different ways depending on the segment.',
-        ],
-      },
-    },
+    stack: ['React Native', 'SQLite', 'Node.js', 'Neon Postgres', 'ESC/POS Bluetooth'],
   },
   {
     slug: 'roteiro-temporada',
     name: 'Roteiro Temporada',
-    category: { pt: 'SaaS · Gestao de Propriedades', en: 'SaaS · Property Management' },
-    stack: ['React + TypeScript', 'Vercel Serverless', 'Supabase', 'Stripe', 'PWA'],
+    category: { pt: 'Gestão de locação de temporada', en: 'Vacation rental management' },
+    platform: 'hybrid',
     status: 'production',
-    color: { from: '#1F2A1F', to: '#0A1308', ink: 'light', accent: '#DCC58D' },
+    accent: '#0A7AAE',
+    iconGradient: ['#0A7AAE', '#122E63'],
     copy: {
       pt: {
-        tagline: 'Transparencia financeira para anfitrioes e proprietarios.',
-        shortDescription:
-          'PWA de gestao financeira e operacional para gestores de imoveis de temporada (Airbnb, Booking).',
-        longDescription: [
-          'Conciliacao bilateral entre gestor e proprietario do imovel, distribuicao automatica de receitas conforme regra contratual, controle de equipe de limpeza, guias digitais de hospedagem.',
-          'Resolve a parte chata do negocio: a confianca entre o anfitriao gestor e o proprietario do apartamento. Tudo auditavel, tudo claro, tudo a um clique.',
+        tagline: 'Cada reserva, dividida com justiça.',
+        essence:
+          'Gestão financeira e operacional para quem administra imóveis de temporada. Sincroniza Airbnb e Booking e divide cada reserva entre gestor, proprietário e equipe.',
+        description: [
+          'As reservas chegam sozinhas — sincronização com Airbnb e Booking via iCal e BEDS24 — e o dinheiro de cada uma é distribuído automaticamente segundo a regra contratual de cada imóvel, em dez cenários de split configuráveis.',
+          'O acerto entre gestor e proprietário, que era a parte tensa do negócio, vira uma matriz clara de quem deve para quem. Baixa de pagamento em um toque, conciliação bancária via Open Finance e guias digitais para o hóspede.',
         ],
-        clients: 'Anfitrioes profissionais, gestores de imoveis de temporada',
+        capabilities: [
+          'Sincronização automática de reservas com Airbnb e Booking',
+          'Split de receita entre gestor, proprietário e equipe de limpeza',
+          'Acerto bilateral transparente e conciliação via Open Finance',
+        ],
+        fact: 'Motor financeiro próprio com regra de acerto bilateral e dez cenários de split por reserva — em produção com dados reais.',
       },
       en: {
-        tagline: 'Financial transparency for hosts and property owners.',
-        shortDescription:
-          'PWA for financial and operational management of vacation-rental managers (Airbnb, Booking).',
-        longDescription: [
-          'Bilateral reconciliation between the manager and the property owner, automatic revenue distribution per contractual rule, cleaning-team control, digital guest guides.',
-          "Solves the hard part of the business: trust between the host-manager and the apartment owner. Everything auditable, everything clear, everything one click away.",
+        tagline: 'Every booking, split fairly.',
+        essence:
+          'Financial and operational management for vacation rental managers. Syncs Airbnb and Booking and splits every booking between manager, owner and staff.',
+        description: [
+          'Bookings arrive on their own — Airbnb and Booking sync via iCal and BEDS24 — and the money from each one is distributed automatically per property contract rule, across ten configurable split scenarios.',
+          'The settlement between manager and owner, once the tense part of the business, becomes a clear who-owes-whom matrix. One-tap payment registration, bank reconciliation via Open Finance and digital guest guides.',
         ],
-        clients: 'Professional hosts, vacation-rental managers',
+        capabilities: [
+          'Automatic booking sync with Airbnb and Booking',
+          'Revenue split between manager, owner and cleaning staff',
+          'Transparent bilateral settlement and Open Finance reconciliation',
+        ],
+        fact: 'A custom financial engine with a bilateral settlement rule and ten split scenarios per booking — in production with real data.',
       },
     },
+    stack: ['React', 'TypeScript', 'Supabase', 'Stripe', 'PWA', 'Open Finance'],
+  },
+  {
+    slug: 'layer-one',
+    name: 'CAMADA',
+    category: { pt: 'Camada semântica para IA empresarial', en: 'Semantic layer for enterprise AI' },
+    platform: 'web',
+    status: 'concept',
+    accent: '#6BDFEB',
+    iconGradient: ['#0A1A24', '#040C12'],
+    copy: {
+      pt: {
+        tagline: 'A IA fala o dialeto do seu ERP.',
+        essence:
+          'A camada de tradução entre o banco do ERP e a inteligência artificial. O diretor pergunta em português; a resposta vem auditável, com o SQL à vista.',
+        description: [
+          'Um agente seguro escrito em Go é instalado no servidor do cliente e conecta de dentro para fora — sem abrir portas, somente leitura. Um dicionário de tradução em três níveis ensina à IA o que cada tabela e código significam no negócio.',
+          'Não adianta o modelo saber SQL se ele não sabe que "produto" no seu sistema se chama MERC_COD. A CAMADA resolve exatamente isso: cada resposta mostra o SQL gerado, a tabela de resultados e o tempo de execução — tudo auditável.',
+        ],
+        capabilities: [
+          'Agente Go de ~12 MB que conecta sem abrir portas no firewall',
+          'Dicionário semântico em três níveis: ERP base, segmento, cliente',
+          'Respostas auditáveis: SQL visível, resultados e tempo de execução',
+        ],
+        fact: 'Conector próprio em Go com drivers para SQL Server, PostgreSQL e MySQL, em sandbox somente leitura via WSS.',
+      },
+      en: {
+        tagline: "AI that speaks your ERP's dialect.",
+        essence:
+          'The translation layer between the ERP database and artificial intelligence. The director asks in plain language; the answer comes back auditable, SQL in sight.',
+        description: [
+          'A secure agent written in Go is installed on the client server and connects from the inside out — no open ports, read-only. A three-level translation dictionary teaches the AI what every table and code means in the business.',
+          'It\'s no use the model knowing SQL if it doesn\'t know that "product" in your system is called MERC_COD. CAMADA solves exactly that: every answer shows the generated SQL, the result table and the execution time — all auditable.',
+        ],
+        capabilities: [
+          'A ~12 MB Go agent that connects without opening firewall ports',
+          'Three-level semantic dictionary: base ERP, vertical, client',
+          'Auditable answers: visible SQL, results and execution time',
+        ],
+        fact: 'A custom Go connector with SQL Server, PostgreSQL and MySQL drivers, in a read-only sandbox over WSS.',
+      },
+    },
+    stack: ['Go', 'Hono', 'TypeScript', 'PostgreSQL', 'Drizzle', 'Claude'],
+  },
+  {
+    slug: 'app-igreja',
+    name: 'AppIgreja',
+    category: { pt: 'Gestão eclesiástica multi-igreja', en: 'Multi-church management' },
+    platform: 'hybrid',
+    status: 'production',
+    accent: '#4FC3F7',
+    iconGradient: ['#0F4C81', '#0A2F4F'],
+    copy: {
+      pt: {
+        tagline: 'Unidade e comunhão, sem planilha.',
+        essence:
+          'SaaS multi-tenant para gestão administrativa, financeira e eclesiástica de igrejas e convenções.',
+        description: [
+          'Uma plataforma que conecta diretoria, pastores, líderes e membros em uma única ferramenta. Transparência financeira sem planilha, agenda unificada, cadastro de membros com histórico de participação, conteúdo devocional centralizado.',
+          'Substitui o emaranhado de planilhas e grupos de WhatsApp que toda tesouraria conhece. Construído com tom respeitoso ao contexto eclesiástico — interface, vocabulário e fluxo pensados para o dia a dia da igreja.',
+        ],
+        capabilities: [
+          'Contribuição via PIX com QR code gerado no próprio aparelho',
+          'Carteirinha digital do membro com verificação pública por QR',
+          'Tesouraria com fechamento de período e relatórios em PDF',
+        ],
+        fact: 'App publicado na Play Store com 58 páginas web e 18 telas mobile — o payload PIX (EMV BR Code) e o CRC16 foram implementados do zero.',
+      },
+      en: {
+        tagline: 'Unity and fellowship, no spreadsheets.',
+        essence:
+          'Multi-tenant SaaS for the administrative, financial and ecclesiastical management of churches and conventions.',
+        description: [
+          'One platform connecting board, pastors, leaders and members in a single tool. Financial transparency without spreadsheets, a unified calendar, member registry with participation history, centralized devotional content.',
+          'Replaces the tangle of spreadsheets and WhatsApp groups every treasury knows. Built with a tone respectful of the ecclesiastical context — interface, vocabulary and flow designed for the church\'s daily life.',
+        ],
+        capabilities: [
+          'PIX giving with QR codes generated on the device itself',
+          'Digital membership card with public QR verification',
+          'Treasury with period closing and PDF reports',
+        ],
+        fact: 'Published on the Play Store with 58 web pages and 18 mobile screens — the PIX payload (EMV BR Code) and CRC16 were implemented from scratch.',
+      },
+    },
+    stack: ['React', 'TypeScript', 'Material-UI', 'Node.js', 'PostgreSQL'],
+  },
+  {
+    slug: 'smart-scan',
+    name: 'SmartScan',
+    category: { pt: 'Coleta e conferência de estoque', en: 'Stock counting & receiving' },
+    platform: 'hybrid',
+    status: 'production',
+    accent: '#2DD4BF',
+    iconGradient: ['#14938A', '#0A4F4A'],
+    copy: {
+      pt: {
+        tagline: 'O bipe que vira estoque contado.',
+        essence:
+          'Ecossistema de coleta e conferência de estoque: o operador escaneia no celular, o servidor da loja conversa com o ERP, a SEFAZ e a impressora de etiquetas.',
+        description: [
+          'O operador escaneia códigos de barras no celular para montar orçamentos e conferências — em modo cego ou assistido, com som de ok e erro, modo offline e sessões colaborativas em tempo real entre vários aparelhos.',
+          'Um serviço instalado no servidor da própria loja conecta tudo ao SQL Server do ERP, consulta NF-e na SEFAZ com certificado digital e imprime etiquetas em impressoras Zebra. Um painel web acompanha a frota de dispositivos licenciados.',
+        ],
+        capabilities: [
+          'Conferência cega ou assistida com sessões colaborativas em tempo real',
+          'Integração com o ERP via SQL Server, NF-e na SEFAZ e etiquetas Zebra',
+          'PWA offline-first servida pelo servidor da própria loja',
+        ],
+        fact: 'O serviço Windows roda com atualização e rollback automáticos, fala SOAP com a SEFAZ usando certificado digital e sincroniza sessões de leitura entre aparelhos via Socket.IO.',
+      },
+      en: {
+        tagline: 'The beep that becomes counted stock.',
+        essence:
+          "A stock counting and receiving ecosystem: operators scan on their phones while the store's own server talks to the ERP, the tax authority and the label printer.",
+        description: [
+          'Operators scan barcodes on their phones to build quotes and stock counts — blind or assisted mode, with ok/error sounds, offline support and real-time collaborative sessions across devices.',
+          "A service installed on the store's own server connects everything to the ERP's SQL Server, queries e-invoices at the tax authority with a digital certificate and prints labels on Zebra printers. A web panel tracks the licensed device fleet.",
+        ],
+        capabilities: [
+          'Blind or assisted counting with real-time collaborative sessions',
+          'ERP integration via SQL Server, e-invoice queries and Zebra labels',
+          "Offline-first PWA served by the store's own server",
+        ],
+        fact: 'The Windows service runs with automatic update and rollback, speaks SOAP to the tax authority using a digital certificate and syncs scanning sessions across devices via Socket.IO.',
+      },
+    },
+    stack: ['Flutter', 'React PWA', 'Node.js', 'SQL Server', 'Socket.IO', 'Zebra ZPL'],
+  },
+  {
+    slug: 'tantagrana',
+    name: 'TantaGrana',
+    category: { pt: 'Finanças pessoais com IA', en: 'AI-powered personal finance' },
+    platform: 'hybrid',
+    status: 'development',
+    accent: '#9FE870',
+    iconGradient: ['#1E4400', '#0D2200'],
+    copy: {
+      pt: {
+        tagline: 'Uma frase vira lançamento.',
+        essence:
+          'Finanças pessoais com rigor contábil: você escreve ou fala "paguei 45,90 de mercado ontem no Nubank" — e o assistente registra na conta e categoria certas.',
+        description: [
+          'Cada receita, despesa ou transferência gera duas partidas dobradas que sempre somam zero — contabilidade de verdade, não lista de gastos. Multi-tenant para separar pessoa física, empresa e família no mesmo login.',
+          'O diferencial é o assistente: uma IA com tool calling registra a transação a partir de uma frase, por texto ou voz, e pergunta quando falta informação. A importação de extratos CSV detecta transferências entre contas automaticamente.',
+        ],
+        capabilities: [
+          'Assistente que registra transações por texto ou voz',
+          'Partidas dobradas de verdade — cada lançamento soma zero',
+          'Pessoa física, empresa e família separadas no mesmo login',
+        ],
+        fact: 'Motor contábil próprio: toda transação gera exatamente dois lançamentos atômicos, e o assistente opera com tool calling real — registrar receita, despesa e transferência — incluindo voz com speech-to-text.',
+      },
+      en: {
+        tagline: 'One sentence becomes an entry.',
+        essence:
+          'Personal finance with accounting rigor: you type or say "paid 45.90 for groceries yesterday on Nubank" — and the assistant books it to the right account and category.',
+        description: [
+          'Every income, expense or transfer generates two double-entry postings that always sum to zero — real accounting, not an expense list. Multi-tenant to keep person, business and family separate under one login.',
+          'The differentiator is the assistant: an AI with tool calling books the transaction from a sentence, by text or voice, asking when information is missing. CSV imports detect transfers between accounts automatically.',
+        ],
+        capabilities: [
+          'An assistant that books transactions by text or voice',
+          'True double-entry — every transaction sums to zero',
+          'Person, business and family separated under one login',
+        ],
+        fact: 'A custom accounting engine: every transaction creates exactly two atomic postings, and the assistant runs on real tool calling — income, expense and transfer — including voice with speech-to-text.',
+      },
+    },
+    stack: ['.NET 10', 'Blazor WebAssembly', 'Azure Functions', 'SQL Server', 'Agent Framework'],
   },
 ];
 

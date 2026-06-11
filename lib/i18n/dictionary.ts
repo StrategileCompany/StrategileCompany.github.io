@@ -5,376 +5,308 @@ export const DEFAULT_LOCALE: Locale = 'pt';
 export type Dict = {
   meta: {
     siteName: string;
-    tagline: string;
     description: string;
   };
   nav: {
     portfolio: string;
-    about: string;
+    studio: string;
     contact: string;
     skipToContent: string;
-    closeMenu: string;
-    openMenu: string;
-  };
-  hero: {
-    eyebrow: string;
-    title: { line1: string; line2: string };
-    sub: string;
-    ctaPrimary: string;
-    ctaSecondary: string;
-    scrollHint: string;
-  };
-  manifesto: {
-    eyebrow: string;
-    title: string;
-    paragraphs: string[];
-  };
-  capabilities: {
-    eyebrow: string;
-    title: string;
-    sub: string;
-    items: { title: string; body: string }[];
-  };
-  portfolioSection: {
-    eyebrow: string;
-    title: string;
-    sub: string;
-    cta: string;
-    dragHint: string;
-  };
-  cta: {
-    eyebrow: string;
-    title: string;
-    sub: string;
-    button: string;
-  };
-  portfolio: {
-    title: string;
-    sub: string;
-    filters: { all: string; production: string; development: string; concept: string };
-    statusLabels: Record<'production' | 'development' | 'concept', string>;
-    nextProduct: string;
-    prevProduct: string;
-    visitSite: string;
-    backToPortfolio: string;
-    productMeta: {
-      category: string;
-      stack: string;
-      status: string;
-      metric: string;
-      clients: string;
-    };
-  };
-  about: {
-    eyebrow: string;
-    title: string;
-    manifestoTitle: string;
-    manifestoBody: string[];
-    teamTitle: string;
-    teamSub: string;
-  };
-  contact: {
-    eyebrow: string;
-    title: string;
-    sub: string;
-    form: {
-      name: string;
-      email: string;
-      company: string;
-      message: string;
-      submit: string;
-      submitting: string;
-      messagePlaceholder: string;
-    };
-    direct: {
-      label: string;
-      email: string;
-    };
-  };
-  footer: {
-    address: { label: string; lines: string[] };
-    social: { label: string };
-    copyright: string;
-    builtWith: string;
   };
   langToggle: {
     label: string;
     pt: string;
     en: string;
   };
+  hero: {
+    kicker: string;
+    titleA: string;
+    titleB: string;
+    subtitle: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    scrollHint: string;
+  };
+  homescreen: {
+    kicker: string;
+    title: string;
+    subtitle: string;
+    hoverHint: string;
+    tapHint: string;
+    open: string;
+    phoneTag: string;
+  };
+  manifesto: {
+    kicker: string;
+    fields: string;
+    statementA: string;
+    statementEm: string;
+    statementB: string;
+    lines: string[];
+  };
+  capabilities: {
+    kicker: string;
+    title: string;
+    items: { title: string; detail: string }[];
+  };
+  cta: {
+    kicker: string;
+    title: string;
+    body: string;
+    action: string;
+    email: string;
+  };
+  footer: {
+    tagline: string;
+    backToTop: string;
+  };
+  product: {
+    kicker: string;
+    whatItDoes: string;
+    capabilities: string;
+    stack: string;
+    engineering: string;
+    next: string;
+    prev: string;
+    backHome: string;
+    status: { production: string; development: string; concept: string };
+    platform: { mobile: string; web: string; hybrid: string };
+  };
+  notFound: {
+    title: string;
+    body: string;
+    back: string;
+  };
 };
 
-export const dictionaries: Record<Locale, Dict> = {
-  pt: {
-    meta: {
-      siteName: 'Strategile Company',
-      tagline: 'Software de impacto operacional.',
-      description:
-        'Estudio de engenharia que constroi plataformas para varejo, vendas e gestao financeira. Oito produtos em producao, milhares de usuarios ativos.',
-    },
-    nav: {
-      portfolio: 'Portfolio',
-      about: 'Sobre',
-      contact: 'Contato',
-      skipToContent: 'Pular para o conteudo',
-      closeMenu: 'Fechar menu',
-      openMenu: 'Abrir menu',
-    },
-    hero: {
-      eyebrow: 'Strategile Company',
-      title: {
-        line1: 'Software de impacto',
-        line2: 'operacional.',
-      },
-      sub: 'Construimos plataformas para varejo, vendas e gestao financeira que viram receita mensuravel. Oito produtos em producao, milhares de usuarios ativos.',
-      ctaPrimary: 'Ver portfolio',
-      ctaSecondary: 'Conversar com a gente',
-      scrollHint: 'Role para descobrir',
-    },
-    manifesto: {
-      eyebrow: 'Manifesto',
-      title: 'Nao construimos software. Construimos vantagem competitiva.',
-      paragraphs: [
-        'Cada plataforma que entregamos resolve um problema operacional concreto — estoque obsoleto que sumiu da gondola, financeiro de igreja transparente para o membro, vendedor autonomo com controle de credito na palma da mao.',
-        'Nao somos uma fabrica de telas. Somos um time pequeno e seletivo de engenheiros e operadores que entende o chao do varejo, do servico e da gestao. Software bom e o que vira lucro mensuravel — o resto e ruido.',
-      ],
-    },
-    capabilities: {
-      eyebrow: 'O que fazemos',
-      title: 'Produtos especialistas. Engenharia seria.',
-      sub: 'Nao somos generalistas. Cada vertical exige profundidade — e e nisso que apostamos.',
-      items: [
-        {
-          title: 'Varejo & Logistica',
-          body: 'Sugestao de pedido, balanceamento entre lojas, PDV mobile, conferencia de NF-e versus fisico. Algoritmos proprietarios calibrados em campo.',
-        },
-        {
-          title: 'Gestao Financeira',
-          body: 'Plataformas de finanças pessoais, conciliacao automatica, distribuicao de receita, fluxo de caixa projetado.',
-        },
-        {
-          title: 'SaaS Multi-tenant',
-          body: 'Arquitetura serverless, multi-empresa, multi-loja, multi-tenant. Escalavel sem inflar custo.',
-        },
-        {
-          title: 'IA Empresarial',
-          body: 'Camadas semanticas que traduzem o dialeto do ERP do cliente em linguagem de negocio. Auditavel, multi-fornecedor.',
-        },
-      ],
-    },
-    portfolioSection: {
-      eyebrow: 'Portfolio em foco',
-      title: 'Oito produtos. Um padrao.',
-      sub: 'Arraste para explorar. Cada projeto e um problema real virando software.',
-      cta: 'Ver portfolio completo',
-      dragHint: 'Arraste · scroll · setas',
-    },
-    cta: {
-      eyebrow: 'Vamos conversar',
-      title: 'Tem um problema operacional teimando?',
-      sub: 'Conta pra gente. Se for o tipo de problema que viramos software, voce ja sai dessa conversa com clareza.',
-      button: 'Iniciar conversa',
-    },
-    portfolio: {
-      title: 'Portfolio.',
-      sub: 'Plataformas em producao e em construcao — varejo, financas, gestao, infraestrutura de IA.',
-      filters: {
-        all: 'Todos',
-        production: 'Em producao',
-        development: 'Em desenvolvimento',
-        concept: 'Conceito',
-      },
-      statusLabels: {
-        production: 'Em producao',
-        development: 'Em desenvolvimento',
-        concept: 'Conceito · Validacao',
-      },
-      nextProduct: 'Proximo',
-      prevProduct: 'Anterior',
-      visitSite: 'Visitar projeto',
-      backToPortfolio: 'Voltar ao portfolio',
-      productMeta: {
-        category: 'Categoria',
-        stack: 'Stack',
-        status: 'Status',
-        metric: 'Metrica',
-        clients: 'Clientes',
-      },
-    },
-    about: {
-      eyebrow: 'Sobre',
-      title: 'Tres socios. Um padrao.',
-      manifestoTitle: 'Engenharia proxima do chao.',
-      manifestoBody: [
-        'A Strategile Company nasceu da inquietacao de quem viu cedo, na operacao de varejo, planilhas e ERPs antigos engessando decisoes que custavam caro. Construimos software que vira lucro mensuravel — nao demos, nao prototipos, nao fluxos genericos.',
-        'Trabalhamos pequeno por escolha. Cada cliente e um caso, cada produto e calibrado em campo. Engenharia e estrategia conversam diariamente. Quando um produto sai daqui, ja passou pelo chao da loja, pela mesa do tesoureiro, pela rotina do vendedor que carrega ele no bolso.',
-      ],
-      teamTitle: 'Time',
-      teamSub: 'Tres frentes. Uma diretriz.',
-    },
-    contact: {
-      eyebrow: 'Contato',
-      title: 'Vamos conversar.',
-      sub: 'Conta seu problema operacional. Respondemos em ate dois dias uteis.',
-      form: {
-        name: 'Seu nome',
-        email: 'Email',
-        company: 'Empresa',
-        message: 'Sobre o que quer falar?',
-        submit: 'Enviar mensagem',
-        submitting: 'Enviando...',
-        messagePlaceholder: 'Descreva brevemente o problema, segmento e tamanho da operacao.',
-      },
-      direct: {
-        label: 'Ou direto por email',
-        email: 'contato@strategilecompany.com.br',
-      },
-    },
-    footer: {
-      address: {
-        label: 'Endereco',
-        lines: ['Strategile Company', 'Brasil — atendimento remoto', 'CNPJ em registro'],
-      },
-      social: { label: 'Onde estamos' },
-      copyright: 'Strategile Company. Todos os direitos reservados.',
-      builtWith: 'Construido em Next.js, com calma e cuidado.',
-    },
-    langToggle: { label: 'Idioma', pt: 'PT', en: 'EN' },
+const pt: Dict = {
+  meta: {
+    siteName: 'Strategile Company',
+    description:
+      'Estúdio de software que constrói produtos para operações reais — varejo, serviços, fé, finanças e infraestrutura de IA.',
   },
-  en: {
-    meta: {
-      siteName: 'Strategile Company',
-      tagline: 'Operational software that compounds.',
-      description:
-        'An engineering studio building retail, sales, and financial platforms that turn into measurable revenue. Eight products in production, thousands of active users.',
-    },
-    nav: {
-      portfolio: 'Portfolio',
-      about: 'About',
-      contact: 'Contact',
-      skipToContent: 'Skip to content',
-      closeMenu: 'Close menu',
-      openMenu: 'Open menu',
-    },
-    hero: {
-      eyebrow: 'Strategile Company',
-      title: {
-        line1: 'Operational software',
-        line2: 'that compounds.',
+  nav: {
+    portfolio: 'Portfólio',
+    studio: 'Estúdio',
+    contact: 'Contato',
+    skipToContent: 'Pular para o conteúdo',
+  },
+  langToggle: {
+    label: 'Idioma',
+    pt: 'PT',
+    en: 'EN',
+  },
+  hero: {
+    kicker: 'Strategile Company · Estúdio de software',
+    titleA: 'Software de abrir',
+    titleB: 'todo dia.',
+    subtitle:
+      'Construímos produtos que carregam operações reais — o estoque da rede, a agenda do salão, o fiado da rua, a tesouraria da igreja e a camada entre o ERP e a IA.',
+    ctaPrimary: 'Ver a tela inicial',
+    ctaSecondary: 'Falar com o estúdio',
+    scrollHint: 'role para abrir',
+  },
+  homescreen: {
+    kicker: 'Portfólio',
+    title: 'Nossa tela inicial.',
+    subtitle: 'Oito produtos, oito operações diferentes. Encoste em um ícone para abrir.',
+    hoverHint: 'Encoste em um ícone',
+    tapHint: 'Toque para conhecer',
+    open: 'Abrir projeto',
+    phoneTag: 'software em produção',
+  },
+  manifesto: {
+    kicker: 'Estúdio',
+    fields: 'Varejo. Serviços. Fé. Finanças. Infraestrutura de IA.',
+    statementA: 'Não somos especialistas em um setor.',
+    statementEm: 'Somos especialistas em transformar operação em software',
+    statementB: '— qualquer operação.',
+    lines: ['Chão de loja, não boardroom.', 'Produto, não pitch.', 'Código como ofício.'],
+  },
+  capabilities: {
+    kicker: 'Capacidades',
+    title: 'O que sabemos construir.',
+    items: [
+      {
+        title: 'Mobile offline-first',
+        detail:
+          'Apps que vendem sem sinal e sincronizam depois, com fila idempotente e impressão térmica na rua.',
       },
-      sub: 'We build retail, sales, and financial platforms that turn into measurable revenue. Eight products in production, thousands of active users.',
-      ctaPrimary: 'View portfolio',
-      ctaSecondary: 'Talk to us',
-      scrollHint: 'Scroll to explore',
-    },
-    manifesto: {
-      eyebrow: 'Manifesto',
-      title: "We don't build software. We build competitive advantage.",
-      paragraphs: [
-        'Every platform we ship solves a concrete operational problem — obsolete stock vanishing from shelves, transparent church finances for the membership, autonomous sellers with credit control in their pocket.',
-        "We're not a screen factory. We're a small, selective team of engineers and operators who understand the retail floor, the service desk, and the back office. Good software is the kind that turns into measurable profit — the rest is noise.",
-      ],
-    },
-    capabilities: {
-      eyebrow: 'What we do',
-      title: 'Specialist products. Serious engineering.',
-      sub: "We don't generalize. Each vertical demands depth — and that's where we bet.",
-      items: [
-        {
-          title: 'Retail & Logistics',
-          body: 'Order suggestion, multi-store balancing, mobile POS, invoice-vs-physical reconciliation. Proprietary algorithms calibrated in the field.',
-        },
-        {
-          title: 'Financial Management',
-          body: 'Personal finance platforms, automated reconciliation, revenue distribution, projected cash flow.',
-        },
-        {
-          title: 'Multi-tenant SaaS',
-          body: 'Serverless architecture, multi-company, multi-store, multi-tenant. Scalable without inflating cost.',
-        },
-        {
-          title: 'Enterprise AI',
-          body: "Semantic layers that translate the client's ERP dialect into business language. Auditable, vendor-agnostic.",
-        },
-      ],
-    },
-    portfolioSection: {
-      eyebrow: 'Selected work',
-      title: 'Eight products. One standard.',
-      sub: 'Drag to explore. Each project is a real problem turning into software.',
-      cta: 'See full portfolio',
-      dragHint: 'Drag · scroll · arrows',
-    },
-    cta: {
-      eyebrow: "Let's talk",
-      title: 'Got an operational problem dragging on?',
-      sub: "Tell us. If it's the kind of problem we turn into software, you'll leave the conversation with clarity.",
-      button: 'Start the conversation',
-    },
-    portfolio: {
-      title: 'Portfolio.',
-      sub: 'Platforms in production and in flight — retail, finance, management, AI infrastructure.',
-      filters: {
-        all: 'All',
-        production: 'In production',
-        development: 'In development',
-        concept: 'Concept',
+      {
+        title: 'SaaS multi-tenant',
+        detail: 'Uma plataforma, muitas empresas isoladas — do salão de bairro à convenção de igrejas.',
       },
-      statusLabels: {
-        production: 'In production',
-        development: 'In development',
-        concept: 'Concept · Validation',
+      {
+        title: 'IA aplicada ao negócio',
+        detail: 'Camadas semânticas que ensinam o modelo a falar a língua do ERP, com resposta auditável.',
       },
-      nextProduct: 'Next',
-      prevProduct: 'Previous',
-      visitSite: 'Visit project',
-      backToPortfolio: 'Back to portfolio',
-      productMeta: {
-        category: 'Category',
-        stack: 'Stack',
-        status: 'Status',
-        metric: 'Metric',
-        clients: 'Clients',
+      {
+        title: 'Integrações de verdade',
+        detail: 'ERP, WhatsApp, Open Finance, Airbnb e Booking, NF-e, impressora Bluetooth.',
       },
+      {
+        title: 'Dashboards em tempo real',
+        detail: 'Metas, estoque e margem na tela do gerente — no momento em que mudam.',
+      },
+      {
+        title: 'Engenharia como ofício',
+        detail:
+          'Event sourcing, arquitetura limpa, .NET, Go, TypeScript, Flutter — a ferramenta certa para cada operação.',
+      },
+    ],
+  },
+  cta: {
+    kicker: 'Contato',
+    title: 'Tem uma operação teimando em não virar software?',
+    body:
+      'Conta pra gente o problema — de preferência o concreto, com cheiro de chão de loja. É com esse tipo que a gente trabalha melhor.',
+    action: 'Escrever para o estúdio',
+    email: 'strategilesoftware@gmail.com',
+  },
+  footer: {
+    tagline: 'Feito no Brasil. Em produção todos os dias.',
+    backToTop: 'Voltar ao topo',
+  },
+  product: {
+    kicker: 'Projeto',
+    whatItDoes: 'O que ele faz',
+    capabilities: 'Capacidades',
+    stack: 'Stack',
+    engineering: 'Engenharia',
+    next: 'Próximo projeto',
+    prev: 'Projeto anterior',
+    backHome: 'Voltar à tela inicial',
+    status: {
+      production: 'Em produção',
+      development: 'Em desenvolvimento',
+      concept: 'Conceito',
     },
-    about: {
-      eyebrow: 'About',
-      title: 'Three partners. One standard.',
-      manifestoTitle: 'Engineering close to the floor.',
-      manifestoBody: [
-        'Strategile Company was born from the impatience of those who saw, early on, retail operations being held back by spreadsheets and aging ERPs. We build software that turns into measurable profit — not demos, not prototypes, not generic flows.',
-        'We stay small by choice. Each client is a case, each product is calibrated in the field. Engineering and strategy talk every day. By the time a product leaves us, it has been through the store floor, the treasurer’s desk, and the routine of the salesperson carrying it in their pocket.',
-      ],
-      teamTitle: 'Team',
-      teamSub: 'Three fronts. One direction.',
+    platform: {
+      mobile: 'Mobile',
+      web: 'Web',
+      hybrid: 'Web + Mobile',
     },
-    contact: {
-      eyebrow: 'Contact',
-      title: "Let's talk.",
-      sub: 'Tell us about your operational problem. We answer within two business days.',
-      form: {
-        name: 'Your name',
-        email: 'Email',
-        company: 'Company',
-        message: 'What would you like to discuss?',
-        submit: 'Send message',
-        submitting: 'Sending...',
-        messagePlaceholder: 'Briefly describe the problem, segment, and operation size.',
-      },
-      direct: {
-        label: 'Or directly by email',
-        email: 'contato@strategilecompany.com.br',
-      },
-    },
-    footer: {
-      address: {
-        label: 'Address',
-        lines: ['Strategile Company', 'Brazil — remote operations', 'CNPJ in registration'],
-      },
-      social: { label: 'Where to find us' },
-      copyright: 'Strategile Company. All rights reserved.',
-      builtWith: 'Built on Next.js, with care.',
-    },
-    langToggle: { label: 'Language', pt: 'PT', en: 'EN' },
+  },
+  notFound: {
+    title: 'Tela não encontrada.',
+    body: 'O endereço que você abriu não existe — ou ainda não foi construído.',
+    back: 'Voltar à tela inicial',
   },
 };
+
+const en: Dict = {
+  meta: {
+    siteName: 'Strategile Company',
+    description:
+      'A software studio building products for real operations — retail, services, faith, finance and AI infrastructure.',
+  },
+  nav: {
+    portfolio: 'Portfolio',
+    studio: 'Studio',
+    contact: 'Contact',
+    skipToContent: 'Skip to content',
+  },
+  langToggle: {
+    label: 'Language',
+    pt: 'PT',
+    en: 'EN',
+  },
+  hero: {
+    kicker: 'Strategile Company · Software studio',
+    titleA: 'Software you open',
+    titleB: 'every day.',
+    subtitle:
+      "We build products that carry real operations — the chain's inventory, the salon's calendar, the street ledger, the church treasury and the layer between the ERP and AI.",
+    ctaPrimary: 'See the home screen',
+    ctaSecondary: 'Talk to the studio',
+    scrollHint: 'scroll to open',
+  },
+  homescreen: {
+    kicker: 'Portfolio',
+    title: 'Our home screen.',
+    subtitle: 'Eight products, eight different operations. Hover an icon to open it.',
+    hoverHint: 'Hover an icon',
+    tapHint: 'Tap to explore',
+    open: 'Open project',
+    phoneTag: 'software in production',
+  },
+  manifesto: {
+    kicker: 'Studio',
+    fields: 'Retail. Services. Faith. Finance. AI infrastructure.',
+    statementA: "We're not specialists in one industry.",
+    statementEm: "We're specialists in turning operations into software",
+    statementB: '— any operation.',
+    lines: ['Shop floor, not boardroom.', 'Product, not pitch.', 'Code as craft.'],
+  },
+  capabilities: {
+    kicker: 'Capabilities',
+    title: 'What we know how to build.',
+    items: [
+      {
+        title: 'Offline-first mobile',
+        detail:
+          'Apps that sell without signal and sync later, with idempotent queues and thermal printing on the street.',
+      },
+      {
+        title: 'Multi-tenant SaaS',
+        detail: 'One platform, many isolated businesses — from the neighborhood salon to a convention of churches.',
+      },
+      {
+        title: 'Applied AI',
+        detail: "Semantic layers that teach the model to speak the ERP's language, with auditable answers.",
+      },
+      {
+        title: 'Real integrations',
+        detail: 'ERP, WhatsApp, Open Finance, Airbnb and Booking, e-invoices, Bluetooth printers.',
+      },
+      {
+        title: 'Real-time dashboards',
+        detail: "Targets, inventory and margin on the manager's screen — the moment they change.",
+      },
+      {
+        title: 'Engineering as craft',
+        detail:
+          'Event sourcing, clean architecture, .NET, Go, TypeScript, Flutter — the right tool for each operation.',
+      },
+    ],
+  },
+  cta: {
+    kicker: 'Contact',
+    title: 'Got an operation refusing to become software?',
+    body:
+      "Tell us the problem — preferably the concrete kind, with shop-floor smell. That's the kind we work best with.",
+    action: 'Write to the studio',
+    email: 'strategilesoftware@gmail.com',
+  },
+  footer: {
+    tagline: 'Made in Brazil. In production every day.',
+    backToTop: 'Back to top',
+  },
+  product: {
+    kicker: 'Project',
+    whatItDoes: 'What it does',
+    capabilities: 'Capabilities',
+    stack: 'Stack',
+    engineering: 'Engineering',
+    next: 'Next project',
+    prev: 'Previous project',
+    backHome: 'Back to the home screen',
+    status: {
+      production: 'In production',
+      development: 'In development',
+      concept: 'Concept',
+    },
+    platform: {
+      mobile: 'Mobile',
+      web: 'Web',
+      hybrid: 'Web + Mobile',
+    },
+  },
+  notFound: {
+    title: 'Screen not found.',
+    body: "The address you opened doesn't exist — or hasn't been built yet.",
+    back: 'Back to the home screen',
+  },
+};
+
+export const dictionaries: Record<Locale, Dict> = { pt, en };
