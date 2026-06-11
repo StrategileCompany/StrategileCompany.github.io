@@ -495,88 +495,129 @@ function StrategileScreen() {
   );
 }
 
-/* ————————————————— AppIgreja — Ofertas via PIX (app real da Play Store) ————————————————— */
-
-function IgrejaQr() {
-  // QR estilizado — módulos determinísticos, cantos de posicionamento reais
-  const m = [
-    [4, 0], [5, 0], [8, 0],
-    [4, 1], [6, 1], [9, 1],
-    [5, 2], [7, 2], [8, 2],
-    [0, 4], [2, 4], [5, 4], [9, 4], [12, 4],
-    [1, 5], [4, 5], [7, 5], [10, 5],
-    [3, 6], [6, 6], [8, 6], [12, 6],
-    [0, 7], [5, 7], [9, 7], [11, 7],
-    [2, 8], [4, 8], [7, 8], [10, 8], [12, 8],
-    [4, 10], [6, 10], [9, 10], [11, 10],
-    [5, 11], [8, 11], [12, 11],
-    [4, 12], [7, 12], [10, 12],
-  ];
-  const cell = 9;
-  const finder = (x: number, y: number) => (
-    <g key={`${x}-${y}`}>
-      <rect x={x} y={y} width={cell * 3} height={cell * 3} rx={5} fill="none" stroke="#0F172A" strokeWidth="5" />
-      <rect x={x + cell * 0.95} y={y + cell * 0.95} width={cell * 1.1} height={cell * 1.1} rx={2.5} fill="#0F172A" />
-    </g>
-  );
-  return (
-    <svg width="124" height="124" viewBox="0 0 117 117">
-      {finder(0, 0)}
-      {finder(90, 0)}
-      {finder(0, 90)}
-      {m.map(([cx, cy]) => (
-        <rect key={`${cx}.${cy}`} x={cx * cell} y={cy * cell} width={cell - 2} height={cell - 2} rx={2} fill="#0F172A" />
-      ))}
-    </svg>
-  );
-}
+/* ————————————————— AppIgreja — Devocional (tela real do app) ————————————————— */
 
 function IgrejaScreen() {
+  const tabs = [
+    { l: 'Hoje', on: true },
+    { l: 'Histórico', on: false },
+    { l: 'Favoritos', on: false },
+  ];
+  const nav = [
+    { i: '📖', l: 'Devocionais', on: true },
+    { i: '👥', l: 'GC', on: false },
+    { i: '🗓', l: 'Agenda', on: false },
+    { i: '🎁', l: 'Ofertas', on: false },
+    { i: '🙏', l: 'Oração', on: false },
+    { i: '👤', l: 'Perfil', on: false },
+  ];
   return (
-    <div style={{ ...screen, background: '#F6F7F9' }}>
-      <StatusBar />
-      <Row style={{ padding: '6px 18px 12px', gap: 10 }}>
-        <div style={{ width: 34, height: 34, borderRadius: 10, background: 'linear-gradient(135deg,#0F4C81,#0A2F4F)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 13, fontWeight: 800 }}>
-          ✝
+    <div style={{ ...screen, background: '#0B1220' }}>
+      <StatusBar dark />
+      {/* header da igreja */}
+      <Row style={{ padding: '4px 16px 10px', gap: 10 }}>
+        <div style={{ width: 40, height: 40, borderRadius: 11, background: '#16202F', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <svg width="24" height="20" viewBox="0 0 24 20" fill="#F2F7FB">
+            <rect x="10.6" y="2" width="2.8" height="15" rx="1.2" />
+            <rect x="7" y="5.4" width="10" height="2.6" rx="1.2" />
+            <rect x="3.4" y="7" width="2.2" height="10" rx="1" />
+            <rect x="1" y="9.6" width="7" height="2.1" rx="1" />
+            <rect x="18.4" y="7" width="2.2" height="10" rx="1" />
+            <rect x="16" y="9.6" width="7" height="2.1" rx="1" />
+          </svg>
         </div>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 15, fontWeight: 800, color: '#0F172A' }}>Igreja Batista Jeruel</div>
-          <div style={{ fontSize: 11.5, color: '#64748B' }}>Ofertas e dízimos</div>
+        <div style={{ flex: 1, textAlign: 'center' }}>
+          <div style={{ fontSize: 16.5, fontWeight: 800, color: '#4D9FE8', letterSpacing: -0.2 }}>Batista Jeruel Cabo Frio</div>
+          <div style={{ fontSize: 11, color: '#93A3B5', marginTop: 1 }}>Convenção Batista Jeruel</div>
         </div>
-        <span style={{ fontSize: 16, color: '#64748B' }}>🔔</span>
+        <div style={{ position: 'relative', flexShrink: 0 }}>
+          <span style={{ fontSize: 19, color: '#F2F7FB' }}>🔔</span>
+          <span style={{ position: 'absolute', top: -5, right: -7, minWidth: 16, height: 16, borderRadius: 999, background: '#E0455A', color: '#fff', fontSize: 9.5, fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 3px' }}>
+            6
+          </span>
+        </div>
       </Row>
-      <div style={{ padding: '0 16px', flex: 1, display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <div style={{ background: '#fff', borderRadius: 16, border: '1px solid #E5E7EB', padding: 16, textAlign: 'center' }}>
-          <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: 0.8, color: '#64748B', textAlign: 'left' }}>CHAVE PIX · CNPJ</div>
-          <div style={{ fontSize: 14, fontWeight: 700, color: '#0F172A', textAlign: 'left', marginTop: 3 }}>12.345.678/0001-90</div>
-          <div style={{ display: 'flex', justifyContent: 'center', margin: '14px 0 4px' }}>
-            <IgrejaQr />
-          </div>
-          <div style={{ fontSize: 12.5, fontWeight: 700, color: '#1B6D4A', marginTop: 8 }}>Copiar código PIX</div>
-          <div style={{ height: 44, borderRadius: 12, background: '#1B6D4A', color: '#fff', fontSize: 14, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 12 }}>
-            Copiar chave PIX
-          </div>
-        </div>
-        <div style={{ background: '#fff', borderRadius: 16, border: '1px solid #E5E7EB', padding: 16 }}>
-          <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: 0.8, color: '#64748B' }}>DEPÓSITO OU TRANSFERÊNCIA</div>
-          {[
-            ['Banco', '341 · Itaú'],
-            ['Agência', '0912'],
-            ['Conta', '34.567-8'],
-          ].map(([l, v]) => (
-            <Row key={l} style={{ justifyContent: 'space-between', marginTop: 9 }}>
-              <span style={{ fontSize: 13, color: '#64748B' }}>{l}</span>
-              <span style={{ fontSize: 13, fontWeight: 700, color: '#0F172A' }}>{v}</span>
-            </Row>
+      <Row style={{ justifyContent: 'center', paddingBottom: 10 }}>
+        <Row style={{ gap: 7, border: '1px solid rgba(110,231,183,0.35)', borderRadius: 999, padding: '7px 16px', background: 'rgba(255,255,255,0.03)' }}>
+          <span style={{ fontSize: 11, color: '#6EE7B7' }}>▦</span>
+          <span style={{ fontSize: 12.5, fontWeight: 600, color: '#E6EFF7' }}>Painel administrativo</span>
+        </Row>
+      </Row>
+      {/* abas */}
+      <div style={{ padding: '4px 14px 0' }}>
+        <Row style={{ background: '#111B29', borderRadius: 12, padding: 4 }}>
+          {tabs.map((tab) => (
+            <div
+              key={tab.l}
+              style={{
+                flex: 1,
+                textAlign: 'center',
+                padding: '8px 0',
+                borderRadius: 9,
+                fontSize: 13,
+                fontWeight: tab.on ? 700 : 500,
+                color: tab.on ? '#F2F7FB' : '#93A3B5',
+                background: tab.on ? '#1D2B3F' : 'transparent',
+              }}
+            >
+              {tab.l}
+            </div>
           ))}
+        </Row>
+      </div>
+      {/* card do devocional */}
+      <div style={{ margin: '12px 14px 0', flex: 1, overflow: 'hidden', background: '#131E2E', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: '14px 16px' }}>
+        <div style={{ fontSize: 11, color: '#7E8FA3' }}>11 de junho</div>
+        <div style={{ fontSize: 18.5, fontWeight: 800, color: '#F2F7FB', marginTop: 6, letterSpacing: -0.2 }}>
+          Deus Trabalha no Secreto
         </div>
-        <div style={{ background: '#F0F4F7', borderRadius: 16, padding: 16, textAlign: 'center' }}>
-          <div style={{ fontSize: 16, color: '#0F4C81' }}>🙏</div>
-          <div style={{ fontSize: 13.5, fontWeight: 700, color: '#0F172A', marginTop: 6 }}>
-            &ldquo;Cada um contribua segundo propôs no seu coração.&rdquo;
+        <div style={{ fontSize: 12.5, lineHeight: 1.55, color: '#A8B6C7', marginTop: 8 }}>
+          Mateus 6:6 Mas, quando você orar, vá para seu quarto, feche a porta e ore a seu Pai,
+          que está em secreto. Então seu Pai, que vê em secreto, o recompensará.
+        </div>
+        {/* imagem do devocional — pôr do sol quente com serifada */}
+        <div
+          style={{
+            marginTop: 12,
+            height: 150,
+            borderRadius: 10,
+            position: 'relative',
+            overflow: 'hidden',
+            background: 'linear-gradient(160deg, #F7E3B4 0%, #EFC07A 38%, #C97F45 72%, #8A5430 100%)',
+          }}
+        >
+          <div style={{ position: 'absolute', left: '14%', top: '30%', width: 70, height: 70, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,250,235,0.95) 0%, rgba(255,240,205,0.4) 45%, transparent 70%)' }} />
+          {/* livro aberto em silhueta */}
+          <svg width="92" height="34" viewBox="0 0 92 34" style={{ position: 'absolute', left: 12, bottom: 8, opacity: 0.55 }}>
+            <path d="M46 8 C36 2 16 1 4 5 V28 C16 24 36 25 46 31 C56 25 76 24 88 28 V5 C76 1 56 2 46 8 Z" fill="#5C3A1E" />
+          </svg>
+          <div style={{ position: 'absolute', right: 14, top: 18, textAlign: 'right', fontFamily: 'Georgia, serif', color: '#6B4419', fontStyle: 'italic' }}>
+            <div style={{ fontSize: 21, lineHeight: 1.15 }}>Deus</div>
+            <div style={{ fontSize: 21, lineHeight: 1.15 }}>Trabalha no</div>
+            <div style={{ fontSize: 27, fontWeight: 700, lineHeight: 1.2 }}>Secreto</div>
           </div>
-          <div style={{ fontSize: 11.5, color: '#64748B', marginTop: 4 }}>2 Coríntios 9:7</div>
         </div>
+        <div style={{ fontSize: 12.5, lineHeight: 1.6, color: '#C9D4E0', marginTop: 12 }}>
+          Vivemos em um tempo em que muita gente valoriza o que aparece.
+        </div>
+        <div style={{ fontSize: 12.5, lineHeight: 1.6, color: '#C9D4E0', marginTop: 7 }}>
+          O que é visto recebe atenção, elogio e reconhecimento.
+        </div>
+        <div style={{ fontSize: 12.5, lineHeight: 1.6, color: '#C9D4E0', marginTop: 7 }}>
+          Mas Deus também trabalha em lugares onde ninguém está olhando.
+        </div>
+        <div style={{ fontSize: 12.5, lineHeight: 1.6, color: '#C9D4E0', marginTop: 7 }}>
+          Jesus nos ensina que existe algo precioso no secreto.
+        </div>
+      </div>
+      {/* bottom nav */}
+      <div style={{ height: 76, background: '#0E1726', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-around', paddingTop: 9 }}>
+        {nav.map((t) => (
+          <div key={t.l} style={{ textAlign: 'center', color: t.on ? '#34D3A6' : '#8DA0B5', minWidth: 50 }}>
+            <div style={{ fontSize: 15, filter: t.on ? 'none' : 'grayscale(1) brightness(1.4)' }}>{t.i}</div>
+            <div style={{ fontSize: 9, fontWeight: t.on ? 700 : 500, marginTop: 1 }}>{t.l}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
