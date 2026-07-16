@@ -330,7 +330,9 @@ function SceneIcon({ product, index, progress, labelOpacity, settled, active, on
     >
       <motion.div
         style={{ ['--amp' as string]: amp, animationDelay: `${index * 0.7}s` }}
-        className={settled ? 'icon-anchor' : 'icon-anchor icon-float'}
+        // items-center: o bloco tem a largura do rótulo, que pode passar dos 92px do
+        // ícone — sem isso, nomes longos empurram o squircle para a esquerda da grade.
+        className={`flex flex-col items-center ${settled ? 'icon-anchor' : 'icon-anchor icon-float'}`}
       >
         <motion.button
           type="button"

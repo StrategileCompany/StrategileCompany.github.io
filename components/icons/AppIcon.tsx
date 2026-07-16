@@ -41,20 +41,20 @@ function StrategileGlyph(_: GlyphProps) {
   );
 }
 
+/** Logo-mark real do TaMarkado, vetorial — copiado de wwwroot/assets/loading.html
+ *  do próprio app (viewBox 72, reposicionado no slot de glifo de 120). */
 function TamarkadoGlyph(_: GlyphProps) {
   return (
-    <g>
-      <rect x="32" y="36" width="56" height="52" rx="13" fill="rgba(255,255,255,0.14)" stroke="#FFFFFF" strokeWidth="4.5" />
-      <rect x="43" y="27" width="7" height="15" rx="3.5" fill="#FFFFFF" />
-      <rect x="70" y="27" width="7" height="15" rx="3.5" fill="#FFFFFF" />
-      <path
-        d="M45 63 L56 73 L76 50"
-        fill="none"
-        stroke="#FFFFFF"
-        strokeWidth="7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <g transform="translate(23 23) scale(1.028)">
+      <rect x="8" y="16" width="56" height="48" rx="8" fill="rgba(30, 41, 59, 0.9)" stroke="#3B82F6" strokeWidth="1.5" />
+      <rect x="8" y="16" width="56" height="14" rx="8" fill="#3B82F6" />
+      <rect x="8" y="24" width="56" height="6" fill="#3B82F6" />
+      <rect x="22" y="10" width="3" height="14" rx="1.5" fill="#60A5FA" />
+      <rect x="47" y="10" width="3" height="14" rx="1.5" fill="#60A5FA" />
+      <line x1="18" y1="42" x2="36" y2="42" stroke="rgba(148, 163, 184, 0.45)" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="18" y1="48" x2="30" y2="48" stroke="rgba(148, 163, 184, 0.38)" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="18" y1="54" x2="33" y2="54" stroke="rgba(148, 163, 184, 0.3)" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M30 44 L35 50 L52 36" stroke="#22D3EE" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
     </g>
   );
 }

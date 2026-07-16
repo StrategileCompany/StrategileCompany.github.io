@@ -89,7 +89,6 @@ export const products: Product[] = [
     status: 'development',
     accent: '#3B82F6',
     iconGradient: ['#3B82F6', '#8B5CF6'],
-    iconImage: { src: '/icons/tamarkado.png', mode: 'glyph' },
     copy: {
       pt: {
         tagline: 'Tá marcado. Tá confirmado.',
