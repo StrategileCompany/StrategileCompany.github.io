@@ -25,7 +25,7 @@ export function ProductLanding({ product }: { product: Product }) {
         <div
           aria-hidden
           className="pointer-events-none absolute -top-[20vh] left-[55%] h-[80vh] w-[80vw] -translate-x-1/2 rounded-full opacity-[0.1]"
-          style={{ background: `radial-gradient(ellipse, ${product.accent} 0%, transparent 65%)`, filter: 'blur(40px)' }}
+          style={{ background: `radial-gradient(ellipse, ${product.accent} 0%, transparent 68%)` }}
         />
 
         <div className="container-editorial relative grid items-center gap-16 lg:grid-cols-[1.15fr_0.85fr]">
@@ -81,9 +81,6 @@ export function ProductLanding({ product }: { product: Product }) {
                 className="rounded-full px-4 py-1.5 font-mono text-micro uppercase tracking-[0.16em]"
                 style={{ color: product.accent, border: `1px solid ${product.accent}55` }}
               >
-                {t.product.status[product.status]}
-              </span>
-              <span className="rounded-full border border-bone-100/15 px-4 py-1.5 font-mono text-micro uppercase tracking-[0.16em] text-bone-200/60">
                 {t.product.platform[product.platform]}
               </span>
             </motion.div>
@@ -98,7 +95,7 @@ export function ProductLanding({ product }: { product: Product }) {
             <div
               aria-hidden
               className="absolute -inset-12 rounded-full opacity-40"
-              style={{ background: `radial-gradient(circle, ${product.accent}2e 0%, transparent 65%)`, filter: 'blur(26px)' }}
+              style={{ background: `radial-gradient(circle, ${product.accent}2e 0%, transparent 68%)` }}
             />
             <IphoneFrame>{Screen ? <Screen /> : null}</IphoneFrame>
           </motion.div>
