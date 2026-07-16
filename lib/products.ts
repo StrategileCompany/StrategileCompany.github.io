@@ -24,8 +24,15 @@ export type Product = {
   status: ProductStatus;
   /** Cor de acento do produto — auras, detalhes, links na landing */
   accent: string;
-  /** Gradiente do squircle do ícone */
+  /** Gradiente do squircle do ícone — ignorado quando iconImage é 'bleed' */
   iconGradient: [string, string];
+  /**
+   * Ícone real do app, exportado do próprio projeto. Quando ausente, o ícone é
+   * o glifo vetorial autoral em AppIcon.tsx.
+   * - 'bleed': a arte tem fundo próprio e preenche o squircle inteiro
+   * - 'glyph': a arte é transparente e assenta sobre o iconGradient
+   */
+  iconImage?: { src: string; mode: 'bleed' | 'glyph' };
   copy: Record<Locale, ProductCopy>;
   stack: string[];
 };
@@ -39,6 +46,7 @@ export const products: Product[] = [
     status: 'production',
     accent: '#22D3EE',
     iconGradient: ['#1E293B', '#0F172A'],
+    iconImage: { src: '/icons/strategile.png', mode: 'bleed' },
     copy: {
       pt: {
         tagline: 'Estoque otimizado. Metas batidas.',
@@ -81,6 +89,7 @@ export const products: Product[] = [
     status: 'development',
     accent: '#3B82F6',
     iconGradient: ['#3B82F6', '#8B5CF6'],
+    iconImage: { src: '/icons/tamarkado.png', mode: 'bleed' },
     copy: {
       pt: {
         tagline: 'Tá marcado. Tá confirmado.',
@@ -248,7 +257,9 @@ export const products: Product[] = [
     platform: 'hybrid',
     status: 'production',
     accent: '#4FC3F7',
-    iconGradient: ['#0F4C81', '#0A2F4F'],
+    // Branco como na tela inicial do celular — é o fundo que dá contraste à bíblia azul
+    iconGradient: ['#FFFFFF', '#E7EDF4'],
+    iconImage: { src: '/icons/app-igreja.png', mode: 'glyph' },
     copy: {
       pt: {
         tagline: 'Unidade e comunhão, sem planilha.',

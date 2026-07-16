@@ -224,6 +224,8 @@ export function AppIcon({ slug, size = 96, className, style }: AppIconProps) {
   const [from, to] = product.iconGradient;
   const Glyph = GLYPHS[slug];
   const uid = `appicon-${slug}`;
+  const image = product.iconImage;
+  const bleed = image?.mode === 'bleed';
 
   return (
     <svg
@@ -250,9 +252,19 @@ export function AppIcon({ slug, size = 96, className, style }: AppIconProps) {
         </clipPath>
       </defs>
       <g clipPath={`url(#${uid}-clip)`}>
-        <path d={SQUIRCLE_PATH} fill={`url(#${uid}-bg)`} />
-        <path d={SQUIRCLE_PATH} fill={`url(#${uid}-light)`} />
-        {Glyph ? <Glyph accent={product.accent} /> : null}
+        {/* Arte 'bleed' traz o próprio fundo e a própria luz — o gradiente e o brilho
+            do sistema ficariam por baixo dela, ou lavariam o ícone real. */}
+        {!bleed && <path d={SQUIRCLE_PATH} fill={`url(#${uid}-bg)`} />}
+        {!bleed && <path d={SQUIRCLE_PATH} fill={`url(#${uid}-light)`} />}
+        {image ? (
+          bleed ? (
+            <image href={image.src} x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMid slice" />
+          ) : (
+            <image href={image.src} x="16" y="16" width="88" height="88" preserveAspectRatio="xMidYMid meet" />
+          )
+        ) : Glyph ? (
+          <Glyph accent={product.accent} />
+        ) : null}
         {/* sombra interna inferior — assenta o glifo no squircle */}
         <path d={SQUIRCLE_PATH} fill="none" stroke="rgba(0,0,0,0.25)" strokeWidth="2.5" transform="translate(0,-1)" opacity="0.5" />
         <path d={SQUIRCLE_PATH} fill="none" stroke="rgba(255,255,255,0.10)" strokeWidth="1.5" />

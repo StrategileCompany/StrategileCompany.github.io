@@ -12,6 +12,7 @@ export function Logo({ className }: { className?: string }) {
       )}
     >
       <span className="font-medium">Strategile</span>
+      <span className="font-normal text-bone-200/70">Company</span>
       <span className="text-gold-300 transition-transform duration-300 ease-apple group-hover:translate-x-0.5">
         .
       </span>
