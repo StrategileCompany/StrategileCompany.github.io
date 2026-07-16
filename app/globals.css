@@ -80,8 +80,12 @@
 
 /* Flutuação ambiente dos ícones na cena — amplitude controlada por --amp,
    que a coreografia de scroll reduz a zero quando a grade se forma. */
+.icon-anchor {
+  transform: translate(-50%, -50%);
+}
 .icon-float {
   animation: iconFloat 7s ease-in-out infinite;
+  will-change: transform;
 }
 @keyframes iconFloat {
   0%,

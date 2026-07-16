@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import {
   AnimatePresence,
   motion,
+  useMotionValueEvent,
   useReducedMotion,
   useScroll,
   useSpring,
@@ -99,7 +100,14 @@ function DesktopScene() {
 
   // Interatividade só com a grade montada
   const [settled, setSettled] = useState(false);
-  useEffect(() => progress.on('change', (v) => setSettled(v > 0.72)), [progress]);
+  const settledRef = useRef(false);
+  useMotionValueEvent(progress, 'change', (v) => {
+    const nextSettled = v > 0.72;
+    if (settledRef.current !== nextSettled) {
+      settledRef.current = nextSettled;
+      setSettled(nextSettled);
+    }
+  });
 
   const activeProduct = active ? products.find((p) => p.slug === active) ?? null : null;
 
@@ -239,7 +247,6 @@ function DesktopScene() {
                   className="absolute -inset-16 rounded-full"
                   style={{
                     background: `radial-gradient(circle, ${activeProduct.accent}33 0%, transparent 65%)`,
-                    filter: 'blur(28px)',
                   }}
                 />
               )}
@@ -323,7 +330,7 @@ function SceneIcon({ product, index, progress, labelOpacity, settled, active, on
     >
       <motion.div
         style={{ ['--amp' as string]: amp, animationDelay: `${index * 0.7}s` }}
-        className="icon-float"
+        className={settled ? 'icon-anchor' : 'icon-anchor icon-float'}
       >
         <motion.button
           type="button"

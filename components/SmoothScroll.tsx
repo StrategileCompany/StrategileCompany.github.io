@@ -10,6 +10,7 @@ import { useEffect, type ReactNode } from 'react';
 export function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
 
     const lenis = new Lenis({
       duration: 1.1,
@@ -18,14 +19,33 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     });
 
     let raf = 0;
+    let running = false;
     const tick = (time: number) => {
       lenis.raf(time);
+      if (running) raf = requestAnimationFrame(tick);
+    };
+    const start = () => {
+      if (running) return;
+      running = true;
+      lenis.start();
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
+    const stop = () => {
+      running = false;
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+      lenis.stop();
+    };
+    const onVisibilityChange = () => {
+      if (document.hidden) stop();
+      else start();
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    start();
 
     return () => {
-      cancelAnimationFrame(raf);
+      stop();
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       lenis.destroy();
     };
   }, []);

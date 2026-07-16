@@ -116,8 +116,8 @@ export function ShaderBackdrop({ className }: { className?: string }) {
     const uRes = gl.getUniformLocation(prog, 'u_res');
     const uTime = gl.getUniformLocation(prog, 'u_time');
 
-    // Renderiza em resolução reduzida — o resultado é um campo suave, não precisa de nitidez
-    const DOWNSCALE = 0.5;
+    // Renderiza em resolução reduzida — o campo é suave, então nitidez extra só pesa GPU.
+    const DOWNSCALE = 0.42;
     const resize = () => {
       const w = Math.max(2, Math.floor(canvas.clientWidth * DOWNSCALE));
       const h = Math.max(2, Math.floor(canvas.clientHeight * DOWNSCALE));
@@ -134,19 +134,26 @@ export function ShaderBackdrop({ className }: { className?: string }) {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let raf = 0;
+    let timer = 0;
     let visible = true;
     let pageVisible = !document.hidden;
     const start = performance.now();
+    const FRAME_INTERVAL = 1000 / 30;
 
     const frame = () => {
       raf = 0;
       gl.uniform2f(uRes, canvas.width, canvas.height);
       gl.uniform1f(uTime, (performance.now() - start) / 1000);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
-      if (!reduced && visible && pageVisible) raf = requestAnimationFrame(frame);
+      if (!reduced && visible && pageVisible) {
+        timer = window.setTimeout(() => {
+          timer = 0;
+          raf = requestAnimationFrame(frame);
+        }, FRAME_INTERVAL);
+      }
     };
     const kick = () => {
-      if (!raf && visible && pageVisible) raf = requestAnimationFrame(frame);
+      if (!raf && !timer && visible && pageVisible) raf = requestAnimationFrame(frame);
     };
 
     const io = new IntersectionObserver(([e]) => {
@@ -165,6 +172,7 @@ export function ShaderBackdrop({ className }: { className?: string }) {
 
     return () => {
       if (raf) cancelAnimationFrame(raf);
+      if (timer) clearTimeout(timer);
       io.disconnect();
       ro.disconnect();
       document.removeEventListener('visibilitychange', onVis);
