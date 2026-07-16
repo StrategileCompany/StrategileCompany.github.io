@@ -13,7 +13,8 @@ export function Footer() {
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
           <div>
             <div className="font-display text-h3 text-bone-50">
-              Strategile<span className="text-gold-300">.</span>
+              Strategile <span className="font-normal text-bone-200/70">Company</span>
+              <span className="text-gold-300">.</span>
             </div>
             <p className="mt-3 max-w-[32ch] text-caption text-bone-200/50">{t.footer.tagline}</p>
             <a

@@ -260,7 +260,7 @@ export function AppIcon({ slug, size = 96, className, style }: AppIconProps) {
           bleed ? (
             <image href={image.src} x="0" y="0" width="120" height="120" preserveAspectRatio="xMidYMid slice" />
           ) : (
-            <image href={image.src} x="16" y="16" width="88" height="88" preserveAspectRatio="xMidYMid meet" />
+            <image href={image.src} x="23" y="23" width="74" height="74" preserveAspectRatio="xMidYMid meet" />
           )
         ) : Glyph ? (
           <Glyph accent={product.accent} />
