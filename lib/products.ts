@@ -201,7 +201,7 @@ export const products: Product[] = [
   },
   {
     slug: 'layer-one',
-    name: 'CAMADA',
+    name: 'layerOne',
     category: { pt: 'Camada semântica para IA empresarial', en: 'Semantic layer for enterprise AI' },
     platform: 'web',
     status: 'concept',
@@ -214,7 +214,7 @@ export const products: Product[] = [
           'A camada de tradução entre o banco do ERP e a inteligência artificial. O diretor pergunta em português; a resposta vem auditável, com o SQL à vista.',
         description: [
           'Um agente seguro escrito em Go é instalado no servidor do cliente e conecta de dentro para fora — sem abrir portas, somente leitura. Um dicionário de tradução em três níveis ensina à IA o que cada tabela e código significam no negócio.',
-          'Não adianta o modelo saber SQL se ele não sabe que "produto" no seu sistema se chama MERC_COD. A CAMADA resolve exatamente isso: cada resposta mostra o SQL gerado, a tabela de resultados e o tempo de execução — tudo auditável.',
+          'Não adianta o modelo saber SQL se ele não sabe que "produto" no seu sistema se chama MERC_COD. O layerOne resolve exatamente isso: cada resposta mostra o SQL gerado, a tabela de resultados e o tempo de execução — tudo auditável.',
         ],
         capabilities: [
           'Agente Go de ~12 MB que conecta sem abrir portas no firewall',
@@ -229,7 +229,7 @@ export const products: Product[] = [
           'The translation layer between the ERP database and artificial intelligence. The director asks in plain language; the answer comes back auditable, SQL in sight.',
         description: [
           'A secure agent written in Go is installed on the client server and connects from the inside out — no open ports, read-only. A three-level translation dictionary teaches the AI what every table and code means in the business.',
-          'It\'s no use the model knowing SQL if it doesn\'t know that "product" in your system is called MERC_COD. CAMADA solves exactly that: every answer shows the generated SQL, the result table and the execution time — all auditable.',
+          'It\'s no use the model knowing SQL if it doesn\'t know that "product" in your system is called MERC_COD. layerOne solves exactly that: every answer shows the generated SQL, the result table and the execution time — all auditable.',
         ],
         capabilities: [
           'A ~12 MB Go agent that connects without opening firewall ports',

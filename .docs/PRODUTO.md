@@ -22,7 +22,7 @@
 2. TaMarkado — agendamento e clientes com WhatsApp (desenvolvimento)
 3. Xpid — vendas offline-first porta a porta (desenvolvimento)
 4. Roteiro Temporada — gestão de locação de temporada (produção)
-5. CAMADA — camada semântica para IA empresarial (conceito)
+5. layerOne — camada semântica para IA empresarial (conceito)
 6. AppIgreja — gestão eclesiástica, PIX e carteirinha (produção)
 7. SmartScan — coleta e conferência de estoque (produção)
 8. TantaGrana — finanças pessoais com IA (desenvolvimento)

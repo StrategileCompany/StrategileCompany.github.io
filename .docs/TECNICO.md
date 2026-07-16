@@ -52,5 +52,5 @@ components/ShaderBackdrop.tsx      # fragment shader 2D (fbm simplex, ink+gold)
   dentro delas.
 - As cores de cada produto vêm do código-fonte REAL de cada app (descoberta 2026-06-11):
   Strategile ciano/slate, AppIgreja azul-Bíblia, SmartScan teal+dourado, TantaGrana verde
-  Wise (#163300/#9FE870), TaMarkado azul→violeta, Xpid azul, CAMADA midnight ciano/âmbar,
+  Wise (#163300/#9FE870), TaMarkado azul→violeta, Xpid azul, layerOne midnight ciano/âmbar,
   Roteiro navy/ciano/areia.
