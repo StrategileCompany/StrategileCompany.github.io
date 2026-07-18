@@ -24,20 +24,21 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://strategilecompany.com.br'),
   title: {
-    default: 'Strategile Company — Software de abrir todo dia',
+    default: 'Strategile Company — Software sob medida',
     template: '%s · Strategile Company',
   },
   description:
-    'Estúdio de software que constrói produtos para operações reais — varejo, serviços, fé, finanças e infraestrutura de IA.',
+    'Consultoria, desenvolvimento de software sob medida e IA aplicada para automatizar processos e profissionalizar operações de empresas de vários setores.',
   applicationName: 'Strategile Company',
   authors: [{ name: 'Strategile Company' }],
   keywords: [
     'Strategile',
-    'estúdio de software',
-    'software para varejo',
+    'software sob medida',
+    'consultoria de software',
+    'automação de processos',
     'SaaS multi-tenant',
     'aplicativos mobile',
-    'IA empresarial',
+    'IA aplicada',
     'engenharia de software',
   ],
   openGraph: {
@@ -46,14 +47,14 @@ export const metadata: Metadata = {
     alternateLocale: 'en_US',
     url: 'https://strategilecompany.com.br',
     siteName: 'Strategile Company',
-    title: 'Strategile Company — Software de abrir todo dia',
+    title: 'Strategile Company — Software sob medida',
     description:
-      'Estúdio de software que constrói produtos para operações reais — varejo, serviços, fé, finanças e infraestrutura de IA.',
+      'Consultoria, desenvolvimento de software sob medida e IA aplicada para automatizar processos e profissionalizar operações de empresas de vários setores.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Strategile Company',
-    description: 'Software de abrir todo dia.',
+    description: 'Software sob medida para o problema que é só seu.',
   },
   robots: { index: true, follow: true },
 };

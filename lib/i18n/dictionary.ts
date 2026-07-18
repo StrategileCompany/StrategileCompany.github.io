@@ -83,11 +83,11 @@ const pt: Dict = {
   meta: {
     siteName: 'Strategile Company',
     description:
-      'Estúdio de software que constrói produtos para operações reais — varejo, serviços, fé, finanças e infraestrutura de IA.',
+      'Consultoria, desenvolvimento de software sob medida e IA aplicada para automatizar processos e profissionalizar operações de empresas de vários setores.',
   },
   nav: {
     portfolio: 'Portfólio',
-    studio: 'Estúdio',
+    studio: 'Expertise',
     contact: 'Contato',
     skipToContent: 'Pular para o conteúdo',
   },
@@ -97,74 +97,75 @@ const pt: Dict = {
     en: 'EN',
   },
   hero: {
-    kicker: 'Strategile Company · Estúdio de software',
-    titleA: 'Software de abrir',
-    titleB: 'todo dia.',
+    kicker: 'Strategile Company · Software sob medida',
+    titleA: 'Software sob medida',
+    titleB: 'para o problema que é só seu.',
     subtitle:
-      'Construímos produtos que carregam operações reais — o estoque da rede, a agenda do salão, o fiado da rua, a tesouraria da igreja e a camada entre o ERP e a IA.',
+      'Fazemos consultoria, desenvolvemos sistemas e aplicamos IA onde ela resolve — para automatizar processos, medir resultados e profissionalizar a operação. Confira algumas das nossas criações.',
     ctaPrimary: 'Ver a tela inicial',
-    ctaSecondary: 'Falar com o estúdio',
+    ctaSecondary: 'Falar com um especialista',
     scrollHint: 'role para abrir',
   },
   homescreen: {
     kicker: 'Portfólio',
     title: 'Nossa tela inicial.',
-    subtitle: 'Oito produtos, oito operações diferentes. Encoste em um ícone para abrir.',
+    subtitle: 'Alguns dos nossos sistemas. Cada um resolve a operação de um setor. Encoste em um ícone para abrir.',
     hoverHint: 'Encoste em um ícone',
     tapHint: 'Toque para conhecer',
     open: 'Abrir projeto',
-    phoneTag: 'software em produção',
+    phoneTag: 'software sob medida',
   },
   manifesto: {
-    kicker: 'Estúdio',
-    fields: 'Varejo. Serviços. Fé. Finanças. Infraestrutura de IA.',
-    statementA: 'Não somos especialistas em um setor.',
-    statementEm: 'Somos especialistas em transformar operação em software',
-    statementB: '— qualquer operação.',
-    lines: ['Chão de loja, não boardroom.', 'Produto, não pitch.', 'Código como ofício.'],
+    kicker: 'Expertise',
+    fields: 'Do varejo à gestão de igrejas.',
+    statementA: 'Automatizamos o processo,',
+    statementEm: 'integramos o que estava solto e medimos o resultado',
+    statementB: '— e a operação deixa de depender de planilha.',
+    lines: ['Processos que rodam sozinhos.', 'Indicadores em tempo real.', 'IA aplicada onde resolve.'],
   },
   capabilities: {
     kicker: 'Capacidades',
     title: 'O que sabemos construir.',
     items: [
       {
-        title: 'Mobile offline-first',
+        title: 'Automação de processos',
         detail:
-          'Apps que vendem sem sinal e sincronizam depois, com fila idempotente e impressão térmica na rua.',
-      },
-      {
-        title: 'SaaS multi-tenant',
-        detail: 'Uma plataforma, muitas empresas isoladas — do salão de bairro à convenção de igrejas.',
-      },
-      {
-        title: 'IA aplicada ao negócio',
-        detail: 'Camadas semânticas que ensinam o modelo a falar a língua do ERP, com resposta auditável.',
-      },
-      {
-        title: 'Integrações de verdade',
-        detail: 'ERP, WhatsApp, Open Finance, Airbnb e Booking, NF-e, impressora Bluetooth.',
+          'Importação, conciliação, fechamento de mês: o que era digitado à mão passa a acontecer sozinho.',
       },
       {
         title: 'Dashboards em tempo real',
-        detail: 'Metas, estoque e margem na tela do gerente — no momento em que mudam.',
+        detail: 'Metas, estoque e margem na tela do gestor, no momento em que mudam.',
+      },
+      {
+        title: 'Integrações',
+        detail: 'ERP, WhatsApp, Open Finance, Airbnb e Booking, NF-e, impressora Bluetooth.',
+      },
+      {
+        title: 'Mobile offline-first',
+        detail: 'Apps que operam sem sinal e sincronizam depois, com impressão no local.',
+      },
+      {
+        title: 'IA aplicada ao negócio',
+        detail:
+          'Chatbots e camadas semânticas que respondem em linguagem natural sobre os dados da empresa, com resposta auditável.',
       },
       {
         title: 'Engenharia como ofício',
         detail:
-          'Event sourcing, arquitetura limpa, .NET, Go, TypeScript, Flutter — a ferramenta certa para cada operação.',
+          '.NET, Go, TypeScript, Flutter — a ferramenta certa para cada operação.',
       },
     ],
   },
   cta: {
     kicker: 'Contato',
-    title: 'Tem uma operação teimando em não virar software?',
+    title: 'Tem uma operação que nenhum sistema pronto resolve?',
     body:
-      'Conta pra gente o problema — de preferência o concreto, com cheiro de chão de loja. É com esse tipo que a gente trabalha melhor.',
-    action: 'Escrever para o estúdio',
+      'Talvez seja a hora de uma solução personalizada. Descreva o problema com o máximo de detalhe — quanto mais específico, mais rápido sabemos como ajudar.',
+    action: 'Falar com um especialista',
     email: 'strategilesoftware@gmail.com',
   },
   footer: {
-    tagline: 'Feito no Brasil. Em produção todos os dias.',
+    tagline: 'Software sob medida. Feito no Brasil.',
     backToTop: 'Voltar ao topo',
   },
   product: {
@@ -198,11 +199,11 @@ const en: Dict = {
   meta: {
     siteName: 'Strategile Company',
     description:
-      'A software studio building products for real operations — retail, services, faith, finance and AI infrastructure.',
+      'Consulting, custom software development and applied AI to automate processes and professionalize operations across many sectors.',
   },
   nav: {
     portfolio: 'Portfolio',
-    studio: 'Studio',
+    studio: 'Expertise',
     contact: 'Contact',
     skipToContent: 'Skip to content',
   },
@@ -212,74 +213,75 @@ const en: Dict = {
     en: 'EN',
   },
   hero: {
-    kicker: 'Strategile Company · Software studio',
-    titleA: 'Software you open',
-    titleB: 'every day.',
+    kicker: 'Strategile Company · Custom software',
+    titleA: 'Custom software',
+    titleB: "for a problem that's yours alone.",
     subtitle:
-      "We build products that carry real operations — the chain's inventory, the salon's calendar, the street ledger, the church treasury and the layer between the ERP and AI.",
+      "We consult, build systems and apply AI where it actually helps — to automate processes, measure results and professionalize operations. Take a look at some of what we've built.",
     ctaPrimary: 'See the home screen',
-    ctaSecondary: 'Talk to the studio',
+    ctaSecondary: 'Talk to a specialist',
     scrollHint: 'scroll to open',
   },
   homescreen: {
     kicker: 'Portfolio',
     title: 'Our home screen.',
-    subtitle: 'Eight products, eight different operations. Hover an icon to open it.',
+    subtitle: 'Some of our systems. Each one runs the operation of a different sector. Hover an icon to open it.',
     hoverHint: 'Hover an icon',
     tapHint: 'Tap to explore',
     open: 'Open project',
-    phoneTag: 'software in production',
+    phoneTag: 'custom software',
   },
   manifesto: {
-    kicker: 'Studio',
-    fields: 'Retail. Services. Faith. Finance. AI infrastructure.',
-    statementA: "We're not specialists in one industry.",
-    statementEm: "We're specialists in turning operations into software",
-    statementB: '— any operation.',
-    lines: ['Shop floor, not boardroom.', 'Product, not pitch.', 'Code as craft.'],
+    kicker: 'Expertise',
+    fields: 'From retail to church management.',
+    statementA: 'We automate the process,',
+    statementEm: 'connect what was scattered and measure the result',
+    statementB: '— the operation stops depending on spreadsheets.',
+    lines: ['Processes that run themselves.', 'Real-time indicators.', 'AI applied where it fits.'],
   },
   capabilities: {
     kicker: 'Capabilities',
     title: 'What we know how to build.',
     items: [
       {
-        title: 'Offline-first mobile',
+        title: 'Process automation',
         detail:
-          'Apps that sell without signal and sync later, with idempotent queues and thermal printing on the street.',
-      },
-      {
-        title: 'Multi-tenant SaaS',
-        detail: 'One platform, many isolated businesses — from the neighborhood salon to a convention of churches.',
-      },
-      {
-        title: 'Applied AI',
-        detail: "Semantic layers that teach the model to speak the ERP's language, with auditable answers.",
-      },
-      {
-        title: 'Real integrations',
-        detail: 'ERP, WhatsApp, Open Finance, Airbnb and Booking, e-invoices, Bluetooth printers.',
+          'Imports, reconciliation, month-end close: what used to be typed by hand now happens on its own.',
       },
       {
         title: 'Real-time dashboards',
-        detail: "Targets, inventory and margin on the manager's screen — the moment they change.",
+        detail: "Targets, inventory and margin on the manager's screen, the moment they change.",
+      },
+      {
+        title: 'Integrations',
+        detail: 'ERP, WhatsApp, Open Finance, Airbnb and Booking, e-invoices, Bluetooth printers.',
+      },
+      {
+        title: 'Offline-first mobile',
+        detail: 'Apps that run without signal and sync later, with on-site printing.',
+      },
+      {
+        title: 'Applied AI',
+        detail:
+          "Chatbots and semantic layers that answer in plain language over the company's data, with auditable results.",
       },
       {
         title: 'Engineering as craft',
         detail:
-          'Event sourcing, clean architecture, .NET, Go, TypeScript, Flutter — the right tool for each operation.',
+          '.NET, Go, TypeScript, Flutter — the right tool for each operation.',
       },
     ],
   },
   cta: {
     kicker: 'Contact',
-    title: 'Got an operation refusing to become software?',
+    title: 'Got an operation no off-the-shelf system can solve?',
     body:
-      "Tell us the problem — preferably the concrete kind, with shop-floor smell. That's the kind we work best with.",
-    action: 'Write to the studio',
+      "Maybe it's time for something built for you. Describe the problem in as much detail as possible — the more specific, the faster we'll know how to help.",
+    action: 'Talk to a specialist',
     email: 'strategilesoftware@gmail.com',
   },
   footer: {
-    tagline: 'Made in Brazil. In production every day.',
+    tagline: 'Custom software. Made in Brazil.',
     backToTop: 'Back to top',
   },
   product: {
