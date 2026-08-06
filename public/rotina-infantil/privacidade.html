@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <!--
   CONFERIR ANTES DE PUBLICAR:
   - Razao social: preenchida com o nome da organizacao registrado no Play Console
@@ -6,6 +6,11 @@
     corrija aqui e em termos.html.
   Publicar em: https://strategilecompany.com.br/rotina-infantil/privacidade.html
   Esta URL precisa estar acessível ANTES de enviar o app às lojas.
+
+  REESCRITA EM 05/08/2026: o app ganhou conta opcional e sincronizacao. A versao
+  anterior dizia "nao criamos conta e nao coletamos nenhum dado", o que deixou de
+  ser verdade no momento em que o login entrou. Este texto precisa bater, palavra
+  por palavra, com o Data Safety da Play e o App Privacy da Apple.
 -->
 <html lang="pt-br">
 <head>
@@ -25,6 +30,10 @@
   ul { padding-left: 20px; }
   li { margin: 6px 0; }
   a { color: #007AFF; }
+  table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #E4EFE9;
+           font-size: 15px; vertical-align: top; }
+  th { color: #6B7A74; font-weight: 600; }
   footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #E4EFE9;
            color: #6B7A74; font-size: 14px; }
 </style>
@@ -32,24 +41,25 @@
 <body>
 <main>
   <h1>Política de Privacidade — Rotina Infantil</h1>
-  <p class="date">Última atualização: 3 de agosto de 2026</p>
+  <p class="date">Última atualização: 5 de agosto de 2026</p>
 
   <p class="highlight">
-    O Rotina Infantil funciona inteiramente no aparelho. Não temos servidor, não criamos conta e
-    não coletamos nenhum dado seu ou da sua criança.
+    O Rotina Infantil funciona por inteiro no aparelho, sem conta e sem internet. Criar uma conta é
+    opcional e serve só para levar a rotina para outro aparelho — e a conta é do adulto responsável,
+    nunca da criança.
   </p>
 
   <h2>1. Quem somos</h2>
   <p>
     O aplicativo Rotina Infantil é desenvolvido e distribuído por Raphael Damas Mendes
-    (“Strategile Software”), CNPJ 38.232.084/0001-61. Contato:
-    <a href="mailto:strategilesoftware@gmail.com">strategilesoftware@gmail.com</a>.
+    (“Strategile Software”), CNPJ 38.232.084/0001-61, que é o controlador dos dados descritos aqui.
+    Contato: <a href="mailto:strategilesoftware@gmail.com">strategilesoftware@gmail.com</a>.
   </p>
 
-  <h2>2. Que informações o app guarda</h2>
+  <h2>2. O que fica no aparelho</h2>
   <p>
-    Tudo o que você cadastra fica gravado <strong>apenas na memória do próprio aparelho</strong>,
-    dentro da área privada do aplicativo. Isso inclui:
+    Sem conta, <strong>tudo</strong> o que você cadastra fica gravado apenas na memória do próprio
+    aparelho, dentro da área privada do aplicativo, e nunca sai de lá:
   </p>
   <ul>
     <li>o nome e, se você escolher, a foto da criança;</li>
@@ -57,85 +67,173 @@
     <li>o andamento do dia, as estrelas, os prêmios e os ajustes de estrelas com a justificativa;</li>
     <li>a data da primeira abertura do app, usada para contar o período gratuito.</li>
   </ul>
+
+  <h2>3. A conta é opcional — e é do adulto</h2>
   <p>
-    Nada disso é enviado para nós nem para terceiros. Não temos acesso a esses dados em
-    nenhum momento.
+    Dentro da área dos responsáveis, protegida por um desafio que só um adulto resolve, existe a
+    opção de entrar com <strong>Apple</strong> ou <strong>Google</strong>. Ela serve a um único
+    propósito: guardar uma cópia da rotina para você continuar em outro aparelho.
+  </p>
+  <p>
+    A conta pertence ao pai, mãe ou responsável legal. <strong>A criança não cria conta, não entra
+    e não chega a essa tela.</strong> Se você nunca entrar, nada muda: o app continua completo e
+    nenhum dado sai do aparelho.
   </p>
 
-  <h2>3. O que o app não faz</h2>
+  <h2>4. O que vai para a nuvem quando você escolhe sincronizar</h2>
+  <table>
+    <tr><th>Dado</th><th>Para que serve</th></tr>
+    <tr>
+      <td>Seu e-mail e um identificador de conta, recebidos da Apple ou do Google</td>
+      <td>Reconhecer você quando entrar de novo e ligar a cópia à sua conta. Se você usar o
+        “Ocultar meu e-mail” da Apple, recebemos apenas o endereço anônimo criado por ela</td>
+    </tr>
+    <tr>
+      <td>A cópia da rotina: nome da criança, atividades, horários, estrelas, prêmios e ajustes
+        com justificativa</td>
+      <td>Permitir que você continue de onde parou em outro aparelho</td>
+    </tr>
+  </table>
+  <p>
+    <strong>A foto da criança não é enviada.</strong> Ela permanece no aparelho de origem; o que
+    viaja na cópia é apenas a referência interna ao arquivo, que não abre em nenhum outro aparelho.
+    No aparelho novo, a foto precisa ser escolhida de novo.
+  </p>
+  <p>
+    Nada sobe nem desce sozinho. O envio e a busca acontecem apenas quando o responsável toca no
+    botão, e o app sempre mostra a data da versão guardada antes de substituir qualquer coisa.
+  </p>
+
+  <h2>5. Onde os dados ficam e quem tem acesso</h2>
   <ul>
-    <li>Não exige cadastro, e-mail, telefone ou login.</li>
-    <li>Não possui servidor próprio nem envia dados pela internet.</li>
-    <li>Não exibe anúncios e não usa nenhuma rede de publicidade.</li>
-    <li>Não usa ferramentas de análise de uso, rastreamento ou perfilamento.</li>
-    <li>Não acessa localização, contatos, microfone ou câmera.</li>
-    <li>Não vende, aluga nem compartilha informações — não há o que compartilhar.</li>
+    <li>
+      A cópia é guardada em um banco de dados operado pela <strong>Supabase</strong>, em servidores
+      localizados <strong>no Brasil (São Paulo)</strong>. Não há transferência internacional dos
+      dados da rotina.
+    </li>
+    <li>
+      O isolamento entre famílias é feito pelo próprio banco, com políticas de segurança em nível de
+      linha: sua conta só alcança a sua linha, e isso não depende do aplicativo estar correto.
+    </li>
+    <li>
+      A <strong>Apple</strong> e o <strong>Google</strong> participam apenas do momento do login, e
+      recebem deles a informação de que você entrou em um app — trate isso pelas políticas de
+      privacidade da <a href="https://www.apple.com/legal/privacy/br/">Apple</a> e do
+      <a href="https://policies.google.com/privacy">Google</a>.
+    </li>
+    <li>
+      <strong>Não vendemos, não alugamos e não compartilhamos</strong> esses dados com mais ninguém.
+      Não há anunciante, corretor de dados nem ferramenta de análise envolvida.
+    </li>
+  </ul>
+  <p>
+    Os dados trafegam criptografados (HTTPS/TLS) e ficam guardados enquanto a sua conta existir.
+    Apagou a conta, apagou a cópia — ver o item 9.
+  </p>
+
+  <h2>6. Base legal (LGPD)</h2>
+  <ul>
+    <li>
+      <strong>Execução de um serviço que você pediu</strong> (art. 7º, V): o e-mail e a cópia da
+      rotina só são tratados porque você escolheu sincronizar, e apenas para isso.
+    </li>
+    <li>
+      <strong>Consentimento</strong> (art. 7º, I): criar a conta é um ato voluntário do responsável,
+      feito atrás do portão parental, e pode ser desfeito a qualquer momento apagando a conta.
+    </li>
   </ul>
 
-  <h2>4. Permissões que o app pode pedir</h2>
+  <h2>7. O que o app não faz</h2>
+  <ul>
+    <li>Não exige conta para funcionar — ela é opcional, e só para sincronizar.</li>
+    <li>Não exibe anúncios e não usa nenhuma rede de publicidade.</li>
+    <li>Não usa ferramentas de análise de uso, rastreamento, perfilamento ou identificadores de publicidade.</li>
+    <li>Não acessa localização, contatos, microfone ou câmera.</li>
+    <li>Não envia a foto da criança para lugar nenhum.</li>
+    <li>Não vende, aluga nem compartilha seus dados.</li>
+  </ul>
+
+  <h2>8. Permissões que o app pode pedir</h2>
   <p>
     <strong>Fotos.</strong> Só quando o responsável toca em “Escolher foto” no perfil da criança.
     A imagem selecionada é usada como avatar e permanece no aparelho. O app não varre a galeria
     nem acessa outras imagens.
   </p>
 
-  <h2>5. Assinatura e pagamento</h2>
+  <h2>9. Excluir seus dados e sua conta</h2>
+  <p>Você controla as duas pontas, e uma não depende da outra:</p>
+  <ul>
+    <li>
+      <strong>No aparelho:</strong> em <em>Pais → Sobre e assinatura → Apagar todos os dados</em>,
+      tudo o que foi cadastrado é removido de forma definitiva. Desinstalar o app também elimina
+      tudo o que ele guardou.
+    </li>
+    <li>
+      <strong>Na nuvem:</strong> em <em>Pais → Conta e sincronização</em>, você pode apagar só a
+      cópia guardada no servidor, ou apagar a conta inteira. Apagar a conta remove o seu e-mail e a
+      cópia da rotina dos nossos sistemas <strong>imediatamente e sem retenção</strong>.
+    </li>
+  </ul>
+  <p>
+    Se você já desinstalou o app e quer apagar uma conta que criou, o pedido pode ser feito pela
+    página <a href="exclusao-conta.html">Excluir conta e dados</a>.
+  </p>
+  <p>O cancelamento da assinatura é feito nos ajustes da App Store ou da Google Play.</p>
+
+  <h2>10. Assinatura e pagamento</h2>
   <p>
     Após o período gratuito, o uso do app depende de uma assinatura. A cobrança é processada
     inteiramente pela <strong>Apple App Store</strong> ou pela <strong>Google Play</strong>,
     conforme a loja onde o app foi instalado. Não recebemos, não vemos e não armazenamos dados de
     pagamento — nem número de cartão, nem endereço, nem nome do titular. O app apenas pergunta à
-    loja se existe uma assinatura ativa naquele aparelho.
-  </p>
-  <p>
-    O tratamento dos seus dados de pagamento é regido pelas políticas de privacidade da
-    <a href="https://www.apple.com/legal/privacy/br/">Apple</a> e do
-    <a href="https://policies.google.com/privacy">Google</a>.
+    loja se existe uma assinatura ativa naquele aparelho. A assinatura pertence à sua conta da
+    loja, e não à conta do aplicativo: apagar uma não afeta a outra.
   </p>
 
-  <h2>6. Crianças</h2>
+  <h2>11. Crianças</h2>
   <p>
-    O aplicativo é destinado ao uso por crianças sob supervisão de um pai, mãe ou responsável
-    legal, e a área de configuração é protegida por um desafio que só um adulto resolve.
-    Como não realizamos nenhuma coleta de dados, também não coletamos dados de crianças —
-    em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018, art. 14) e com as
-    regras das lojas para aplicativos infantis.
+    O aplicativo é destinado ao uso por crianças sob supervisão de um pai, mãe ou responsável legal.
+    A área de configuração, o cadastro e a sincronização ficam atrás de um desafio que só um adulto
+    resolve.
+  </p>
+  <p>
+    <strong>Não coletamos dados de crianças.</strong> O dado pessoal que recebemos é o e-mail do
+    adulto responsável, para autenticação. O nome e a rotina da criança, quando o responsável opta
+    por sincronizar, são tratados como conteúdo que o próprio adulto guarda e apaga quando quiser —
+    em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018, art. 14) e com as regras
+    das lojas para aplicativos infantis.
   </p>
 
-  <h2>7. Exclusão de dados</h2>
-  <p>
-    Como não existe conta de usuário, não há cadastro para excluir em nossos sistemas. Você
-    controla os dados diretamente:
-  </p>
-  <ul>
-    <li>dentro do app, em <strong>Pais → Sobre e assinatura → Apagar todos os dados</strong>, tudo
-      o que foi cadastrado é removido do aparelho de forma definitiva;</li>
-    <li>desinstalar o aplicativo também elimina todos os dados guardados por ele.</li>
-  </ul>
-  <p>
-    O cancelamento da assinatura é feito nos ajustes da App Store ou da Google Play.
-  </p>
-
-  <h2>8. Seus direitos</h2>
+  <h2>12. Seus direitos</h2>
   <p>
     A LGPD garante a você direitos de acesso, correção, portabilidade e eliminação de dados
-    pessoais. Como não mantemos nenhum dado seu, esses direitos se exercem no próprio aparelho,
-    conforme o item anterior. Se ainda assim tiver qualquer dúvida ou solicitação, escreva para
+    pessoais. Na prática:
+  </p>
+  <ul>
+    <li><strong>Acesso e correção:</strong> tudo é visível e editável dentro do próprio app.</li>
+    <li>
+      <strong>Portabilidade:</strong> em <em>Pais → Sobre e assinatura → Exportar backup</em> você
+      gera um arquivo com todos os seus dados, em formato aberto.
+    </li>
+    <li><strong>Eliminação:</strong> conforme o item 9.</li>
+  </ul>
+  <p>
+    Para qualquer dúvida ou solicitação, escreva para
     <a href="mailto:strategilesoftware@gmail.com">strategilesoftware@gmail.com</a> — respondemos
     em até 15 dias.
   </p>
 
-  <h2>9. Mudanças nesta política</h2>
+  <h2>13. Mudanças nesta política</h2>
   <p>
     Se o aplicativo passar a tratar dados de outra forma, esta página será atualizada antes da
-    mudança entrar em vigor, com nova data no topo. Versões futuras que venham a enviar dados
-    para fora do aparelho pedirão seu consentimento explícito dentro do app.
+    mudança entrar em vigor, com nova data no topo.
   </p>
 
   <footer>
     Rotina Infantil · Strategile Software ·
     <a href="mailto:strategilesoftware@gmail.com">strategilesoftware@gmail.com</a> ·
-    <a href="/rotina-infantil/termos.html">Termos de uso</a>
+    <a href="/rotina-infantil/termos.html">Termos de uso</a> ·
+    <a href="/rotina-infantil/exclusao-conta.html">Excluir conta e dados</a>
   </footer>
 </main>
 </body>
