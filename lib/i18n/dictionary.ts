@@ -49,12 +49,28 @@ export type Dict = {
     title: string;
     items: { title: string; detail: string }[];
   };
+  proof: {
+    kicker: string;
+    title: string;
+    metrics: { value: string; label: string }[];
+    sectorsLabel: string;
+    sectors: string[];
+  };
+  process: {
+    kicker: string;
+    title: string;
+    lead: string;
+    steps: { title: string; detail: string }[];
+  };
   cta: {
     kicker: string;
     title: string;
     body: string;
     action: string;
     email: string;
+    whatsapp: string;
+    whatsappLabel: string;
+    whatsappText: string;
   };
   footer: {
     tagline: string;
@@ -156,6 +172,53 @@ const pt: Dict = {
       },
     ],
   },
+  proof: {
+    kicker: 'Prova',
+    title: 'Não é portfólio de conceito.',
+    metrics: [
+      { value: '10', label: 'sistemas construídos pela casa' },
+      { value: '7', label: 'setores com operação real' },
+      { value: '4', label: 'linguagens em produção' },
+    ],
+    sectorsLabel: 'Onde os nossos sistemas rodam hoje',
+    sectors: [
+      'Varejo multi-loja',
+      'Materiais de construção',
+      'Pet',
+      'Autopeças',
+      'Igrejas e convenções',
+      'Locação de temporada',
+      'Vendas porta a porta',
+    ],
+  },
+  process: {
+    kicker: 'Como trabalhamos',
+    title: 'Do problema ao sistema no ar.',
+    lead:
+      'Software sob medida dá errado quando ninguém combina o que vai ser entregue. Por isso o caminho é sempre o mesmo, e cada etapa termina em algo que você consegue ver.',
+    steps: [
+      {
+        title: 'Diagnóstico',
+        detail:
+          'Entendemos a operação como ela é hoje — inclusive os contornos, as planilhas paralelas e o que ninguém documentou.',
+      },
+      {
+        title: 'Escopo',
+        detail:
+          'O que entra na primeira entrega e o que fica para depois, por escrito, antes de escrever uma linha de código.',
+      },
+      {
+        title: 'Construção',
+        detail:
+          'Entregas curtas, com o sistema rodando de verdade a cada etapa — nada de desaparecer por três meses.',
+      },
+      {
+        title: 'Operação',
+        detail:
+          'No ar com suporte, ajuste e evolução. A maior parte do nosso portfólio está nesta fase há anos.',
+      },
+    ],
+  },
   cta: {
     kicker: 'Contato',
     title: 'Tem uma operação que nenhum sistema pronto resolve?',
@@ -163,6 +226,9 @@ const pt: Dict = {
       'Talvez seja a hora de uma solução personalizada. Descreva o problema com o máximo de detalhe — quanto mais específico, mais rápido sabemos como ajudar.',
     action: 'Falar com um especialista',
     email: 'strategilesoftware@gmail.com',
+    whatsapp: '5522997552969',
+    whatsappLabel: 'WhatsApp',
+    whatsappText: 'Olá! Vim pelo site e quero falar sobre um projeto.',
   },
   footer: {
     tagline: 'Software sob medida. Feito no Brasil.',
@@ -272,6 +338,53 @@ const en: Dict = {
       },
     ],
   },
+  proof: {
+    kicker: 'Proof',
+    title: 'Not a portfolio of concepts.',
+    metrics: [
+      { value: '10', label: 'systems built in-house' },
+      { value: '7', label: 'sectors with live operations' },
+      { value: '4', label: 'languages in production' },
+    ],
+    sectorsLabel: 'Where our systems run today',
+    sectors: [
+      'Multi-store retail',
+      'Building supplies',
+      'Pet',
+      'Auto parts',
+      'Churches and conventions',
+      'Vacation rentals',
+      'Door-to-door sales',
+    ],
+  },
+  process: {
+    kicker: 'How we work',
+    title: 'From the problem to a system in production.',
+    lead:
+      'Custom software goes wrong when nobody agrees on what will be delivered. That is why the path is always the same, and every stage ends in something you can actually see.',
+    steps: [
+      {
+        title: 'Diagnosis',
+        detail:
+          'We map the operation as it really is today — including the workarounds, the side spreadsheets and whatever nobody wrote down.',
+      },
+      {
+        title: 'Scope',
+        detail:
+          'What goes into the first delivery and what waits, in writing, before a single line of code is written.',
+      },
+      {
+        title: 'Build',
+        detail:
+          'Short deliveries, with the system actually running at every stage — no disappearing for three months.',
+      },
+      {
+        title: 'Operation',
+        detail:
+          'Live, with support, tuning and evolution. Most of our portfolio has been in this phase for years.',
+      },
+    ],
+  },
   cta: {
     kicker: 'Contact',
     title: 'Got an operation no off-the-shelf system can solve?',
@@ -279,6 +392,9 @@ const en: Dict = {
       "Maybe it's time for something built for you. Describe the problem in as much detail as possible — the more specific, the faster we'll know how to help.",
     action: 'Talk to a specialist',
     email: 'strategilesoftware@gmail.com',
+    whatsapp: '5522997552969',
+    whatsappLabel: 'WhatsApp',
+    whatsappText: 'Hi! I came from the site and would like to talk about a project.',
   },
   footer: {
     tagline: 'Custom software. Made in Brazil.',

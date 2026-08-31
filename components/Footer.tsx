@@ -5,7 +5,7 @@ import { products } from '@/lib/products';
 import Link from 'next/link';
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, localeHref } = useLanguage();
 
   return (
     <footer className="relative border-t border-bone-100/8 bg-ink-950 px-6 py-16 sm:px-10">
@@ -17,19 +17,31 @@ export function Footer() {
               <span className="text-gold-300">.</span>
             </div>
             <p className="mt-3 max-w-[32ch] text-caption text-bone-200/50">{t.footer.tagline}</p>
-            <a
-              href={`mailto:${t.cta.email}`}
-              className="mt-4 inline-block font-mono text-caption text-bone-200/60 transition-colors hover:text-gold-200"
-            >
-              {t.cta.email}
-            </a>
+            <div className="mt-4 flex flex-col gap-1.5">
+              <a
+                href={`mailto:${t.cta.email}`}
+                className="inline-block font-mono text-caption text-bone-200/60 transition-colors hover:text-gold-200"
+              >
+                {t.cta.email}
+              </a>
+              {t.cta.whatsapp && (
+                <a
+                  href={`https://wa.me/${t.cta.whatsapp}?text=${encodeURIComponent(t.cta.whatsappText)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block font-mono text-caption text-bone-200/60 transition-colors hover:text-gold-200"
+                >
+                  {t.cta.whatsappLabel} ↗
+                </a>
+              )}
+            </div>
           </div>
 
           <nav aria-label={t.nav.portfolio} className="grid grid-cols-2 gap-x-12 gap-y-2.5">
             {products.map((p) => (
               <Link
                 key={p.slug}
-                href={`/portfolio/${p.slug}/`}
+                href={localeHref(`/portfolio/${p.slug}/`)}
                 className="text-caption text-bone-200/55 transition-colors duration-200 hover:text-bone-50"
               >
                 {p.name}

@@ -50,12 +50,24 @@ export function CtaSection() {
           transition={{ duration: 0.8, delay: 0.35, ease: EASE }}
           className="mt-12"
         >
-          <MagneticButton
-            href={`mailto:${t.cta.email}`}
-            className="inline-flex items-center gap-3 rounded-full bg-bone-50 px-9 py-4 text-body font-medium text-ink-950 transition-colors hover:bg-gold-100"
-          >
-            {t.cta.action} <span aria-hidden>→</span>
-          </MagneticButton>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <MagneticButton
+              href={`mailto:${t.cta.email}`}
+              className="inline-flex items-center gap-3 rounded-full bg-bone-50 px-9 py-4 text-body font-medium text-ink-950 transition-colors hover:bg-gold-100"
+            >
+              {t.cta.action} <span aria-hidden>→</span>
+            </MagneticButton>
+            {t.cta.whatsapp && (
+              <a
+                href={`https://wa.me/${t.cta.whatsapp}?text=${encodeURIComponent(t.cta.whatsappText)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 rounded-full border border-bone-100/20 px-9 py-4 text-body text-bone-100/90 transition-colors hover:border-bone-100/40 hover:text-bone-50"
+              >
+                {t.cta.whatsappLabel} <span aria-hidden>↗</span>
+              </a>
+            )}
+          </div>
           <div className="mt-6 font-mono text-caption text-bone-200/45">{t.cta.email}</div>
         </motion.div>
       </div>
