@@ -2,18 +2,19 @@
 
 Ultima Revisao: 2026-08-31
 Sprint Ativo: —
-Proximo ID: T-009
+Proximo ID: T-010
 
 ---
 
 ## Tasks Ativas
 
-### T-005 — Ligar analytics no site
+### T-009 — Backup do banco do Umami
 - **Status:** pendente
-- **Descricao:** `components/Analytics.tsx` já está pronto e é no-op sem configuração. Falta
-  escolher a ferramenta e cadastrar as variáveis como *repository variables* no GitHub Actions:
-  `NEXT_PUBLIC_UMAMI_URL` + `NEXT_PUBLIC_UMAMI_ID` (Umami, sem cookie) ou `NEXT_PUBLIC_GA_ID`
-  (GA4). Depois, adicionar o `env:` no passo de build do `deploy.yml`.
+- **Descricao:** o `backup-postgres-local.sh` da VPS cobre só o Postgres nativo (5433); o banco
+  do Umami é container (`umami-db`, volume `umami_umami-db-data`) e não tem rotina. Perder o
+  volume significa perder o histórico de visitas — nada operacional, mas irrecuperável. Se valer
+  a pena, um `docker exec umami-db pg_dump` num cron às :10 ou :58 resolve (a grade de cron da
+  VPS é cheia; ver ~/brain/system/vps-openclaw.md).
 
 ### T-006 — Registrar o site no Google Search Console
 - **Status:** pendente
@@ -36,6 +37,15 @@ Proximo ID: T-009
 ---
 
 ## Historico
+
+### T-005 — Ligar analytics no site
+- **Status:** concluido
+- **Concluido:** 2026-08-31
+- **Descricao:** Umami self-hosted na VPS (contêiner em `~/umami`, Caddy →
+  `127.0.0.1:3213`, painel em https://umami.168-75-103-63.sslip.io). Analytics sem cookie,
+  então o site segue sem banner de consentimento. A senha padrão do admin foi trocada na
+  instalação — o painel está exposto na internet. O script traz `data-domains` para que só
+  os domínios do site alimentem a conta. Detalhes em `~/umami/README.md`.
 
 ### T-004 — Varredura completa: contato, SEO, portfólio e prova
 - **Status:** concluido

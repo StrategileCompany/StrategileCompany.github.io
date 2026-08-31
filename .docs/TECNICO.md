@@ -24,13 +24,22 @@ GitHub Actions (`.github/workflows/deploy.yml`): push na `main` → typecheck + 
 GitHub Pages. Domínio: **https://www.strategilecompany.com.br** (o apex faz 301 para o `www`;
 todo link absoluto aponta para o `www`). O `public/CNAME` acompanha o artefato.
 
-### Analytics (opcional, decidido em build-time)
+### Analytics — Umami self-hosted
 
-O site é estático, então a escolha entra por variável de ambiente no Actions. Sem nenhuma delas,
-`components/Analytics.tsx` não emite script nem requisição:
+Rodando desde 2026-08-31 em https://umami.168-75-103-63.sslip.io (VPS openclaw, contêiner em
+`~/umami`, Caddy → `127.0.0.1:3213`). Sem cookie, então o site não precisa de banner de consentimento.
 
-- `NEXT_PUBLIC_UMAMI_URL` + `NEXT_PUBLIC_UMAMI_ID` → Umami (sem cookie)
-- `NEXT_PUBLIC_GA_ID` → Google Analytics 4
+Os valores vivem em `.env.production`, **versionado de propósito**: o `src` do script e o
+`data-website-id` aparecem no HTML de todo visitante, logo não são segredo, e versioná-los é o
+que faz o deploy do Pages funcionar sem variável cadastrada no Actions. Senha do admin e do banco
+ficam só em `~/umami/.env` na VPS.
+
+`components/Analytics.tsx` injeta o script com
+`data-domains=www.strategilecompany.com.br,strategilecompany.com.br` — sem essa trava o preview
+local entraria na mesma conta, e o id público serviria para forjar tráfego de fora. O componente
+também aceita `NEXT_PUBLIC_GA_ID` (GA4) como alternativa, e não emite nada se nada for configurado.
+
+Operação e pendências (o banco não tem backup) em `~/umami/README.md`.
 
 ## Arquitetura
 

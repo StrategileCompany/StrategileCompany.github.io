@@ -11,13 +11,29 @@ import Script from 'next/script';
  *
  * Sem nenhuma delas o componente não emite nada — nem script, nem requisição.
  */
+
+/**
+ * Domínios autorizados a reportar. Sem esta trava o Umami aceitaria eventos de
+ * qualquer origem com o mesmo id — o preview local e o `out/` aberto na máquina
+ * de alguém entrariam na mesma conta, e o id, que é público, poderia ser usado
+ * para injetar tráfego falso de fora.
+ */
+const TRACKED_DOMAINS = 'www.strategilecompany.com.br,strategilecompany.com.br';
 export function Analytics() {
   const umamiUrl = process.env.NEXT_PUBLIC_UMAMI_URL;
   const umamiId = process.env.NEXT_PUBLIC_UMAMI_ID;
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   if (umamiUrl && umamiId) {
-    return <Script src={umamiUrl} data-website-id={umamiId} strategy="afterInteractive" defer />;
+    return (
+      <Script
+        src={umamiUrl}
+        data-website-id={umamiId}
+        data-domains={TRACKED_DOMAINS}
+        strategy="afterInteractive"
+        defer
+      />
+    );
   }
 
   if (gaId) {
