@@ -12,7 +12,7 @@ import { RevealText } from '@/components/RevealText';
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function ProductLanding({ product }: { product: Product }) {
-  const { t, locale } = useLanguage();
+  const { t, locale, localeHref } = useLanguage();
   const copy = product.copy[locale];
   const { prev, next } = getAdjacentProducts(product.slug);
   const Screen = SCREENS[product.slug];
@@ -82,6 +82,29 @@ export function ProductLanding({ product }: { product: Product }) {
                 style={{ color: product.accent, border: `1px solid ${product.accent}55` }}
               >
                 {t.product.platform[product.platform]}
+              </span>
+              {/* Maturidade dita: o portfólio mistura sistema com anos de operação
+                  e produto em construção — esconder a diferença nivela por baixo. */}
+              <span
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-micro uppercase tracking-[0.16em] ${
+                  product.status === 'production'
+                    ? 'border border-emerald-300/35 text-emerald-200/90'
+                    : product.status === 'development'
+                      ? 'border border-gold-200/35 text-gold-200/90'
+                      : 'border border-bone-100/20 text-bone-200/70'
+                }`}
+              >
+                <span
+                  aria-hidden
+                  className={`h-1.5 w-1.5 rounded-full ${
+                    product.status === 'production'
+                      ? 'bg-emerald-300'
+                      : product.status === 'development'
+                        ? 'bg-gold-200'
+                        : 'bg-bone-200/60'
+                  }`}
+                />
+                {t.product.status[product.status]}
               </span>
             </motion.div>
           </div>
@@ -219,7 +242,7 @@ export function ProductLanding({ product }: { product: Product }) {
       <nav aria-label={t.nav.portfolio} className="border-t border-bone-100/8 px-6 sm:px-10">
         <div className="container-editorial grid sm:grid-cols-2">
           <Link
-            href={`/portfolio/${prev.slug}/`}
+            href={localeHref(`/portfolio/${prev.slug}/`)}
             className="group flex items-center gap-5 border-b border-bone-100/8 py-9 sm:border-b-0 sm:border-r sm:pr-10"
           >
             <span aria-hidden className="text-bone-200/40 transition-transform duration-300 group-hover:-translate-x-1">←</span>
@@ -230,7 +253,7 @@ export function ProductLanding({ product }: { product: Product }) {
             </span>
           </Link>
           <Link
-            href={`/portfolio/${next.slug}/`}
+            href={localeHref(`/portfolio/${next.slug}/`)}
             className="group flex items-center justify-end gap-5 py-9 text-right sm:pl-10"
           >
             <span>
@@ -245,7 +268,7 @@ export function ProductLanding({ product }: { product: Product }) {
 
       <div className="border-t border-bone-100/8 px-6 py-10 text-center sm:px-10">
         <Link
-          href="/#portfolio"
+          href={localeHref('/#portfolio')}
           className="font-mono text-caption uppercase tracking-[0.2em] text-bone-200/50 transition-colors hover:text-gold-200"
         >
           ◂ {t.product.backHome}

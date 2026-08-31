@@ -209,45 +209,48 @@ export const products: Product[] = [
   },
   {
     slug: 'layer-one',
-    name: 'layerOne',
-    category: { pt: 'Camada semântica para IA empresarial', en: 'Semantic layer for enterprise AI' },
+    name: 'Layer 1',
+    category: {
+      pt: 'Gestão sob medida sobre o ERP existente',
+      en: 'Custom management on the existing ERP',
+    },
     platform: 'web',
-    status: 'concept',
+    status: 'production',
     accent: '#6BDFEB',
     iconGradient: ['#0A1A24', '#040C12'],
     copy: {
       pt: {
-        tagline: 'A IA fala o dialeto do seu ERP.',
+        tagline: 'O ERP que ele já tem, finalmente legível.',
         essence:
-          'A camada de tradução entre o banco do ERP e a inteligência artificial. O diretor pergunta em português; a resposta vem auditável, com o SQL à vista.',
+          'Plataforma que constrói sistemas de gestão personalizados por cliente em cima do ERP que a empresa já usa. Sem trocar de sistema, sem copiar dado.',
         description: [
-          'Um agente seguro escrito em Go é instalado no servidor do cliente e conecta de dentro para fora — sem abrir portas, somente leitura. Um dicionário de tradução em três níveis ensina à IA o que cada tabela e código significam no negócio.',
-          'Não adianta o modelo saber SQL se ele não sabe que "produto" no seu sistema se chama MERC_COD. O layerOne resolve exatamente isso: cada resposta mostra o SQL gerado, a tabela de resultados e o tempo de execução — tudo auditável.',
+          'O nome vem da Pedra de Roseta: decifrar uma escrita desconhecida comparando-a com um texto conhecido. É o que o motor central faz — recebe o schema opaco de um ERP e os relatórios que aquele ERP imprime, e deriva o significado de cada tabela e campo até os números baterem com o que o cliente já reconhece como verdade.',
+          'O acesso ao banco do ERP é somente leitura, atrás de um portão de consulta de seis camadas, por um túnel reverso que sai de dentro da rede do cliente — nenhuma porta aberta, nenhum espelho, nenhum cache de resultado. A auditoria guarda o SQL executado e a contagem de linhas; nunca o conteúdo.',
         ],
         capabilities: [
-          'Agente Go de ~12 MB que conecta sem abrir portas no firewall',
-          'Dicionário semântico em três níveis: ERP base, segmento, cliente',
-          'Respostas auditáveis: SQL visível, resultados e tempo de execução',
+          'Telas de venda, financeiro e estoque montadas por cliente, sem fork de código',
+          'Portão de consulta somente-leitura em seis camadas, com auditoria de cada SQL',
+          'Túnel reverso instalado por script, sem abrir porta na rede do cliente',
         ],
-        fact: 'Conector próprio em Go com drivers para SQL Server, PostgreSQL e MySQL, em sandbox somente leitura via WSS.',
+        fact: 'Faturamento e CMV reconciliados exato contra o DRE do próprio ERP do cliente em três meses seguidos — 537 testes automatizados guardam o motor.',
       },
       en: {
-        tagline: "AI that speaks your ERP's dialect.",
+        tagline: 'The ERP they already have, finally readable.',
         essence:
-          'The translation layer between the ERP database and artificial intelligence. The director asks in plain language; the answer comes back auditable, SQL in sight.',
+          'A platform that builds per-client management systems on top of the ERP the company already runs. No system replacement, no data copying.',
         description: [
-          'A secure agent written in Go is installed on the client server and connects from the inside out — no open ports, read-only. A three-level translation dictionary teaches the AI what every table and code means in the business.',
-          'It\'s no use the model knowing SQL if it doesn\'t know that "product" in your system is called MERC_COD. layerOne solves exactly that: every answer shows the generated SQL, the result table and the execution time — all auditable.',
+          'The name comes from the Rosetta Stone: deciphering an unknown script by comparing it to a known text. That is what the core engine does — it takes an ERP\'s opaque schema and the reports that ERP prints, and derives the meaning of every table and field until the numbers match what the client already accepts as true.',
+          'Access to the ERP database is read-only, behind a six-layer query gate, through a reverse tunnel that dials out from inside the client network — no open ports, no mirror, no cached results. The audit trail keeps the executed SQL and the row count; never the contents.',
         ],
         capabilities: [
-          'A ~12 MB Go agent that connects without opening firewall ports',
-          'Three-level semantic dictionary: base ERP, vertical, client',
-          'Auditable answers: visible SQL, results and execution time',
+          'Sales, finance and inventory screens assembled per client, with no code fork',
+          'Six-layer read-only query gate, with every SQL statement audited',
+          'Reverse tunnel installed by script, with no open port on the client network',
         ],
-        fact: 'A custom Go connector with SQL Server, PostgreSQL and MySQL drivers, in a read-only sandbox over WSS.',
+        fact: "Revenue and COGS reconciled exactly against the client's own ERP income statement for three consecutive months — 537 automated tests guard the engine.",
       },
     },
-    stack: ['Go', 'Hono', 'TypeScript', 'PostgreSQL', 'Drizzle', 'Claude'],
+    stack: ['Next.js', 'TypeScript', 'Drizzle', 'PostgreSQL', 'Playwright'],
   },
   {
     slug: 'app-igreja',
@@ -376,6 +379,96 @@ export const products: Product[] = [
       },
     },
     stack: ['.NET 10', 'Blazor WebAssembly', 'Azure Functions', 'SQL Server', 'Agent Framework'],
+  },
+  {
+    slug: 'findr',
+    name: '2aFinder',
+    category: {
+      pt: 'Comparador de preços LLM-first',
+      en: 'LLM-first price comparison',
+    },
+    platform: 'web',
+    status: 'production',
+    accent: '#F3821D',
+    iconGradient: ['#F3821D', '#AE4200'],
+    copy: {
+      pt: {
+        tagline: 'Feito para a IA achar antes de você.',
+        essence:
+          'Vitrine de produtos brasileira desenhada primeiro para agentes de IA e depois para humanos. Guarda produtos do fabricante, não anúncios de loja.',
+        description: [
+          'Quando alguém pede a um assistente "ache o melhor notebook 16 GB", o modelo hoje se vira sozinho: busca, abre páginas, lê HTML sujo e perde metade da informação. Falta uma fonte estruturada e legível por máquina sobre produtos brasileiros — e é esse o lugar que o 2aFinder ocupa.',
+          'O catálogo é do fabricante: sabemos quais variantes existem, então um filtro restritivo devolve exatamente o que foi pedido, sem afrouxar em silêncio. Cada oferta carrega preço com hora, histórico de noventa dias e um score de confiança em três eixos — plataforma, vendedor e produto.',
+        ],
+        capabilities: [
+          'Catálogo canônico por fabricante — produtos de verdade, não anúncios',
+          'Preço com hora de coleta e histórico de noventa dias',
+          'Confiança em três eixos: plataforma, vendedor e produto',
+        ],
+        fact: 'Cada rota publica dados estruturados schema.org para o agente ler sem raspar HTML, e a busca dispara descoberta, preço e confiança em paralelo, com orçamento de tempo por perna.',
+      },
+      en: {
+        tagline: 'Built for the AI to find it first.',
+        essence:
+          'A Brazilian product showcase designed for AI agents first and humans second. It stores manufacturer products, not store listings.',
+        description: [
+          'When someone asks an assistant to "find the best 16 GB laptop", the model is on its own today: it searches, opens pages, reads messy HTML and loses half the information. There is no structured, machine-readable source about Brazilian products — and that is the gap 2aFinder fills.',
+          'The catalogue belongs to the manufacturer: we know which variants exist, so a restrictive filter returns exactly what was asked, with no silent loosening. Every offer carries a timestamped price, ninety days of history and a three-axis trust score — platform, seller and product.',
+        ],
+        capabilities: [
+          'Canonical manufacturer catalogue — real products, not listings',
+          'Timestamped prices with ninety days of history',
+          'Three-axis trust: platform, seller and product',
+        ],
+        fact: 'Every route publishes schema.org structured data so an agent can read it without scraping HTML, and each search fans out discovery, pricing and trust in parallel under a per-leg time budget.',
+      },
+    },
+    stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Turborepo', 'Node.js'],
+  },
+  {
+    slug: 'transcribr',
+    name: 'Transcribr',
+    category: {
+      pt: 'Gravação e transcrição com IA',
+      en: 'AI recording & transcription',
+    },
+    platform: 'web',
+    status: 'production',
+    accent: '#E2A03F',
+    iconGradient: ['#F6F3ED', '#DED7C8'],
+    copy: {
+      pt: {
+        tagline: 'A reunião acabou. O documento já existe.',
+        essence:
+          'Gravador que roda no navegador do celular ou do computador e devolve transcrição, resumo, decisões e tarefas — sem instalar app e sem escrever prompt.',
+        description: [
+          'Reunião, chamada ou entrevista: você aperta gravar na aba do navegador e pronto. Não há aplicativo para instalar, nem gravador de mesa para comprar — o que aparelhos dedicados de trezentos dólares fazem, acontece no aparelho que a pessoa já tem no bolso.',
+          'Quando a gravação termina, a IA já entregou os documentos: a transcrição corrida, o resumo, as decisões tomadas e as tarefas com responsável. Nada de importar arquivo depois nem de escrever instrução — o trabalho de virar documento já foi feito.',
+        ],
+        capabilities: [
+          'Duas horas de reunião sem perder nada, direto no navegador',
+          'Transcrição, resumo, decisões e tarefas prontos ao fim da gravação',
+          'Sem app para instalar e sem hardware dedicado',
+        ],
+        fact: 'A cada quinze segundos o trecho gravado já sobe para o servidor — se a conexão cair, a bateria acabar ou a aba fechar, o que já foi dito continua salvo.',
+      },
+      en: {
+        tagline: 'The meeting is over. The document already exists.',
+        essence:
+          'A recorder that runs in the browser on phone or desktop and returns transcript, summary, decisions and tasks — no app to install, no prompt to write.',
+        description: [
+          'Meeting, call or interview: you hit record in a browser tab and that is it. There is no application to install and no desk recorder to buy — what dedicated three-hundred-dollar devices do happens on the phone already in your pocket.',
+          'By the time the recording stops, the AI has delivered the documents: the full transcript, the summary, the decisions made and the tasks with an owner. No importing a file afterwards, no writing instructions — the work of becoming a document is already done.',
+        ],
+        capabilities: [
+          'Two-hour meetings with nothing lost, straight in the browser',
+          'Transcript, summary, decisions and tasks ready when recording stops',
+          'No app to install and no dedicated hardware',
+        ],
+        fact: 'Every fifteen seconds the recorded chunk is already on the server — if the connection drops, the battery dies or the tab closes, what was said stays saved.',
+      },
+    },
+    stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Redis', 'MinIO', 'PWA'],
   },
 ];
 

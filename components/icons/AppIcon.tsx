@@ -194,6 +194,55 @@ function TantaGranaGlyph(_: GlyphProps) {
   );
 }
 
+/** Lupa sobre barras de preço decrescentes, com o ponto verde de confiança —
+ *  o "signal" que o 2aFinder usa como cor de garantia no produto real. */
+function FindrGlyph(_: GlyphProps) {
+  return (
+    <g>
+      <circle cx="54" cy="52" r="23" fill="none" stroke="#FFF7ED" strokeWidth="6.5" />
+      <path d="M70.5 68.5 L86 84" stroke="#FFF7ED" strokeWidth="8.5" strokeLinecap="round" />
+      <rect x="43" y="50" width="5.5" height="14" rx="2.75" fill="#FFF7ED" opacity="0.72" />
+      <rect x="51.25" y="44" width="5.5" height="20" rx="2.75" fill="#FFF7ED" opacity="0.88" />
+      <rect x="59.5" y="38" width="5.5" height="26" rx="2.75" fill="#FFF7ED" />
+      <circle cx="77" cy="33" r="9" fill="#0D2B10" opacity="0.35" />
+      <circle cx="77" cy="33" r="7.5" fill="#6BEF75" />
+      <path d="M73.5 33 L76 35.5 L80.5 30.5" stroke="#0D2B10" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    </g>
+  );
+}
+
+/** Onda de áudio que vira linhas de texto — o áudio entrando e o documento
+ *  saindo. Tinta e âmbar são as cores reais do Transcribr (#211E19 / #E2A03F). */
+function TranscribrGlyph(_: GlyphProps) {
+  const bars = [
+    { x: 30, h: 16 },
+    { x: 38, h: 30 },
+    { x: 46, h: 44 },
+    { x: 54, h: 24 },
+  ];
+  return (
+    <g>
+      {bars.map((b) => (
+        <rect
+          key={b.x}
+          x={b.x}
+          y={60 - b.h / 2}
+          width="5"
+          height={b.h}
+          rx="2.5"
+          fill="#211E19"
+          opacity="0.85"
+        />
+      ))}
+      <path d="M66 60 L74 60" stroke="#8A8271" strokeWidth="3" strokeLinecap="round" opacity="0.5" />
+      <rect x="66" y="43" width="26" height="5" rx="2.5" fill="#E2A03F" />
+      <rect x="66" y="53" width="21" height="5" rx="2.5" fill="#4A453B" opacity="0.55" />
+      <rect x="66" y="63" width="26" height="5" rx="2.5" fill="#4A453B" opacity="0.45" />
+      <rect x="66" y="73" width="15" height="5" rx="2.5" fill="#4A453B" opacity="0.35" />
+    </g>
+  );
+}
+
 const GLYPHS: Record<string, (p: GlyphProps) => JSX.Element> = {
   strategile: StrategileGlyph,
   tamarkado: TamarkadoGlyph,
@@ -203,6 +252,8 @@ const GLYPHS: Record<string, (p: GlyphProps) => JSX.Element> = {
   'app-igreja': IgrejaGlyph,
   'smart-scan': SmartScanGlyph,
   tantagrana: TantaGranaGlyph,
+  findr: FindrGlyph,
+  transcribr: TranscribrGlyph,
 };
 
 export type AppIconProps = {

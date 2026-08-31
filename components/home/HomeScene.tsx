@@ -40,13 +40,20 @@ const SCATTER = [
   { x: 58, y: 62, s: 0.68, r: 6 },
   { x: 50, y: 11, s: 0.78, r: -11 },
   { x: 91, y: 84, s: 0.94, r: 9 },
+  { x: 63, y: 31, s: 0.86, r: 5 },
+  { x: 83, y: 61, s: 0.74, r: -8 },
 ];
 
-const GRID_COLS = [14, 26.5, 39, 51.5]; // vw
+const GRID_COLS = [12, 23, 34, 45, 56]; // vw
 const GRID_ROWS = [40, 66]; // vh
+/**
+ * SCATTER e GRID_COLS × GRID_ROWS precisam comportar products.length: uma
+ * posição faltando vira `undefined` e derruba a cena. A grade é 5×2 — ao
+ * passar de dez produtos, acrescente uma linha em GRID_ROWS.
+ */
 const GRID = products.map((_, i) => ({
-  x: GRID_COLS[i % 4],
-  y: GRID_ROWS[Math.floor(i / 4)],
+  x: GRID_COLS[i % GRID_COLS.length],
+  y: GRID_ROWS[Math.floor(i / GRID_COLS.length)],
 }));
 
 /** Janela de viagem de cada ícone dentro do progresso global — escalonada */
@@ -75,7 +82,7 @@ export function HomeScene() {
 /* ————————————————— Desktop: cena coreografada ————————————————— */
 
 function DesktopScene() {
-  const { t, locale } = useLanguage();
+  const { t, locale, localeHref } = useLanguage();
   const router = useRouter();
   const sceneRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<string | null>(null);
@@ -119,7 +126,7 @@ function DesktopScene() {
   };
 
   return (
-    <div ref={sceneRef} className="relative hidden lg:block" style={{ height: '340vh' }}>
+    <div ref={sceneRef} className="relative hidden lg:block" style={{ height: '250vh' }}>
       {/* âncora do menu: aterrissa com a grade montada */}
       <div id="portfolio" className="absolute" style={{ top: '64%' }} />
 
@@ -267,7 +274,7 @@ function DesktopScene() {
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.35, ease: EASE }}
                   >
-                    <Link href={`/portfolio/${activeProduct.slug}/`} className="group inline-block">
+                    <Link href={localeHref(`/portfolio/${activeProduct.slug}/`)} className="group inline-block">
                       <div className="font-display text-h3 text-bone-50">{activeProduct.name}</div>
                       <div className="mt-1 font-mono text-micro uppercase tracking-[0.25em] text-bone-200/50">
                         {activeProduct.category[locale]}
@@ -446,17 +453,17 @@ function PhoneHomeScreen({ visible }: { visible: boolean }) {
         style={{
           marginTop: 'auto',
           marginBottom: 90,
-          padding: '0 30px',
+          padding: '0 20px',
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          rowGap: 26,
+          gridTemplateColumns: 'repeat(5, 1fr)',
+          rowGap: 22,
           justifyItems: 'center',
         }}
       >
         {products.map((p) => (
           <div key={p.slug} style={{ textAlign: 'center' }}>
-            <AppIcon slug={p.slug} size={58} />
-            <div style={{ marginTop: 5, fontSize: 9.5, color: 'rgba(245,240,232,0.75)' }}>{p.name}</div>
+            <AppIcon slug={p.slug} size={50} />
+            <div style={{ marginTop: 5, fontSize: 8.5, color: 'rgba(245,240,232,0.75)' }}>{p.name}</div>
           </div>
         ))}
       </div>
@@ -467,7 +474,7 @@ function PhoneHomeScreen({ visible }: { visible: boolean }) {
 /* ————————————————— Stacked: mobile e reduced-motion ————————————————— */
 
 function StackedScene() {
-  const { t, locale } = useLanguage();
+  const { t, locale, localeHref } = useLanguage();
 
   return (
     <div className="relative">
@@ -532,7 +539,7 @@ function StackedScene() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.55, delay: (i % 4) * 0.06, ease: EASE }}
             >
-              <Link href={`/portfolio/${p.slug}/`} className="block text-center" aria-label={p.name}>
+              <Link href={localeHref(`/portfolio/${p.slug}/`)} className="block text-center" aria-label={p.name}>
                 <AppIcon slug={p.slug} size={76} className="drop-shadow-[0_12px_22px_rgba(0,0,0,0.45)]" />
                 <div className="mt-2 text-caption text-bone-100/80">{p.name}</div>
                 <div className="mt-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-bone-200/40">

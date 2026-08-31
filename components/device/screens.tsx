@@ -789,6 +789,244 @@ function TantaGranaScreen() {
   );
 }
 
+/* ————————————————— 2aFinder — Resultado de busca ————————————————— ————————————————— */
+
+function FindrScreen() {
+  const lojas = [
+    { n: 'Magazine Luiza', p: 'R$ 18.499', par: '12x R$ 1.541', trust: 92, best: true },
+    { n: 'Amazon', p: 'R$ 18.890', par: '10x R$ 1.889', trust: 88, best: false },
+    { n: 'Mercado Livre', p: 'R$ 19.240', par: '12x R$ 1.603', trust: 74, best: false },
+  ];
+  return (
+    <div style={{ ...screen, background: '#FDFCFA' }}>
+      <StatusBar />
+      <div style={{ padding: '6px 18px', flex: 1 }}>
+        <Row style={{ gap: 8 }}>
+          <span style={{ fontSize: 19, fontWeight: 800, color: '#161616', letterSpacing: -0.5 }}>2a</span>
+          <div style={{ flex: 1, height: 36, borderRadius: 10, background: '#F4F2EE', border: '1px solid #E7E4DD', display: 'flex', alignItems: 'center', padding: '0 11px', fontSize: 12.5, color: '#5C574E' }}>
+            MacBook Pro M5 16GB
+          </div>
+        </Row>
+
+        <Row style={{ gap: 6, marginTop: 12 }}>
+          <span style={{ fontSize: 10, fontWeight: 700, color: '#fff', background: '#F3821D', borderRadius: 999, padding: '3px 9px' }}>
+            FILTRO EXATO
+          </span>
+          <span style={{ fontSize: 10.5, color: '#7A7368' }}>3 ofertas · 1 variante</span>
+        </Row>
+
+        <div style={{ marginTop: 12, background: '#fff', borderRadius: 16, border: '1px solid #E7E4DD', padding: 14 }}>
+          <div style={{ fontSize: 14.5, fontWeight: 700, color: '#161616', letterSpacing: -0.2 }}>
+            MacBook Pro 14&quot; M5
+          </div>
+          <div style={{ fontSize: 11.5, color: '#7A7368', marginTop: 2 }}>16 GB · 512 GB · Apple</div>
+          <Row style={{ gap: 5, marginTop: 9 }}>
+            <span style={{ fontSize: 9.5, fontFamily: MONO, color: '#006D00', background: '#E8F5E9', borderRadius: 6, padding: '3px 7px', fontWeight: 700 }}>
+              CATÁLOGO DO FABRICANTE
+            </span>
+          </Row>
+          {/* histórico de 90 dias */}
+          <div style={{ marginTop: 12, display: 'flex', alignItems: 'flex-end', gap: 2.5, height: 34 }}>
+            {[19, 22, 20, 25, 23, 27, 24, 21, 18, 20, 17, 15, 16, 14].map((h, i) => (
+              <div
+                key={i}
+                style={{
+                  flex: 1,
+                  height: h * 1.25,
+                  borderRadius: 2,
+                  background: i === 13 ? '#F3821D' : '#E7E4DD',
+                }}
+              />
+            ))}
+          </div>
+          <Row style={{ justifyContent: 'space-between', marginTop: 6 }}>
+            <span style={{ fontSize: 9.5, color: '#9A9287' }}>90 dias</span>
+            <span style={{ fontSize: 9.5, fontWeight: 700, color: '#006D00' }}>menor preço do período</span>
+          </Row>
+        </div>
+
+        <Row style={{ margin: '14px 2px 8px', gap: 7 }}>
+          <span style={{ fontSize: 12.5, fontWeight: 700, color: '#161616' }}>Onde comprar</span>
+          <span style={{ fontSize: 9.5, fontFamily: MONO, color: '#7A7368' }}>coletado 14:02</span>
+        </Row>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {lojas.map((l) => (
+            <div
+              key={l.n}
+              style={{
+                background: '#fff',
+                borderRadius: 14,
+                border: l.best ? '1.5px solid #F3821D' : '1px solid #E7E4DD',
+                padding: '11px 13px',
+              }}
+            >
+              <Row style={{ justifyContent: 'space-between' }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: '#161616' }}>{l.n}</span>
+                <span style={{ fontSize: 14.5, fontWeight: 800, color: '#161616', fontVariantNumeric: 'tabular-nums' }}>
+                  {l.p}
+                </span>
+              </Row>
+              <Row style={{ justifyContent: 'space-between', marginTop: 5 }}>
+                <Row style={{ gap: 4 }}>
+                  <span style={{ width: 26, height: 4, borderRadius: 2, background: '#E7E4DD', overflow: 'hidden' }}>
+                    <span style={{ display: 'block', width: `${l.trust * 0.26}px`, height: 4, background: l.trust > 85 ? '#006D00' : '#F3821D' }} />
+                  </span>
+                  <span style={{ fontSize: 9.5, fontFamily: MONO, color: '#7A7368' }}>confiança {l.trust}</span>
+                </Row>
+                <span style={{ fontSize: 10.5, color: '#7A7368' }}>{l.par}</span>
+              </Row>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: 14, background: '#FAF8F4', borderRadius: 14, border: '1px solid #E7E4DD', padding: '12px 13px' }}>
+          <Row style={{ gap: 7 }}>
+            <span style={{ width: 18, height: 18, borderRadius: 5, background: '#161616', color: '#fff', fontSize: 9.5, fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              AI
+            </span>
+            <span style={{ fontSize: 11, fontWeight: 700, color: '#161616' }}>Legível por agente</span>
+          </Row>
+          <div style={{ fontSize: 10.5, color: '#7A7368', marginTop: 6, lineHeight: 1.45 }}>
+            Esta página publica os mesmos dados em schema.org — o assistente lê a oferta sem
+            precisar raspar o HTML.
+          </div>
+          <Row style={{ gap: 5, marginTop: 9 }}>
+            {['Product', 'Offer', 'AggregateRating'].map((tag) => (
+              <span key={tag} style={{ fontSize: 9, fontFamily: MONO, color: '#5C574E', background: '#F1EDE6', borderRadius: 5, padding: '3px 6px' }}>
+                {tag}
+              </span>
+            ))}
+          </Row>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ————————————————— Transcribr — Gravação ————————————————— */
+
+function TranscribrScreen() {
+  const wave = [8, 16, 27, 19, 34, 22, 41, 30, 18, 26, 37, 21, 14, 29, 24, 33, 17, 25, 12, 20, 31, 15, 23, 36];
+  const docs = [
+    { t: 'Resumo', d: 'Prazo movido para 12/09; escopo do piloto fechado.', on: true },
+    { t: 'Decisões', d: '3 decisões registradas', on: true },
+    { t: 'Tarefas', d: '5 tarefas com responsável', on: false },
+  ];
+  return (
+    <div style={{ ...screen, background: '#F6F3ED' }}>
+      <StatusBar />
+      <div style={{ padding: '6px 18px', flex: 1 }}>
+        <Row style={{ justifyContent: 'space-between' }}>
+          <span style={{ fontSize: 19, fontWeight: 700, color: '#211E19', letterSpacing: -0.4 }}>
+            transcr<span style={{ color: '#E2A03F' }}>ı</span>br
+          </span>
+          <span style={{ fontSize: 10, fontFamily: MONO, color: '#8A8271' }}>MIC · 48 kHz</span>
+        </Row>
+
+        <div style={{ marginTop: 14, background: '#fff', borderRadius: 18, border: '1px solid #E7E1D5', padding: 18 }}>
+          <Row style={{ gap: 7 }}>
+            <span style={{ width: 8, height: 8, borderRadius: 999, background: '#C0392B' }} />
+            <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: 0.8, color: '#8A8271' }}>GRAVANDO</span>
+          </Row>
+          <div
+            style={{
+              fontSize: 40,
+              fontWeight: 300,
+              fontFamily: MONO,
+              color: '#211E19',
+              letterSpacing: -1.5,
+              marginTop: 8,
+              fontVariantNumeric: 'tabular-nums',
+            }}
+          >
+            01:42:07
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 2.5, height: 46, marginTop: 12 }}>
+            {wave.map((h, i) => (
+              <div
+                key={i}
+                style={{
+                  flex: 1,
+                  height: h,
+                  borderRadius: 2,
+                  background: i > 18 ? '#E2A03F' : '#C8C2B4',
+                  opacity: i > 18 ? 1 : 0.85,
+                }}
+              />
+            ))}
+          </div>
+
+          <Row style={{ gap: 6, marginTop: 12, padding: '8px 10px', background: '#F1EDE3', borderRadius: 10 }}>
+            <span style={{ fontSize: 11, color: '#4A453B' }}>↑</span>
+            <span style={{ fontSize: 10.5, color: '#4A453B' }}>
+              Trecho salvo no servidor há <b>3s</b> · nada se perde
+            </span>
+          </Row>
+        </div>
+
+        <div style={{ fontSize: 12.5, fontWeight: 700, color: '#211E19', margin: '16px 2px 8px' }}>
+          Documentos desta gravação
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {docs.map((d) => (
+            <Row
+              key={d.t}
+              style={{
+                background: '#fff',
+                borderRadius: 14,
+                border: '1px solid #E7E1D5',
+                padding: '12px 13px',
+                gap: 11,
+              }}
+            >
+              <span
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: 9,
+                  background: d.on ? '#F5EBD8' : '#F1EDE3',
+                  color: d.on ? '#E2A03F' : '#C8C2B4',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 14,
+                  fontWeight: 800,
+                }}
+              >
+                {d.on ? '✓' : '···'}
+              </span>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 12.5, fontWeight: 600, color: '#211E19' }}>{d.t}</div>
+                <div style={{ fontSize: 10.5, color: '#8A8271', marginTop: 1 }}>{d.d}</div>
+              </div>
+            </Row>
+          ))}
+        </div>
+      </div>
+      <div style={{ padding: '0 18px 28px' }}>
+        <div
+          style={{
+            height: 48,
+            borderRadius: 12,
+            background: '#211E19',
+            color: '#F6F3ED',
+            fontSize: 15,
+            fontWeight: 600,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 9,
+          }}
+        >
+          <span style={{ width: 11, height: 11, borderRadius: 2, background: '#E2A03F' }} /> Encerrar e gerar
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export const SCREENS: Record<string, () => JSX.Element> = {
   tamarkado: TamarkadoScreen,
   'spid-app': XpidScreen,
@@ -798,4 +1036,6 @@ export const SCREENS: Record<string, () => JSX.Element> = {
   'app-igreja': IgrejaScreen,
   'smart-scan': SmartScanScreen,
   tantagrana: TantaGranaScreen,
+  findr: FindrScreen,
+  transcribr: TranscribrScreen,
 };
