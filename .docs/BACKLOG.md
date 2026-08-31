@@ -8,14 +8,6 @@ Proximo ID: T-010
 
 ## Tasks Ativas
 
-### T-009 — Backup do banco do Umami
-- **Status:** pendente
-- **Descricao:** o `backup-postgres-local.sh` da VPS cobre só o Postgres nativo (5433); o banco
-  do Umami é container (`umami-db`, volume `umami_umami-db-data`) e não tem rotina. Perder o
-  volume significa perder o histórico de visitas — nada operacional, mas irrecuperável. Se valer
-  a pena, um `docker exec umami-db pg_dump` num cron às :10 ou :58 resolve (a grade de cron da
-  VPS é cheia; ver ~/brain/system/vps-openclaw.md).
-
 ### T-006 — Registrar o site no Google Search Console
 - **Status:** pendente
 - **Descricao:** o `sitemap.xml` e o `robots.txt` passaram a existir em 2026-08-31. Falta
@@ -37,6 +29,16 @@ Proximo ID: T-010
 ---
 
 ## Historico
+
+### T-009 — Backup do banco do Umami
+- **Status:** concluido
+- **Concluido:** 2026-08-31
+- **Descricao:** `~/scripts/cron/umami-backup.sh`, diário às 07:58 (minuto e hora livres na
+  grade da VPS), retenção de 14 dias em `~/backups/umami`. Segue o padrão do
+  `spidapp-backup.sh` e acrescenta três guardas: falha explícita se o contêiner não estiver
+  de pé, dump em arquivo temporário para não deixar `.gz` truncado no lugar do backup do dia,
+  e recusa de dump suspeito (< 1 KB). **A restauração foi testada** num banco temporário:
+  25 tabelas, o website preservado, zero erros.
 
 ### T-005 — Ligar analytics no site
 - **Status:** concluido
