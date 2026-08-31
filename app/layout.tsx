@@ -4,6 +4,9 @@ import { LanguageProvider } from '@/lib/i18n/LanguageProvider';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { StructuredData } from '@/components/StructuredData';
+import { Analytics } from '@/components/Analytics';
+import { SITE_URL, absoluteUrl, alternatesFor } from '@/lib/site';
 import './globals.css';
 
 const fraunces = Fraunces({
@@ -22,7 +25,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://strategilecompany.com.br'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Strategile Company — Software sob medida',
     template: '%s · Strategile Company',
@@ -45,17 +48,27 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pt_BR',
     alternateLocale: 'en_US',
-    url: 'https://strategilecompany.com.br',
+    url: absoluteUrl('/'),
     siteName: 'Strategile Company',
     title: 'Strategile Company — Software sob medida',
     description:
       'Consultoria, desenvolvimento de software sob medida e IA aplicada para automatizar processos e profissionalizar operações de empresas de vários setores.',
+    images: [
+      {
+        url: '/og.png',
+        width: 1200,
+        height: 630,
+        alt: 'Strategile Company — Software sob medida para o problema que é só seu.',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Strategile Company',
     description: 'Software sob medida para o problema que é só seu.',
+    images: ['/og.png'],
   },
+  alternates: alternatesFor('pt', '/'),
   robots: { index: true, follow: true },
 };
 
@@ -85,6 +98,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </SmoothScroll>
         </LanguageProvider>
+        <StructuredData />
+        <Analytics />
       </body>
     </html>
   );

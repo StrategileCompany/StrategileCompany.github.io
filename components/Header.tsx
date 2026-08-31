@@ -7,10 +7,10 @@ import { LangToggle } from '@/components/LangToggle';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 
 export function Header() {
-  const { t } = useLanguage();
+  const { t, localeHref } = useLanguage();
   const pathname = usePathname();
-  const isHome = pathname === '/';
-  const prefix = isHome ? '' : '/';
+  const isHome = pathname === '/' || pathname === '/en' || pathname === '/en/';
+  const prefix = isHome ? '' : localeHref('/');
 
   const { scrollY } = useScroll();
   const bg = useTransform(scrollY, [0, 120], ['rgba(10,10,10,0)', 'rgba(10,10,10,0.72)']);

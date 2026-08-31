@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { cn } from '@/lib/cn';
@@ -9,7 +10,7 @@ type Props = {
 };
 
 export function LangToggle({ className }: Props) {
-  const { locale, setLocale, t } = useLanguage();
+  const { locale, hrefFor, t } = useLanguage();
 
   return (
     <div
@@ -23,11 +24,12 @@ export function LangToggle({ className }: Props) {
       {(['pt', 'en'] as const).map((code) => {
         const active = locale === code;
         return (
-          <button
+          // Navegação real entre /  e  /en — cada idioma tem URL própria e indexável.
+          <Link
             key={code}
-            type="button"
-            onClick={() => setLocale(code)}
-            aria-pressed={active}
+            href={hrefFor(code)}
+            hrefLang={code === 'pt' ? 'pt-BR' : 'en'}
+            aria-current={active ? 'true' : undefined}
             className={cn(
               'relative px-3 py-1.5 rounded-full transition-colors duration-200 ease-apple',
               active ? 'text-ink-950' : 'text-bone-200/70 hover:text-bone-50',
@@ -41,7 +43,7 @@ export function LangToggle({ className }: Props) {
               />
             )}
             <span className="relative">{t.langToggle[code]}</span>
-          </button>
+          </Link>
         );
       })}
     </div>

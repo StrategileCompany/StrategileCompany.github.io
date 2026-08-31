@@ -1,64 +1,64 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import { dictionaries, DEFAULT_LOCALE, LOCALES, type Dict, type Locale } from './dictionary';
+import { createContext, useContext, useEffect, useMemo, type ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
+import { dictionaries, type Dict, type Locale } from './dictionary';
 
 type LanguageContextValue = {
   locale: Locale;
-  setLocale: (locale: Locale) => void;
-  toggle: () => void;
+  /** Caminho equivalente à rota atual no outro idioma — usado pelo LangToggle */
+  hrefFor: (target: Locale) => string;
+  /** Prefixa um caminho interno com o idioma corrente (`/x/` → `/en/x/`) */
+  localeHref: (path: string) => string;
   t: Dict;
 };
 
-const STORAGE_KEY = 'strategile.locale';
-
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
-function isLocale(value: string | null): value is Locale {
-  return value !== null && (LOCALES as string[]).includes(value);
+/** `/en/portfolio/x/` → `/portfolio/x/`; a raiz PT já é o caminho nu. */
+function stripLocale(pathname: string): string {
+  if (pathname === '/en' || pathname === '/en/') return '/';
+  if (pathname.startsWith('/en/')) return pathname.slice(3);
+  return pathname || '/';
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
-  const [hydrated, setHydrated] = useState(false);
+  const pathname = usePathname() ?? '/';
+
+  /**
+   * A rota é a única autoridade sobre o idioma: `/en/...` é inglês, todo o
+   * resto é português.
+   *
+   * Antes o idioma vinha do localStorage e do `navigator.language`, o que
+   * criava dois problemas: o Google só via a versão PT (não havia URL para a
+   * EN), e a mesma URL podia servir conteúdos diferentes — inclusive para o
+   * crawler, que rastreia com `Accept-Language: en-US`. Duas URLs servindo o
+   * mesmo idioma anulam o `hreflang`. Com a rota mandando, URL, conteúdo,
+   * canonical e hreflang sempre concordam, e o toggle é navegação de verdade.
+   */
+  const locale: Locale = pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'pt';
 
   useEffect(() => {
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (isLocale(stored)) {
-        setLocaleState(stored);
-      } else if (typeof navigator !== 'undefined') {
-        const browserLang = navigator.language?.toLowerCase() ?? '';
-        if (browserLang.startsWith('en')) setLocaleState('en');
-      }
-    } catch {
-      /* ignore */
-    } finally {
-      setHydrated(true);
-    }
-  }, []);
+    document.documentElement.lang = locale === 'pt' ? 'pt-BR' : 'en';
+  }, [locale]);
 
-  useEffect(() => {
-    if (!hydrated) return;
-    try {
-      window.localStorage.setItem(STORAGE_KEY, locale);
-    } catch {
-      /* ignore */
-    }
-    if (typeof document !== 'undefined') {
-      document.documentElement.lang = locale === 'pt' ? 'pt-BR' : 'en';
-    }
-  }, [locale, hydrated]);
-
-  const setLocale = (next: Locale) => setLocaleState(next);
-  const toggle = () => setLocaleState((l) => (l === 'pt' ? 'en' : 'pt'));
-
-  const value: LanguageContextValue = {
-    locale,
-    setLocale,
-    toggle,
-    t: dictionaries[locale],
-  };
+  const value = useMemo<LanguageContextValue>(() => {
+    const bare = stripLocale(pathname);
+    return {
+      locale,
+      hrefFor: (target: Locale) => {
+        if (target === 'en') return bare === '/' ? '/en/' : `/en${bare}`;
+        return bare;
+      },
+      localeHref: (path: string) => {
+        if (locale !== 'en') return path;
+        if (path.startsWith('#')) return path;
+        // preserva a âncora: `/#portfolio` → `/en/#portfolio`
+        return path === '/' ? '/en/' : `/en${path}`;
+      },
+      t: dictionaries[locale],
+    };
+  }, [locale, pathname]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
