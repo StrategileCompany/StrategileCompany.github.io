@@ -410,7 +410,7 @@ function PhoneContent({ active }: { active: Product | null }) {
   );
 }
 
-/** Tela inicial do iPhone em repouso — autorreferência: os mesmos 8 apps */
+/** Tela inicial do iPhone em repouso — autorreferência: os mesmos 10 apps */
 function PhoneHomeScreen({ visible }: { visible: boolean }) {
   const { t } = useLanguage();
   const [time, setTime] = useState('');
@@ -449,21 +449,34 @@ function PhoneHomeScreen({ visible }: { visible: boolean }) {
           {t.homescreen.phoneTag}
         </div>
       </div>
+      {/* Duas colunas por cinco linhas: os ícones ocupam a altura inteira da tela
+          em vez de se amontoarem num bloco no rodapé. */}
       <div
         style={{
-          marginTop: 'auto',
-          marginBottom: 90,
-          padding: '0 20px',
+          flex: 1,
+          marginTop: 30,
+          marginBottom: 58,
+          padding: '0 34px',
           display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          rowGap: 22,
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gridAutoRows: '1fr',
           justifyItems: 'center',
+          alignContent: 'stretch',
         }}
       >
         {products.map((p) => (
-          <div key={p.slug} style={{ textAlign: 'center' }}>
-            <AppIcon slug={p.slug} size={50} />
-            <div style={{ marginTop: 5, fontSize: 8.5, color: 'rgba(245,240,232,0.75)' }}>{p.name}</div>
+          <div
+            key={p.slug}
+            style={{
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <AppIcon slug={p.slug} size={68} />
+            <div style={{ marginTop: 7, fontSize: 10, color: 'rgba(245,240,232,0.78)' }}>{p.name}</div>
           </div>
         ))}
       </div>
