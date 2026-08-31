@@ -4,13 +4,15 @@
 
 ## Sobre
 
-Site institucional e portfólio da Strategile Company. Os 8 produtos do estúdio aparecem como
+Site institucional e portfólio da Strategile Company. Os 10 produtos do estúdio aparecem como
 ícones numa "tela inicial" de smartphone; o hover abre cada app num iPhone em CSS com telas
 reais reconstruídas; o clique abre a landing do produto. Next.js 14 estático (GitHub Pages),
-framer-motion + Lenis, bilíngue PT/EN.
+framer-motion + Lenis, bilíngue PT/EN com rota própria por idioma.
 
 - Dev: `npm run dev` (porta 3200) · Build: `npm run build` (gera `out/`)
-- Preview VPS: http://strategile-v1.168.75.103.63.nip.io/ (serve `out/` via python http.server)
+- No ar: https://www.strategilecompany.com.br (GitHub Pages; o apex faz 301 para o `www`)
+- **Layer 1 é o repositório `Rosetta`** — o nome público é sempre *Layer 1*, e o repositório
+  ainda não foi renomeado. Nunca escrever "Rosetta", "layerOne" ou "CAMADA" no site.
 - Gotchas importantes em [.docs/TECNICO.md](./.docs/TECNICO.md) — leia antes de mexer na HomeScene
 
 ## Documentação
