@@ -1029,13 +1029,13 @@ function TranscribrScreen() {
 
 export const SCREENS: Record<string, () => JSX.Element> = {
   tamarkado: TamarkadoScreen,
-  'spid-app': XpidScreen,
+  xpid: XpidScreen,
   'layer-one': CamadaScreen,
   'roteiro-temporada': RoteiroScreen,
   strategile: StrategileScreen,
   'app-igreja': IgrejaScreen,
   'smart-scan': SmartScanScreen,
   tantagrana: TantaGranaScreen,
-  findr: FindrScreen,
+  '2afinder': FindrScreen,
   transcribr: TranscribrScreen,
 };

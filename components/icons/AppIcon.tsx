@@ -246,13 +246,13 @@ function TranscribrGlyph(_: GlyphProps) {
 const GLYPHS: Record<string, (p: GlyphProps) => JSX.Element> = {
   strategile: StrategileGlyph,
   tamarkado: TamarkadoGlyph,
-  'spid-app': XpidGlyph,
+  xpid: XpidGlyph,
   'roteiro-temporada': RoteiroGlyph,
   'layer-one': CamadaGlyph,
   'app-igreja': IgrejaGlyph,
   'smart-scan': SmartScanGlyph,
   tantagrana: TantaGranaGlyph,
-  findr: FindrGlyph,
+  '2afinder': FindrGlyph,
   transcribr: TranscribrGlyph,
 };
 

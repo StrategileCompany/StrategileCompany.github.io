@@ -124,7 +124,7 @@ export const products: Product[] = [
     stack: ['.NET 10', 'Azure Functions', 'Blazor WebAssembly', 'SQL Server', 'Google People API'],
   },
   {
-    slug: 'spid-app',
+    slug: 'xpid',
     name: 'Xpid',
     category: { pt: 'Vendas offline-first para autônomos', en: 'Offline-first sales for independents' },
     platform: 'mobile',
@@ -381,7 +381,7 @@ export const products: Product[] = [
     stack: ['.NET 10', 'Blazor WebAssembly', 'Azure Functions', 'SQL Server', 'Agent Framework'],
   },
   {
-    slug: 'findr',
+    slug: '2afinder',
     name: '2aFinder',
     category: {
       pt: 'Comparador de preços LLM-first',

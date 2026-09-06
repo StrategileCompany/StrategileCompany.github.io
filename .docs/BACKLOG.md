@@ -1,8 +1,8 @@
 # BACKLOG — StrategileCompany
 
-Ultima Revisao: 2026-08-31
+Ultima Revisao: 2026-09-06
 Sprint Ativo: —
-Proximo ID: T-010
+Proximo ID: T-011
 
 ---
 
@@ -29,6 +29,19 @@ Proximo ID: T-010
 ---
 
 ## Historico
+
+### T-010 — Slugs publicos alinhados ao nome do produto
+- **Status:** concluido
+- **Concluido:** 2026-09-06
+- **Descricao:** as URLs expunham nomes internos de repositorio — `/portfolio/findr/` e
+  `/portfolio/spid-app/` para produtos que o site chama de **2aFinder** e **Xpid**. Mesma classe
+  do que o `PRODUTO.md` ja proibia para o Layer 1. Slugs trocados para `2afinder` e `xpid` em
+  `lib/products.ts` e nos mapas por slug (`components/device/screens.tsx`,
+  `components/icons/AppIcon.tsx`) — os nomes dos componentes (`FindrScreen`, `XpidGlyph`)
+  ficaram como estao, sao identificadores, nao URLs. As quatro URLs antigas (PT e EN) viraram
+  stubs de redirecionamento em `public/`, com `meta refresh`, `canonical` para o endereco novo e
+  `noindex` — `output: export` nao suporta `redirects()` do Next, entao o stub estatico e o
+  caminho possivel no GitHub Pages.
 
 ### T-009 — Backup do banco do Umami
 - **Status:** concluido
