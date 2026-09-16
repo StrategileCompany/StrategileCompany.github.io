@@ -74,7 +74,7 @@ StrategileCompany/
 │   └── CtaBlock.tsx
 ├── lib/
 │   ├── cn.ts                      # clsx + tailwind-merge
-│   ├── products.ts                # 8 produtos, bilingue, mockup colors
+│   ├── products.ts                # 10 produtos, bilingue, mockup colors
 │   ├── team.ts                    # 3 socios, bilingue
 │   └── i18n/
 │       ├── dictionary.ts          # tipo Dict + dicionarios PT e EN

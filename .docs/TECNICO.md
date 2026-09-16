@@ -39,7 +39,7 @@ ficam só em `~/umami/.env` na VPS.
 local entraria na mesma conta, e o id público serviria para forjar tráfego de fora. O componente
 também aceita `NEXT_PUBLIC_GA_ID` (GA4) como alternativa, e não emite nada se nada for configurado.
 
-Operação e pendências (o banco não tem backup) em `~/umami/README.md`.
+Operação em `~/umami/README.md`. Backup do banco: diário às 07:58 por `~/scripts/cron/umami-backup.sh`, retenção 14 dias em `~/backups/umami` (T-009, concluído 2026-08-31).
 
 ## Arquitetura
 
