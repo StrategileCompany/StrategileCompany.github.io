@@ -46,6 +46,7 @@ Operação em `~/umami/README.md`. Backup do banco: diário às 07:58 por `~/scr
 ```
 lib/products.ts            # fonte de verdade dos 10 produtos (cores reais, copy PT/EN, stack)
 lib/site.ts                # host canônico, contatos, rotas e helper de hreflang
+lib/agentes.ts             # VITRINE_URL + 3 cartas estáticas PT/EN da divisão de agentes (sem fetch, sem preço)
 lib/i18n/                  # dicionário PT/EN + LanguageProvider (rota > localStorage > navigator)
 app/robots.ts, sitemap.ts  # SEO gerado a partir de lib/site.ts
 app/en/**                  # o site inteiro em inglês, com URL própria
@@ -54,6 +55,8 @@ components/device/IphoneFrame.tsx  # frame de iPhone CSS (telas 390×844 escalad
 components/device/screens.tsx      # 10 telas-mock fiéis aos apps reais
 components/home/HomeScene.tsx      # set-piece: hero + montagem da grade + iPhone interativo
 components/home/{Manifesto,Proof,Capabilities,Process,CtaSection}.tsx
+components/home/AgentesCallout.tsx # faixa + botão para /agentes entre Capabilities e Process
+components/agentes/AgentesPage.tsx # /agentes e /en/agentes: hero, pitch, cartas, CTA para a vitrine
 components/StructuredData.tsx      # JSON-LD Organization + WebSite
 components/ProductLanding.tsx      # landing por produto (/portfolio/[slug])
 components/ShaderBackdrop.tsx      # fragment shader 2D (fbm simplex, ink+gold)

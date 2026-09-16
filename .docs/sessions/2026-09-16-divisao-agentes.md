@@ -34,7 +34,17 @@ decisão do dono (T-019 pitch, T-018 preço).
 - `app/page.tsx`, `app/en/page.tsx` — `<AgentesCallout />` entre Capabilities e Process
 - `.docs/BACKLOG.md` (T-011/012/013 em-andamento), `.docs/PRODUTO.md`, `.docs/MARKETING.md`
 
-## Estado atual
+## Estado atual — PUBLICADO em 2026-09-16
+- Dono aprovou T-019 (pitch = rascunho, sem alteração) e T-018 (cartas sem preço) e autorizou
+  publicar. Merge `--no-ff` de `origin/feat/divisao-agentes` em `main`: **`ee7d1b3`**; `npm ci &&
+  npm run build` verde no main mergeado antes do push.
+- Pages: runs 35139040964 e 35139041192 (mesmo SHA) → `success`.
+- Ao vivo (19:14 UTC): `/agentes/` 200, `/en/agentes/` 200, sem barra 301; `<title>` "Agentes ·
+  Strategile Company" / "Agents · Strategile Company"; home com `href="/agentes/"`; sitemap com
+  2 `<loc>` de agentes (`grep -c agentes` dá 6 por contar as linhas de `hreflang`).
+- Branch remota `feat/divisao-agentes` apagada depois do 200 medido.
+
+## Estado antes da publicação (histórico)
 - `npm run typecheck` e `npm run lint` limpos; `npm run build` verde: 31 páginas, `out/agentes/`
   e `out/en/agentes/` gerados, sitemap 24 → 26 `<loc>`, `fix-lang` marcou 13 páginas `/en`.
 - **Prova visual (Playwright, Chromium 1228 local, `out/` servido em 127.0.0.1:4173):** 6 PNGs em
@@ -43,7 +53,7 @@ decisão do dono (T-019 pitch, T-018 preço).
   `scrollTo(9999,0)` e `scrollWidth` 390 nas 3 — zero rolagem lateral real e zero alargamento de
   viewport. Metadata por rota conferida no DOM: canonical/og:url `/agentes/` e `/en/agentes/`,
   og:locale `pt_BR`/`en_US`, hreflang `en` apontando para `/en/agentes/`, `<html lang>` certo.
-- **Falta (decisão do dono):** T-019 texto do pitch, T-018 preço, e publicar (merge em `main`).
+- ~~Falta (decisão do dono): T-019 texto do pitch, T-018 preço, e publicar~~ — feito em 2026-09-16, ver acima.
 - **Fora deste repo:** link de volta no rodapé da vitrine (T-013, repo `Cluster`).
 
 ## Problemas

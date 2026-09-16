@@ -283,9 +283,9 @@ const pt: Dict = {
     body: 'O endereço que você abriu não existe — ou ainda não foi construído.',
     back: 'Voltar à tela inicial',
   },
-  // ⚠ RASCUNHO (T-019): o pitch abaixo veio de .docs/MARKETING.md §2 e ainda NÃO foi
-  // validado pelo dono. Tudo aqui é promessa em nome da Strategile — não publicar
-  // /agentes antes de ele fechar o texto. Nada de preço (T-018) nem número medido.
+  // Pitch aprovado pelo dono em 2026-09-16 (T-019) — fonte: .docs/MARKETING.md §2. Tudo aqui é
+  // promessa em nome da Strategile: mudar o texto é decisão dele. Nada de preço (T-018: cartas
+  // sem preço no site) nem número medido.
   agentes: {
     kicker: 'Agentes Strategile',
     title: 'Funcionários de IA que tocam setores inteiros.',

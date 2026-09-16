@@ -109,11 +109,10 @@ Ordem deliberada: **T-014 e T-019 vêm antes da página** porque custam minutos 
 
 ## 5. Depende do dono
 
-- **Texto do pitch da divisão** (2 parágrafos, linguagem de estúdio) → T-019, T-011. Há um
-  rascunho em `.docs/MARKETING.md` marcado **"a validar com o dono"**; tudo que a página disser é
-  promessa em nome da Strategile.
-- **Preço dos agentes** → T-018. Hoje 3/3 `null` ("sob consulta"). Há um **conflito de regra** a
-  resolver: o `PRODUTO.md` manda *"Nunca exibir preços"* no institucional, e a vitrine tem seção
+- ~~**Texto do pitch da divisão**~~ → T-019, T-011: **aprovado pelo dono em 2026-09-16** (rascunho de
+  `.docs/MARKETING.md` §2 sem alteração) e publicado em `ee7d1b3`.
+- ~~**Preço dos agentes**~~ → T-018: **decidido pelo dono em 2026-09-16 — opção (i), cartas sem preço
+  no site.** Registro do conflito que existia: o `PRODUTO.md` manda *"Nunca exibir preços"* no institucional, e a vitrine tem seção
   de preço. Opções: (i) preço só na vitrine e o site nunca mostra número — **recomendado**;
   (ii) preço nos dois, com exceção escrita no `PRODUTO.md`; (iii) "sob consulta" nos dois.
 - **FAQ da vitrine** → T-018/T-013. A sessão de 06/09 do Cluster marca 4 frases como promessas

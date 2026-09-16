@@ -35,21 +35,19 @@ A divisão se chama **Agentes Strategile** e mora no domínio da **Company**.
 
 ## 2. Pitch da divisão de agentes
 
-> ⚠️ **RASCUNHO — a validar com o dono (T-019).** Nada abaixo foi aprovado. Tudo o que a página
-> `/agentes` disser é promessa feita em nome da Strategile, e o texto final é decisão dele, não do
-> agente que escreveu este arquivo. Enquanto não houver validação, `/agentes` não pode ir ao ar.
->
-> **Estado em 2026-09-16:** o rascunho abaixo já está em código, na branch `feat/divisao-agentes`
-> (`lib/i18n/dictionary.ts`, chaves `agentes` e `homeAgentes`, PT e EN) — mudar o texto é mudar
-> lá. Construída e provada localmente, **não publicada**: `main` não foi tocada.
+> ✅ **Aprovado pelo dono em 2026-09-16 (T-019)** — o rascunho abaixo foi aprovado sem alteração e
+> está **no ar** desde o merge `ee7d1b3` (`https://www.strategilecompany.com.br/agentes/` e
+> `/en/agentes/`, medidos 200). O texto vive em `lib/i18n/dictionary.ts` (chaves `agentes` e
+> `homeAgentes`, PT e EN) — mudar o texto é mudar lá, e mudar o que a página promete em nome da
+> Strategile continua sendo decisão do dono, não do agente.
 
-### Frase-âncora (a validar)
+### Frase-âncora (aprovada)
 
 *"Funcionários de IA que tocam setores inteiros."* — é o título que a vitrine já usa em produção
 (medido em 2026-09-15), e por isso é o candidato natural: muda-lo no site institucional criaria
 duas promessas diferentes para o mesmo produto.
 
-### Dois parágrafos (a validar)
+### Dois parágrafos (aprovados)
 
 1. *A Strategile constrói software sob medida há anos. A divisão de agentes é o passo seguinte:
    em vez de entregar uma ferramenta para alguém operar, entregamos o operador — um agente que
@@ -77,15 +75,16 @@ decida corrigi-las ou assiná-las:
 Hoje as 3 cartas publicadas trazem `preco_mensal_centavos: null` — a vitrine mostra "sob consulta".
 O `PRODUTO.md` proíbe exibir preço no institucional. **Recomendação: preço só na vitrine, e o site
 nunca mostra número** — preserva a regra do site e mantém o número onde ele pode ser medido e
-atualizado com um `UPDATE`. Decisão do dono (T-018).
+atualizado com um `UPDATE`. **Decidido pelo dono em 2026-09-16 (T-018): cartas sem preço no site,
+como está.**
 
 ## 3. Canais
 
 | Canal | Estado | Como se mede |
 |---|---|---|
-| **Site institucional** | no ar, bilíngue, 24 `<loc>` no sitemap | Umami |
+| **Site institucional** | no ar, bilíngue, 26 `<loc>` no sitemap | Umami |
 | **Vitrine de agentes** | no ar (200, medido 2026-09-15) | Umami (a instrumentar) |
-| **Subpágina `/agentes` + `/en/agentes`** | [ ] construída na branch `feat/divisao-agentes` (2026-09-16), **não publicada** — aguarda T-019 (pitch) e T-018 (preço) | cliques de saída para a vitrine |
+| **Subpágina `/agentes` + `/en/agentes`** | [x] no ar desde 2026-09-16 (`https://www.strategilecompany.com.br/agentes/`, merge `ee7d1b3`); sitemap 24 → 26 `<loc>` | cliques de saída para a vitrine |
 | **WhatsApp** | `wa.me/5522997552969`, mensagem pré-preenchida por idioma | cliques de saída |
 | **E-mail** | `strategilesoftware@gmail.com` (o domínio não tem MX) | manual |
 | **Google Search Console** | **não registrado** — T-006 pendente | impressões e cliques orgânicos |
