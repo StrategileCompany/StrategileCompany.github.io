@@ -8,6 +8,7 @@
 | `/portfolio` | Índice dos 10 produtos em grade de ícones, com a maturidade de cada um |
 | `/portfolio/[slug]` | Landing por produto: ícone + tagline + iPhone com tela real, o que faz, capacidades, engenharia, stack, navegação prev/next |
 | `/en`, `/en/portfolio`, `/en/portfolio/[slug]` | O site inteiro em inglês, com URL própria e indexável |
+| `/agentes`, `/en/agentes` | **[ ] na branch `feat/divisao-agentes`, não publicada** — divisão de agentes: pitch (rascunho, T-019), 3 cartas estáticas sem preço, CTA único para a vitrine |
 | `/sitemap.xml`, `/robots.txt` | Gerados por `app/sitemap.ts` e `app/robots.ts` |
 | 404 | "Tela não encontrada." |
 
@@ -51,12 +52,12 @@ Divisão comercial nova: a Strategile vende **agentes de IA que tocam setores in
 
 | Item | Onde | Estado |
 |---|---|---|
-| Subpágina `/agentes` — pitch + 3 cartas estáticas + CTA para a vitrine | `app/agentes/page.tsx` | [ ] pendente — T-011 |
-| Mesma subpágina em inglês | `app/en/agentes/page.tsx` | [ ] pendente — T-011 |
-| Rota registrada em `allRoutes()` (sitemap + `hreflang`) | `lib/site.ts` | [ ] pendente — T-011 |
-| Chaves PT/EN da subpágina | `lib/i18n/dictionary.ts` | [ ] pendente — T-011 |
-| `openGraph` + `alternates` próprios da rota | `app/agentes/page.tsx` | [ ] pendente — T-011 |
-| Faixa na home entre `Capabilities` e `Process` | `components/home/` | [ ] pendente — T-012 |
+| Subpágina `/agentes` — pitch + 3 cartas estáticas + CTA para a vitrine | `app/agentes/page.tsx` | [ ] feito na branch `feat/divisao-agentes`, aguarda publicação (T-019/T-018) — T-011 |
+| Mesma subpágina em inglês | `app/en/agentes/page.tsx` | [ ] feito na branch `feat/divisao-agentes`, aguarda publicação (T-019/T-018) — T-011 |
+| Rota registrada em `allRoutes()` (sitemap + `hreflang`) | `lib/site.ts` | [ ] feito na branch `feat/divisao-agentes`, aguarda publicação (T-019/T-018) — T-011 |
+| Chaves PT/EN da subpágina | `lib/i18n/dictionary.ts` | [ ] feito na branch `feat/divisao-agentes`, aguarda publicação (T-019/T-018) — T-011 |
+| `openGraph` + `alternates` próprios da rota | `app/agentes/page.tsx` | [ ] feito na branch `feat/divisao-agentes`, aguarda publicação (T-019/T-018) — T-011 |
+| Faixa na home entre `Capabilities` e `Process` | `components/home/` | [ ] feito na branch `feat/divisao-agentes`, aguarda publicação (T-019/T-018) — T-012 |
 | Link de volta da vitrine para o estúdio | repo `Cluster` (`cluster-web`) | [ ] pendente — T-013 |
 | Texto do pitch validado pelo dono | `.docs/MARKETING.md` | [ ] pendente — T-019 |
 
