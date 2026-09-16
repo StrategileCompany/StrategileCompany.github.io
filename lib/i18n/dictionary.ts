@@ -93,6 +93,30 @@ export type Dict = {
     body: string;
     back: string;
   };
+  /** Subpágina /agentes — divisão de venda de agentes (T-011) */
+  agentes: {
+    kicker: string;
+    title: string;
+    lead: string;
+    /** Pitch em 2 parágrafos, na voz do estúdio */
+    pitch: string[];
+    examplesKicker: string;
+    examplesTitle: string;
+    examplesLead: string;
+    ctaKicker: string;
+    ctaTitle: string;
+    ctaBody: string;
+    ctaAction: string;
+    ctaHint: string;
+    backHome: string;
+  };
+  /** Chamada menor na home, entre Capabilities e Process (T-012) */
+  homeAgentes: {
+    kicker: string;
+    title: string;
+    body: string;
+    action: string;
+  };
 };
 
 const pt: Dict = {
@@ -259,6 +283,35 @@ const pt: Dict = {
     body: 'O endereço que você abriu não existe — ou ainda não foi construído.',
     back: 'Voltar à tela inicial',
   },
+  // ⚠ RASCUNHO (T-019): o pitch abaixo veio de .docs/MARKETING.md §2 e ainda NÃO foi
+  // validado pelo dono. Tudo aqui é promessa em nome da Strategile — não publicar
+  // /agentes antes de ele fechar o texto. Nada de preço (T-018) nem número medido.
+  agentes: {
+    kicker: 'Agentes Strategile',
+    title: 'Funcionários de IA que tocam setores inteiros.',
+    lead: 'A divisão de agentes da Strategile Company: em vez de uma ferramenta para alguém operar, o operador.',
+    pitch: [
+      'A Strategile constrói software sob medida há anos. A divisão de agentes é o passo seguinte: em vez de entregar uma ferramenta para alguém operar, entregamos o operador — um agente que assume um setor, executa a rotina dele todo dia e deixa registro do que decidiu.',
+      'Cada agente nasce do mesmo método que constrói os sistemas da casa: entender o processo real, medir antes de prometer, e mostrar o que está de pé. A vitrine lista as funções disponíveis, o que cada uma já executou e em que condições — sem número inventado.',
+    ],
+    examplesKicker: 'Exemplos',
+    examplesTitle: 'Três exemplos do que a vitrine lista.',
+    examplesLead:
+      'Cada agente é um cargo com rotina própria. O que ele já executou, com que constância e em que condições fica na vitrine — onde o número é medido, não escrito.',
+    ctaKicker: 'Vitrine',
+    ctaTitle: 'Veja as funções disponíveis e o que cada uma já executou.',
+    ctaBody: 'A vitrine acompanha a execução real dos agentes. A lista completa vive lá.',
+    ctaAction: 'Abrir a vitrine de agentes',
+    ctaHint: 'agentes.strategilecompany.com.br',
+    backHome: 'Voltar à tela inicial',
+  },
+  homeAgentes: {
+    kicker: 'Divisão de agentes',
+    title: 'Funcionários de IA que tocam setores inteiros.',
+    body:
+      'Além do software sob medida, a Strategile agora entrega o operador: agentes que assumem um setor, executam a rotina todo dia e deixam registro do que decidiram.',
+    action: 'Conhecer a divisão de agentes',
+  },
 };
 
 const en: Dict = {
@@ -424,6 +477,33 @@ const en: Dict = {
     title: 'Screen not found.',
     body: "The address you opened doesn't exist — or hasn't been built yet.",
     back: 'Back to the home screen',
+  },
+  // ⚠ DRAFT (T-019): translation of the PT pitch above — same status, not yet approved.
+  agentes: {
+    kicker: 'Strategile Agents',
+    title: 'AI employees that run entire departments.',
+    lead: "Strategile Company's agents division: instead of a tool for someone to operate, the operator.",
+    pitch: [
+      'Strategile has been building custom software for years. The agents division is the next step: instead of delivering a tool for someone to operate, we deliver the operator — an agent that takes over a department, runs its routine every day and leaves a record of what it decided.',
+      'Every agent is born from the same method that builds our systems: understand the real process, measure before promising, and show what is actually running. The showcase lists the available roles, what each one has already executed and under which conditions — no made-up numbers.',
+    ],
+    examplesKicker: 'Examples',
+    examplesTitle: 'Three examples of what the showcase lists.',
+    examplesLead:
+      'Each agent is a role with a routine of its own. What it has already executed, how consistently and under which conditions lives in the showcase — where the number is measured, not written.',
+    ctaKicker: 'Showcase',
+    ctaTitle: 'See the available roles and what each one has already executed.',
+    ctaBody: "The showcase follows the agents' real execution. The full list lives there.",
+    ctaAction: 'Open the agents showcase',
+    ctaHint: 'agentes.strategilecompany.com.br',
+    backHome: 'Back to the home screen',
+  },
+  homeAgentes: {
+    kicker: 'Agents division',
+    title: 'AI employees that run entire departments.',
+    body:
+      'Beyond custom software, Strategile now delivers the operator: agents that take over a department, run its routine every day and leave a record of what they decided.',
+    action: 'Meet the agents division',
   },
 };
 

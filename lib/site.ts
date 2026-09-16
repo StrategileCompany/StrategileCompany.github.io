@@ -22,7 +22,7 @@ export function absoluteUrl(path = '/'): string {
 
 /** Rotas do site nas duas línguas — fonte única para sitemap e hreflang. */
 export function allRoutes(): { pt: string; en: string }[] {
-  const base = ['/', '/portfolio/', ...products.map((p) => `/portfolio/${p.slug}/`)];
+  const base = ['/', '/portfolio/', '/agentes/', ...products.map((p) => `/portfolio/${p.slug}/`)];
   return base.map((path) => ({ pt: localePath('pt', path), en: localePath('en', path) }));
 }
 
