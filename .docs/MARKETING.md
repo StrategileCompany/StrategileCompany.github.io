@@ -38,6 +38,10 @@ A divisão se chama **Agentes Strategile** e mora no domínio da **Company**.
 > ⚠️ **RASCUNHO — a validar com o dono (T-019).** Nada abaixo foi aprovado. Tudo o que a página
 > `/agentes` disser é promessa feita em nome da Strategile, e o texto final é decisão dele, não do
 > agente que escreveu este arquivo. Enquanto não houver validação, `/agentes` não pode ir ao ar.
+>
+> **Estado em 2026-09-16:** o rascunho abaixo já está em código, na branch `feat/divisao-agentes`
+> (`lib/i18n/dictionary.ts`, chaves `agentes` e `homeAgentes`, PT e EN) — mudar o texto é mudar
+> lá. Construída e provada localmente, **não publicada**: `main` não foi tocada.
 
 ### Frase-âncora (a validar)
 
@@ -81,6 +85,7 @@ atualizado com um `UPDATE`. Decisão do dono (T-018).
 |---|---|---|
 | **Site institucional** | no ar, bilíngue, 24 `<loc>` no sitemap | Umami |
 | **Vitrine de agentes** | no ar (200, medido 2026-09-15) | Umami (a instrumentar) |
+| **Subpágina `/agentes` + `/en/agentes`** | [ ] construída na branch `feat/divisao-agentes` (2026-09-16), **não publicada** — aguarda T-019 (pitch) e T-018 (preço) | cliques de saída para a vitrine |
 | **WhatsApp** | `wa.me/5522997552969`, mensagem pré-preenchida por idioma | cliques de saída |
 | **E-mail** | `strategilesoftware@gmail.com` (o domínio não tem MX) | manual |
 | **Google Search Console** | **não registrado** — T-006 pendente | impressões e cliques orgânicos |

@@ -1,6 +1,6 @@
 # BACKLOG — StrategileCompany
 
-Ultima Revisao: 2026-09-15
+Ultima Revisao: 2026-09-16
 Sprint Ativo: —
 Proximo ID: T-020
 
@@ -27,7 +27,11 @@ Proximo ID: T-020
   de conversa comercial, não de código.
 
 ### T-011 — Quem visita o site não descobre que a Strategile vende agentes de IA
-- **Status:** pendente
+- **Status:** em-andamento — branch `feat/divisao-agentes` (2026-09-16), **não publicada**; aguarda T-019 (pitch) e T-018 (preço) para publicar
+- **Rascunho:** o pitch da página veio de `.docs/MARKETING.md` §2 e está em
+  `lib/i18n/dictionary.ts` (`agentes`, PT e EN) como **RASCUNHO** até o dono fechar T-019.
+  As 3 cartas (`lib/agentes.ts`) copiam nome/área/resumo de `/api/vitrine/agentes` lidos uma vez
+  em 2026-09-16 — sem fetch, sem preço, sem atributo numérico.
 - **Tamanho:** M
 - **Criado:** 2026-09-15
 - **Descricao:** criar a subpágina `/agentes` e `/en/agentes` com pitch, 3 cartas de exemplo
@@ -36,14 +40,19 @@ Proximo ID: T-020
   `openGraph`/`alternates` próprios — **sem** virar o 11º ícone da grade, que quebraria a cena.
 
 ### T-012 — A home não oferece caminho para a divisão de agentes
-- **Status:** pendente
+- **Status:** em-andamento — branch `feat/divisao-agentes` (2026-09-16), **não publicada**; aguarda T-019 (pitch) e T-018 (preço) para publicar
+- **Feito na branch:** `components/home/AgentesCallout.tsx` entre `<Capabilities />` e
+  `<Process />` em `app/page.tsx` e `app/en/page.tsx` (chaves `homeAgentes`). Faixa + botão, sem
+  cartas nem números — não é ícone da grade.
 - **Tamanho:** P
 - **Criado:** 2026-09-15
 - **Descricao:** faixa de uma linha + `MagneticButton` entre `<Capabilities />` e `<Process />`,
   nas duas línguas, sem cartas nem números — a home não pode virar vitrine. Depende de T-011.
 
 ### T-013 — Quem chega pela vitrine não descobre o estúdio que a construiu
-- **Status:** pendente (executar no repo `Cluster`)
+- **Status:** em-andamento — branch `feat/divisao-agentes` (2026-09-16), **não publicada**; aguarda T-019 (pitch) e T-018 (preço) para publicar. **O lado do site** (a porta `/agentes` → vitrine) está na branch;
+  **o link de volta no rodapé da vitrine continua por fazer no repo `Cluster`** — não foi tocado
+  aqui.
 - **Tamanho:** PP
 - **Criado:** 2026-09-15
 - **Descricao:** o HTML da vitrine não tem **nenhum** link para `www.strategilecompany.com.br`
