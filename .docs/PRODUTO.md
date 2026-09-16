@@ -39,6 +39,39 @@
 > **Layer 1 é o repositório `Rosetta`.** O nome público é sempre *Layer 1*; o repositório ainda
 > não foi renomeado. Não usar "Rosetta", "layerOne", "CAMADA" nem "Dataluz" no site.
 
+## Divisão de agentes (subpágina)
+
+Divisão comercial nova: a Strategile vende **agentes de IA que tocam setores inteiros**. A vitrine
+é um produto separado, dinâmico, que já está no ar em
+`https://agentes.strategilecompany.com.br/vitrine` (medido 200 com TLS válido em 2026-09-15).
+
+> **Princípio: o site não duplica a vitrine.** A vitrine lê o banco com `revalidate 60`; o site é
+> export estático. Repetir carta com número aqui congelaria medição e brigaria com a regra
+> *"Só afirmar o que está de pé"*. O institucional apresenta a divisão e entrega o visitante.
+
+| Item | Onde | Estado |
+|---|---|---|
+| Subpágina `/agentes` — pitch + 3 cartas estáticas + CTA para a vitrine | `app/agentes/page.tsx` | [ ] pendente — T-011 |
+| Mesma subpágina em inglês | `app/en/agentes/page.tsx` | [ ] pendente — T-011 |
+| Rota registrada em `allRoutes()` (sitemap + `hreflang`) | `lib/site.ts` | [ ] pendente — T-011 |
+| Chaves PT/EN da subpágina | `lib/i18n/dictionary.ts` | [ ] pendente — T-011 |
+| `openGraph` + `alternates` próprios da rota | `app/agentes/page.tsx` | [ ] pendente — T-011 |
+| Faixa na home entre `Capabilities` e `Process` | `components/home/` | [ ] pendente — T-012 |
+| Link de volta da vitrine para o estúdio | repo `Cluster` (`cluster-web`) | [ ] pendente — T-013 |
+| Texto do pitch validado pelo dono | `.docs/MARKETING.md` | [ ] pendente — T-019 |
+
+**Restrições que valem para esta subpágina:**
+
+- **"Agentes" não entra na grade de ícones.** A cena assume `products.length`: `SCATTER` precisa
+  de uma entrada por produto e `GRID_COLS × GRID_ROWS` precisa comportar todos — posição faltando
+  vira `undefined` e derruba a cena. É divisão de serviço, não 11º produto do portfólio.
+- **Dados estáticos, não `fetch`.** `output: export` resolve `fetch` no build; VPS fora do ar
+  viraria deploy quebrado. Além disso as 3 cartas de hoje têm preço `null` e atributo sem valor.
+- **Sem preço na subpágina** enquanto valer a regra de conteúdo abaixo (decisão do dono pendente,
+  T-018).
+- Se a rota mudar de endereço, o padrão é o stub de `public/` com `meta refresh` + `canonical` +
+  `noindex` (T-010), porque `output: export` não suporta `redirects()`.
+
 ## Regras de conteúdo
 
 - **Nunca** exibir avaliações de usuários nem preços

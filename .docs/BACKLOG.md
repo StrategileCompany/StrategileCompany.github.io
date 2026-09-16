@@ -1,8 +1,8 @@
 # BACKLOG — StrategileCompany
 
-Ultima Revisao: 2026-09-06
+Ultima Revisao: 2026-09-15
 Sprint Ativo: —
-Proximo ID: T-011
+Proximo ID: T-020
 
 ---
 
@@ -26,9 +26,90 @@ Proximo ID: T-011
   clientes, uma linha de logos ou uma frase atribuída aumentaria bastante a conversão. Depende
   de conversa comercial, não de código.
 
+### T-011 — Quem visita o site não descobre que a Strategile vende agentes de IA
+- **Status:** pendente
+- **Tamanho:** M
+- **Criado:** 2026-09-15
+- **Descricao:** criar a subpágina `/agentes` e `/en/agentes` com pitch, 3 cartas de exemplo
+  **estáticas** (sem fetch) e CTA único para `https://agentes.strategilecompany.com.br/vitrine`,
+  registrando a rota em `lib/site.ts:allRoutes()`, as chaves em `lib/i18n/dictionary.ts` e
+  `openGraph`/`alternates` próprios — **sem** virar o 11º ícone da grade, que quebraria a cena.
+
+### T-012 — A home não oferece caminho para a divisão de agentes
+- **Status:** pendente
+- **Tamanho:** P
+- **Criado:** 2026-09-15
+- **Descricao:** faixa de uma linha + `MagneticButton` entre `<Capabilities />` e `<Process />`,
+  nas duas línguas, sem cartas nem números — a home não pode virar vitrine. Depende de T-011.
+
+### T-013 — Quem chega pela vitrine não descobre o estúdio que a construiu
+- **Status:** pendente (executar no repo `Cluster`)
+- **Tamanho:** PP
+- **Criado:** 2026-09-15
+- **Descricao:** o HTML da vitrine não tem **nenhum** link para `www.strategilecompany.com.br`
+  (medido por `grep -oE 'href="[^"]+"'`, 2026-09-15); falta o link de volta no rodapé. **O
+  trabalho vive em `cluster-web`, não neste repositório** — aqui é só referência cruzada, para o
+  plano do site não perder de vista a outra metade da ligação.
+
+### T-014 — A documentação trata como pendente um subdomínio que já está no ar
+- **Status:** pendente
+- **Tamanho:** PP
+- **Criado:** 2026-09-15
+- **Descricao:** `agentes.strategilecompany.com.br` resolve para 168.75.103.63 com TLS válido e
+  serve a vitrine (Caddyfile:706, `bind 10.0.0.143`), mas as sessões do Cluster ainda o listam
+  como pendência do dono; corrigir a sessão de 2026-09-06 e **subir o fato para
+  `~/.claude/rules/`**, porque subdomínio de empresa é infra compartilhada e não memória de
+  projeto.
+
+### T-017 — Quatro clones do site ocupam ~1 GB numa VPS com swap cheio
+- **Status:** pendente
+- **Tamanho:** P
+- **Criado:** 2026-09-15
+- **Descricao:** `~/projects/StrategileCompany{,-v2,-v3,-v4}` somam ~1,0 GB e nada na VPS serve o
+  site (o Pages serve); `free -h` mostra swap em 7,8 de 8,0 GiB — **conferir antes** se algum
+  systemd timer, outro crontab ou job do Company OS referencia esses caminhos, e só então
+  arquivar.
+
+### T-018 — As cartas da vitrine mostram preço "sob consulta" e barra vazia
+- **Status:** pendente (executar no repo `Cluster`)
+- **Tamanho:** M
+- **Criado:** 2026-09-15
+- **Aprovacao:** [PENDENTE APROVACAO]
+- **Descricao:** `/api/vitrine/agentes` traz 3 cartas com `preco_mensal_centavos: null` em 3 de 3
+  e 2 de 18 atributos sem valor (inclusive `confiabilidade` do `agent.strategile`, com 5
+  execuções decididas contra um mínimo de 20) — **depende da decisão do dono sobre preço**, que
+  colide com a regra do `PRODUTO.md` de nunca exibir preços no institucional.
+
+### T-019 — O site não fala a mesma língua comercial da vitrine
+- **Status:** pendente
+- **Tamanho:** P
+- **Criado:** 2026-09-15
+- **Aprovacao:** [PENDENTE APROVACAO]
+- **Descricao:** `.docs/MARKETING.md` nasceu em 2026-09-15 com o pitch da divisão de agentes em
+  **rascunho marcado "a validar com o dono"** — enquanto ele não validar o texto, `/agentes` não
+  tem o que dizer, porque tudo ali é promessa em nome da Strategile.
+
 ---
 
 ## Historico
+
+### T-016 — O README descrevia um site de 8 produtos que hoje tem 10
+- **Status:** concluido
+- **Tamanho:** P
+- **Criado:** 2026-09-15
+- **Concluido:** 2026-09-15 — 448cc2a
+- **Descricao:** `README.md:77` era do commit inicial (2026-05-05) e nunca acompanhou o T-004, que
+  levou o portfólio de 8 para 10 produtos em 2026-08-31.
+
+### T-015 — O TECNICO.md afirmava que o Umami não tem backup, mas ele tem
+- **Status:** concluido
+- **Tamanho:** PP
+- **Criado:** 2026-09-15
+- **Concluido:** 2026-09-15 — 448cc2a
+- **Descricao:** o `TECNICO.md` foi tocado por `b1eaf45` e o backup registrado em `bfef2b5` — dois
+  commits do mesmo dia na ordem errada, e a frase "(o banco não tem backup)" ficou contradizendo o
+  T-009, concluído em 2026-08-31.
+
 
 ### T-010 — Slugs publicos alinhados ao nome do produto
 - **Status:** concluido
