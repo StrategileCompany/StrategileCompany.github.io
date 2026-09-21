@@ -7,6 +7,11 @@
   Publicar em: https://www.strategilecompany.com.br/rotina-infantil/privacidade.html
   Esta URL precisa estar acessível ANTES de enviar o app às lojas.
 
+  ATUALIZADA EM 21/09/2026: a versao 1.0.2 passou a enviar a copia SOZINHA (ao entrar na
+  conta e ao mandar o app para segundo plano). O texto dizia "nada sobe nem desce sozinho",
+  o que deixou de ser verdade. A mesma frase existia na tela de Conta do app e foi corrigida
+  junto — ver src/screens/ParentAccountScreen.tsx.
+
   REESCRITA EM 05/08/2026: o app ganhou conta opcional e sincronizacao. A versao
   anterior dizia "nao criamos conta e nao coletamos nenhum dado", o que deixou de
   ser verdade no momento em que o login entrou. Este texto precisa bater, palavra
@@ -41,7 +46,7 @@
 <body>
 <main>
   <h1>Política de Privacidade — Rotina Infantil</h1>
-  <p class="date">Última atualização: 5 de agosto de 2026</p>
+  <p class="date">Última atualização: 21 de setembro de 2026</p>
 
   <p class="highlight">
     O Rotina Infantil funciona por inteiro no aparelho, sem conta e sem internet. Criar uma conta é
@@ -100,8 +105,17 @@
     No aparelho novo, a foto precisa ser escolhida de novo.
   </p>
   <p>
-    Nada sobe nem desce sozinho. O envio e a busca acontecem apenas quando o responsável toca no
-    botão, e o app sempre mostra a data da versão guardada antes de substituir qualquer coisa.
+    <strong>Depois que você entra na conta, a cópia se mantém sozinha.</strong> O app envia a
+    versão deste aparelho quando você entra e quando sai do app para segundo plano, sem pedir
+    nada — é o que impede que uma desinstalação leve a rotina junto. Se o conteúdo não mudou
+    desde o último envio, nada é enviado.
+  </p>
+  <p>
+    <strong>Trazer da nuvem nunca é automático</strong>, e sobrescrever uma versão feita em
+    OUTRO aparelho também não: nesses dois casos o app espera o responsável tocar no botão e
+    sempre mostra a data da versão guardada antes de substituir qualquer coisa. O envio
+    automático simplesmente não acontece quando há uma versão de outro aparelho que este ainda
+    não conhece.
   </p>
 
   <h2>5. Onde os dados ficam e quem tem acesso</h2>
