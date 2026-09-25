@@ -1,22 +1,4 @@
 <!doctype html>
-<!--
-  CONFERIR ANTES DE PUBLICAR:
-  - Razao social: preenchida com o nome da organizacao registrado no Play Console
-    ("RAPHAEL DAMAS MENDES"). Se o contrato social trouxer outra denominacao,
-    corrija aqui e em termos.html.
-  Publicar em: https://www.strategilecompany.com.br/rotina-infantil/privacidade.html
-  Esta URL precisa estar acessível ANTES de enviar o app às lojas.
-
-  ATUALIZADA EM 21/09/2026: a versao 1.0.2 passou a enviar a copia SOZINHA (ao entrar na
-  conta e ao mandar o app para segundo plano). O texto dizia "nada sobe nem desce sozinho",
-  o que deixou de ser verdade. A mesma frase existia na tela de Conta do app e foi corrigida
-  junto — ver src/screens/ParentAccountScreen.tsx.
-
-  REESCRITA EM 05/08/2026: o app ganhou conta opcional e sincronizacao. A versao
-  anterior dizia "nao criamos conta e nao coletamos nenhum dado", o que deixou de
-  ser verdade no momento em que o login entrou. Este texto precisa bater, palavra
-  por palavra, com o Data Safety da Play e o App Privacy da Apple.
--->
 <html lang="pt-br">
 <head>
 <meta charset="utf-8" />
@@ -46,12 +28,22 @@
 <body>
 <main>
   <h1>Política de Privacidade — Rotina Infantil</h1>
-  <p class="date">Última atualização: 21 de setembro de 2026</p>
+  <p class="date">Última atualização: 25 de setembro de 2026</p>
+
+  <p>
+    Esta política se aplica ao aplicativo <strong>Rotina Infantil</strong> — pacote
+    <code>com.strategile.rotina_infantil</code> no Android e <code>com.strategile.rotinaInfantil</code>
+    no iOS —, publicado por Raphael Damas Mendes (“Strategile Software”). Ela descreve, de forma
+    completa, quais dados o aplicativo acessa, coleta, usa e compartilha, e com quem.
+  </p>
 
   <p class="highlight">
-    O Rotina Infantil funciona por inteiro no aparelho, sem conta e sem internet. Criar uma conta é
-    opcional e serve só para levar a rotina para outro aparelho — e a conta é do adulto responsável,
-    nunca da criança.
+    O app funciona por inteiro no aparelho e não exige conta: usado assim, nada do que você cadastra
+    sai de lá. Se o adulto responsável escolher sincronizar a rotina entre aparelhos, o aplicativo
+    passa a coletar o nome e o endereço de e-mail da conta Apple ou Google desse adulto, um
+    identificador de conta e uma cópia da rotina da criança — cada um detalhado nos itens 3, 4 e 5.
+    Esses dados não são vendidos nem compartilhados com terceiros, a criança nunca cria conta, e você
+    pode apagar tudo pelo próprio app (item 9).
   </p>
 
   <h2>1. Quem somos</h2>
@@ -89,8 +81,9 @@
   <table>
     <tr><th>Dado</th><th>Para que serve</th></tr>
     <tr>
-      <td>Seu e-mail e um identificador de conta, recebidos da Apple ou do Google</td>
-      <td>Reconhecer você quando entrar de novo e ligar a cópia à sua conta. Se você usar o
+      <td>Seu nome, seu e-mail e um identificador de conta, recebidos da Apple ou do Google</td>
+      <td>Reconhecer você quando entrar de novo e ligar a cópia à sua conta. O nome vem do cadastro
+        da sua conta Apple ou Google e serve só para identificar o responsável. Se você usar o
         “Ocultar meu e-mail” da Apple, recebemos apenas o endereço anônimo criado por ela</td>
     </tr>
     <tr>
@@ -211,8 +204,8 @@
     resolve.
   </p>
   <p>
-    <strong>Não coletamos dados de crianças.</strong> O dado pessoal que recebemos é o e-mail do
-    adulto responsável, para autenticação. O nome e a rotina da criança, quando o responsável opta
+    <strong>Não coletamos dados de crianças.</strong> Os dados pessoais que recebemos são o nome e o
+    e-mail do adulto responsável, para autenticação. O nome e a rotina da criança, quando o responsável opta
     por sincronizar, são tratados como conteúdo que o próprio adulto guarda e apaga quando quiser —
     em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018, art. 14) e com as regras
     das lojas para aplicativos infantis.
