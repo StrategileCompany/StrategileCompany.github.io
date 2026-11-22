@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Fraunces, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import { LanguageProvider } from '@/lib/i18n/LanguageProvider';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import { Header } from '@/components/Header';
@@ -9,19 +9,30 @@ import { Analytics } from '@/components/Analytics';
 import { SITE_URL, absoluteUrl, alternatesFor } from '@/lib/site';
 import './globals.css';
 
-const fraunces = Fraunces({
-  subsets: ['latin'],
+/**
+ * As fontes moram no repositorio, e nao em `next/font/google`.
+ *
+ * O `next/font/google` baixa o arquivo durante o BUILD. Rede ruim no runner
+ * derrubava o deploy inteiro, e o push parecia ter dado certo — duas vezes o
+ * site ficou no ar com a versao anterior sem ninguem notar. Com os .woff2
+ * versionados, o build nao depende mais da internet.
+ *
+ * Sao os mesmos arquivos que o Google serve para o subconjunto latino, em
+ * formato variavel: um por familia e estilo, cobrindo toda a faixa de peso.
+ */
+const fraunces = localFont({
   variable: '--font-fraunces',
   display: 'swap',
-  style: ['normal', 'italic'],
-  weight: ['300', '400', '500', '600', '700'],
+  src: [
+    { path: './fonts/fraunces-normal.woff2', weight: '300 700', style: 'normal' },
+    { path: './fonts/fraunces-italic.woff2', weight: '300 700', style: 'italic' },
+  ],
 });
 
-const inter = Inter({
-  subsets: ['latin'],
+const inter = localFont({
   variable: '--font-inter',
   display: 'swap',
-  weight: ['300', '400', '500', '600'],
+  src: [{ path: './fonts/inter-normal.woff2', weight: '300 600', style: 'normal' }],
 });
 
 export const metadata: Metadata = {
